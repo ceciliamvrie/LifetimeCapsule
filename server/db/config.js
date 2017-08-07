@@ -9,6 +9,6 @@ mongoose.connection.on('connected', () => {
   console.log('Connected to', uri);
 });
 
-mongoose.connection.on('error', () => {
+mongoose.connection.on('error', (err) => {
   console.log('Mongoose default connection error:', err);
-})
+});
