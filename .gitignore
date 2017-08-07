@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# Banish DS_Store Files
+.DS_Store
