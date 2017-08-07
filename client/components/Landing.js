@@ -13,10 +13,18 @@ angular.module('landing-page', [])
 
   this.handleSignUp = (username, password, email) => {
   	console.log(username, password, email, 'signed Up')
+  	var obj = {username: username, password: password, email: email};
+  	Auth.signin(obj, function(res) {
+  	  console.log('successful server response for signin');
+  	}
   }
 
   this.handleSignIn = (username, password) => {
   	console.log(username, password, 'signed in');
+  	var obj = {username: username, password: password};
+  	Auth.signin(obj, function(res) {
+  	  console.log('successful server response for signin');
+  	}
   }
 
   this.toggle = () => {
