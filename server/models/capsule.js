@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ID = Schema.Types.ObjectId;
+const User = require('./user.js');
 
 const capsuleSchema = new Schema({
-  id: ID,
-  userId: ID,
+  _user: {
+    type: Number,
+    ref: 'User'
+  },
   contents: [],
   inProgress: Boolean,
   unearthed: Boolean,
