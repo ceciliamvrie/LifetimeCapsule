@@ -7,9 +7,7 @@ const session = require('express-session');
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use( bodyParser.json() );
-
 app.use(session({ secret: 'no-secret' }));
-
 app.use(express.static('client'));
 
 app.use((req, res, next) => {
@@ -25,7 +23,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/templates/landing.html'));
 });
 
-app.use('/signup', (req, res) => {
+
+app.post('/signup', (req, res) => {
+  console.log(req.body)
+  res.sendStatus(200)
+})
+
+app.post('/signin', (req, res) => {
   console.log(req.body)
   res.sendStatus(200)
 })
