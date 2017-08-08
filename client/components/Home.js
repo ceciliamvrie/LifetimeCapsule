@@ -2,7 +2,7 @@ angular.module('homepage', [])
 .controller('HomeCtrl', function(Caps) {
 
   this.someVar = true;
-  this.capsData = [];
+  this.capsData = ['each', 'word', 'is', 'a', 'capsule'];
 
   this.handleFilter = function(event) {
 
