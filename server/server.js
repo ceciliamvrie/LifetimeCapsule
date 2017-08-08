@@ -1,29 +1,42 @@
 const path = require('path');
+const bodyParser = require('body-parser');
 const express = require('express');
 const db = require('./db/config.js');
+const session = require('express-session');
 
 const app = express();
+app.use(bodyParser.urlencoded({extended: false}));
+app.use( bodyParser.json() );
+
+app.use(session({ secret: 'no-secret' }));
 
 app.use(express.static('client'));
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+})
+
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/home.html'));
+  if (req.session.loggedIn) {
+    res.sendFile(path.join(__dirname, '../client/home.html'));
+  }
+  res.sendFile(path.join(__dirname, '../client/templates/landing.html'));
 });
+
+app.use('/signup', (req, res) => {
+  console.log(req.body)
+  res.sendStatus(200)
+})
+
 
 app.get('/create', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/templates/create.html'));
 });
 
-app.get('/landing', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/templates/landing.html'));
-});
-
 app.get('/view', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/templates/view.html'));
-});
-
-app.get('/capsules', (req, res) => {
-  res.send('The capsules will be here');
 });
 
 app.listen(3000, () => {

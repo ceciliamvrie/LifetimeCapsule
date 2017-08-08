@@ -4,19 +4,21 @@ angular.module('landing-page')
   var STORE_URL = 'http://127.0.0.1:3000';
 
   const signin = function(userObj, cb) {
-
-    var header = {'Content-Type': 'application/json'};
-
+    console.log(userObj)
     $http({
-      url: `${STORE_URL}/signin`,
       method: 'POST',
-      data: userObj,
-      headers: header
+      url: `${STORE_URL}/signin`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: userObj
     })
     .then(function(res) {
+      console.log('response', res)
       cb(null, res.data);
     })
     .catch(function(err) {
+      console.log('error',err)
       cb(err);
     });
 
@@ -33,16 +35,17 @@ angular.module('landing-page')
   	  headers: header
   	})
   	.then(function(res) {
+      console.log('response', res)
   	  cb(null, res.data);
   	})
   	.catch(function(err) {
+      console.log('whoops', err)
   	  cb(err);
   	});
   }
-  
+
   return {
     signin: signin,
     signup: signup
   };
 })
-
