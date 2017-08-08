@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const SALT_FACTOR = 10;
 
 const userSchema = new Schema({
-  _id: Number,
   username: {
     type: String,
     required: true
