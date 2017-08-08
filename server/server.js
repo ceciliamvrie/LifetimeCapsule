@@ -9,9 +9,7 @@ const session = require('express-session');
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use( bodyParser.json() );
-
 app.use(session({ secret: 'no-secret' }));
-
 app.use(express.static('client'));
 
 app.use((req, res, next) => {
@@ -27,13 +25,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/templates/landing.html'));
 });
 
+
 app.post('/signup', (req, res) => {
   let newUser = User({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password
   });
-
   // the password will be hashed in the user file before save gets called
   newUser.save((err) => {
     if (err) {
@@ -44,6 +42,10 @@ app.post('/signup', (req, res) => {
   })
 });
 
+app.post('/signin', (req, res) => {
+  console.log(req.body)
+  res.sendStatus(200)
+})
 
 app.get('/create', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/templates/create.html'));
