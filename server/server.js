@@ -2,6 +2,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
 const db = require('./db/config.js');
+const User = require('./models/user.js');
+const Capsule = require('./models/capsule.js');
 const session = require('express-session');
 
 const app = express();
@@ -25,10 +27,22 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/templates/landing.html'));
 });
 
-app.use('/signup', (req, res) => {
-  console.log(req.body)
-  res.sendStatus(200)
-})
+app.post('/signup', (req, res) => {
+  let newUser = User({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  });
+
+  // the password will be hashed in the user file before save gets called
+  newUser.save((err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log('New user created');
+    }
+  })
+});
 
 
 app.get('/create', (req, res) => {

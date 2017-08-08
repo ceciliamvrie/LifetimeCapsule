@@ -4,7 +4,7 @@ const User = require('./user.js');
 
 const capsuleSchema = new Schema({
   _user: {
-    type: Number,
+    type: Schema.Types.ObjectId,
     ref: 'User'
   },
   contents: [],
