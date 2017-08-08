@@ -18,11 +18,11 @@ angular.module('homepage', [])
 })
 .component('homePage', {
   controller: 'HomeCtrl',
-  template: 
-    `<div">
+  template:
+    `<div>
       <h1 class="mainHeader">Life-Time Capsule</h1>
     </div>
-    <div class="navbar"> 
+    <div class="navbar">
       <button ng-click="$ctrl.someVar = true">View</button>
       <button ng-click="$ctrl.someVar = false">Create</button>
     </div>
