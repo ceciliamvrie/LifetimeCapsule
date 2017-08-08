@@ -38,14 +38,24 @@ app.post('/signup', (req, res) => {
       console.error(err);
     } else {
       console.log('New user created');
+      res.redirect('/home');
     }
   })
 });
 
+app.get('/home', (req, res) => {
+  res.render('home');
+});
+
 app.post('/signin', (req, res) => {
-  console.log(req.body)
-  res.sendStatus(200)
-})
+  User.findOne({ email: req.body.email }, (err, user) => {
+    if (err) {
+      throw new Error('Error on signin:', err);
+    } else {
+      res.sendStatus(404);
+    }
+  })
+});
 
 app.get('/create', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/templates/create.html'));
