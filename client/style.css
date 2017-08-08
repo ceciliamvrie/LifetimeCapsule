@@ -2,3 +2,38 @@
   background-color: #000000;
   color: #DDDDDD;
 }*/
+
+.navbar {
+	width: 100%;
+	text-align: center;
+}
+
+.mainHeader {
+	width: 100%;
+	text-align: center;
+}
+
+.filterBar {
+	width: 100%;
+	text-align: center;
+}
+
+.filterButton {
+	display: inline-block;
+	padding: 10px;
+}
+
+.capsule {
+	width: 200px;
+	height:  200px;
+	border: 1px solid;
+	display: inline-block;
+	padding: 10px;
+}
+
+.capsuleBar {
+	height: 10%;
+	width: 55%;
+	float: right;
+	text-align: right;
+}

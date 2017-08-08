@@ -1,5 +1,5 @@
 angular.module('landing-page')
-.factory('Auth', function() {
+.factory('Auth', function($http) {
 
   var STORE_URL = 'http://127.0.0.1:3000';
 
@@ -45,3 +45,4 @@ angular.module('landing-page')
     signup: signup
   };
 })
+
