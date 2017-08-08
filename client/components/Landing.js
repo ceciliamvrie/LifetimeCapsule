@@ -16,7 +16,7 @@ angular.module('landing-page', [])
   	var obj = {username: username, password: password, email: email};
   	Auth.signin(obj, function(res) {
   	  console.log('successful server response for signin');
-  	}
+  	})
   }
 
   this.handleSignIn = (username, password) => {
@@ -24,7 +24,7 @@ angular.module('landing-page', [])
   	var obj = {username: username, password: password};
   	Auth.signin(obj, function(res) {
   	  console.log('successful server response for signin');
-  	}
+  	})
   }
 
   this.toggle = () => {
@@ -39,7 +39,7 @@ angular.module('landing-page', [])
 })
 .component('landing', {
   controller: 'LandingCtrl',
-  template: 
+  template:
     `<div>
       <h1>Welcome to Life-Time Capsule</h1>
       <span ng-show="$ctrl.butnClicked">
@@ -70,7 +70,7 @@ angular.module('landing-page', [])
 		            <button type="submit">Sign In</button>
 		          </form>
 		        </div>
-		    </span>	
+		    </span>
       </span>
     </div>`
 })
