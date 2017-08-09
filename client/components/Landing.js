@@ -24,9 +24,9 @@ angular.module('app')
   	})
   }
 
-  this.handleSignIn = (username, password) => {
-  	console.log(username, password, 'signed in');
-  	var obj = {username: username, password: password};
+  this.handleSignIn = (email, password) => {
+  	console.log(email, password, 'signed in');
+  	var obj = {email: email, password: password};
   	Auth.signin(obj, function(err, res) {
       if (err) {
         console.error(err)

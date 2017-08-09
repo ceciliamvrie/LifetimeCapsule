@@ -36,11 +36,13 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function(err, matches) {
-    if (err) return cb(err);
-
-    cb(null, matches);
+userSchema.methods.comparePassword = function(inputPassword, cb) {
+  bcrypt.compare(inputPassword, this.password, function(err, matches) {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, matches);
+    }
   });
 };
 

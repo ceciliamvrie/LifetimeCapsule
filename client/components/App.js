@@ -1,6 +1,6 @@
 angular.module('app', [])
 .controller('AppCtrl', function() {
-  this.signedIn = true;
+  this.signedIn = false;
 })
 .component('app', {
   controller: 'AppCtrl',
