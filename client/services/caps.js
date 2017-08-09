@@ -18,14 +18,14 @@ angular.module('app')
 
   };
 
-  const createCap = function(id, cb) {
+  const createCap = function(cb) {
 
     $http({
       url: `${STORE_URL}/create`,
       method: 'POST',
     })
     .then(function(res) {
-      cb(null, res.data);
+      cb(null, res);
     })
     .catch(function(err) {
       cb(err);

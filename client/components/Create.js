@@ -42,7 +42,7 @@ angular.module('app')
   controller: 'CreateCtrl',
 
   bindings: {
-    
+    capsuleId: '<'
   },
 
  templateUrl: '../templates/create.html'
