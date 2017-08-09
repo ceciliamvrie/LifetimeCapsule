@@ -1,4 +1,4 @@
-angular.module('homepage')
+angular.module('app')
 .controller('CreateCtrl', function($scope, Caps) {
   this.currentCap = ['this', 'is just', 'some', 'random', 'test', 'dota', 'I mean', 'data']; 
   
@@ -50,21 +50,5 @@ angular.module('homepage')
     
   },
 
-  template: 
-    `<div>
-      <h1>Create</h1>
-      <textarea id="inputBox" rows="4" cols="70" ng-model="input"> </textarea>
-
-      <button id="addToCap" type="button" ng-click="$ctrl.appendAndSave(input)"">Add to Capsule</button>
-      <div class="inProgressWindow">
-        <div class="innerItem" ng-repeat="item in $ctrl.currentCap track by $index">
-          <div> {{item}} </div>
-        </div>
-      </div>
-      <div class="bottomButtons">
-        <button id="saveForLater" type="button" ng-click="$ctrl.saveForLater()"">Save for Later</button>
-        <button id="bury" type="button" ng-click="$ctrl.bury()"">Bury</button>
-        
-      </div>
-    </div>`
+ templateUrl: '../templates/create.html'
 })

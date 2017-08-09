@@ -1,4 +1,4 @@
-angular.module('landing-page', [])
+angular.module('app')
 .controller('LandingCtrl', function(Auth) {
   this.username = '';
   this.butnClicked = true;
@@ -46,40 +46,7 @@ angular.module('landing-page', [])
   }
 
 })
-.component('landing', {
+.component('landingPage', {
   controller: 'LandingCtrl',
-  template:
-    `<div>
-      <h1>Welcome to Life-Time Capsule</h1>
-      <span ng-show="$ctrl.butnClicked">
-        <button type="button" ng-click="$ctrl.getStarted()">Get Started</button>
-      </span>
-      <span ng-hide="$ctrl.butnClicked">
-        <button type="button" ng-click="$ctrl.toggle()">{{$ctrl.sisu}}</button>
-        <span ng-show="$ctrl.signup">
-	        <div>
-	          <form ng-submit="$ctrl.handleSignUp(username, password, email)">
-	            <label> Name: </label>
-	            <input type="text" ng-model="username"> </input>
-	            <label> Password: </label>
-	            <input type="password" ng-model="password"> </input>
-	            <label> Email: </label>
-	            <input type="text" ng-model="email"> </input>
-	            <button type="submit">Sign Up</button>
-	          </form>
-	        </div>
-	    </span>
-	        <span ng-hide="$ctrl.signup">
-		        <div>
-		          <form ng-submit="$ctrl.handleSignIn(username, password)">
-		            <label> Name: </label>
-		            <input type="text" ng-model="username"> </input>
-		            <label> Password: </label>
-		            <input type="password" ng-model="password"> </input>
-		            <button type="submit">Sign In</button>
-		          </form>
-		        </div>
-		    </span>
-      </span>
-    </div>`
+  templateUrl: '../templates/landing.html'
 })

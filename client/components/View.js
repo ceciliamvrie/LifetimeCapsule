@@ -1,4 +1,4 @@
-angular.module('homepage')
+angular.module('app')
 .controller('ViewCtrl', function() {
 
 	this.handleEdit = (event) => {
