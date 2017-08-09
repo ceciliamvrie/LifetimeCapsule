@@ -1,29 +1,35 @@
 angular.module('app')
 .controller('CreateCtrl', function($scope, Caps) {
-  this.capsuleId = 0;
+  this.capsuleId = $scope.$ctrl.capsuleId;
   this.currentCap = []; 
   $scope.capsuleName = '';
   $scope.input = '';
+  $scope.date = '';
 
   this.appendAndSave = (input, capsuleName) => {
 
     this.currentCap.unshift({input: input, name: $scope.capsuleName})
 
     // ** update capsule every time "add to capsule" is clicked **
-    var capObj = {capsuleID: this.capsuleId, capsuleContent: this.currentCap};
-    // Caps.saveCap(capObj, function(err, res) {
-    //   if (err) {
-    //   	throw new Error(err);
-    //   } else {
-    //   	console.log('successfully saved capsule', res);
-    //   	$scope.capsuleName = '';
-    //   	$scope.input = '';
-    //   }
-    // });
+    var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+    Caps.saveCap(capObj, (err, res) => {
+      if (err) {
+      	throw new Error(err);
+      } else {
+      	console.log('successfully saved capsule', res);
+      	$scope.capsuleName = '';
+      	$scope.input = '';
+      	this.currentCap.shift();
+      }
+    });
   }		
 
   this.saveForLater = () => {
     alert('you just saved the crap out of this!')
+  }
+
+  this.test = (date) => {
+  	console.log('date is', $scope.date)
   }
 
   this.bury = () => {
@@ -42,7 +48,7 @@ angular.module('app')
   controller: 'CreateCtrl',
 
   bindings: {
-    
+    capsuleId: '<'
   },
 
  templateUrl: '../templates/create.html'
