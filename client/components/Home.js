@@ -1,7 +1,7 @@
 angular.module('app')
 .controller('HomeCtrl', function(Caps) {
-
-  this.someVar = true;
+  this.id = 0;
+  this.view = true;
   this.capsData = ['each', 'word', 'is', 'a', 'capsule'];
 
   this.handleFilter = function(event) {
@@ -15,6 +15,26 @@ angular.module('app')
       }
     })
   }
+ 
+  this.toggleToCreate = () => {
+    console.log(this.id)
+
+    // Caps.createCap(this.id, function(err, res) {
+    //   if (err) {
+    //     console.log('You dun screwed up');
+    //     throw new Error(err);
+    //   } else {
+    //     console.log('successfully created empty capsule', res);
+    //   }
+    // })
+  }
+
+  this.toggleToView = () => {
+    if (!this.view) {
+      alert('Should we save this session?')
+    }
+  }
+
 })
 .component('homePage', {
   controller: 'HomeCtrl',

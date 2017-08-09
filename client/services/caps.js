@@ -18,10 +18,25 @@ angular.module('homepage')
 
   };
 
+  const createCap = function(id, cb) {
+
+    $http({
+      url: `${STORE_URL}/create`,
+      method: 'POST',
+    })
+    .then(function(res) {
+      cb(null, res.data);
+    })
+    .catch(function(err) {
+      cb(err);
+    });
+
+  };
+
   const saveCap = function(input, cb) {
 
     $http({
-      url: `${STORE_URL}/??`,
+      url: `${STORE_URL}/edit/id`,
       method: 'PUT',
       contentType: 'application/json',
       data: JSON.stringify(input),
@@ -40,7 +55,7 @@ angular.module('homepage')
     // since it's being 'buried', the inprogress property
     // needs to be set to false and a unearthed date is set
     $http({
-      url: `${STORE_URL}/??`,
+      url: `${STORE_URL}/bury/id`,
       method: 'PUT',
       contentType: 'application/json',
       data: JSON.stringify(input),
@@ -57,6 +72,7 @@ angular.module('homepage')
   return {
     filterCaps: filterCaps,
     saveCap: saveCap,
-    bury: bury
+    bury: bury,
+    createCap: createCap
   };
 })

@@ -1,38 +1,33 @@
 angular.module('app')
 .controller('CreateCtrl', function($scope, Caps) {
-  this.currentCap = ['this', 'is just', 'some', 'random', 'test', 'dota', 'I mean', 'data']; 
-  
+  this.capsuleId = 0;
+  this.currentCap = []; 
+  $scope.capsuleName = '';
   $scope.input = '';
 
-  this.appendAndSave = (item) => {
-    this.currentCap.unshift(item)
+  this.appendAndSave = (input, capsuleName) => {
+
+    this.currentCap.unshift({input: input, name: $scope.capsuleName})
 
     // ** update capsule every time "add to capsule" is clicked **
-    // Caps.saveCap(this.currentCap, function(err, res) {
+    var capObj = {capsuleID: this.capsuleId, capsuleContent: this.currentCap};
+    // Caps.saveCap(capObj, function(err, res) {
     //   if (err) {
     //   	throw new Error(err);
     //   } else {
     //   	console.log('successfully saved capsule', res);
+    //   	$scope.capsuleName = '';
+    //   	$scope.input = '';
     //   }
     // });
   }		
 
   this.saveForLater = () => {
-    //Should update capsule one final time
-    // then clear the data from the form
-    // and have pop up window saying its saved?
-
-    // Caps.saveCap(this.currentCap, function(err, res) {
-    //   if (err) {
-    //   	throw new Error(err);
-    //   } else {
-    //   	console.log('successfully saved capsule', res);
-    //   }
-    // });
+    alert('you just saved the crap out of this!')
   }
 
   this.bury = () => {
-    console.log('bury clicked');
+    console.log('bury clicked', $scope.capsuleName);
   	//****** See notes in caps.js for bury function ******
   	// Caps.saveCap(this.currentCap, function(err, res) {
   	//   if (err) {
@@ -51,4 +46,5 @@ angular.module('app')
   },
 
  templateUrl: '../templates/create.html'
+
 })
