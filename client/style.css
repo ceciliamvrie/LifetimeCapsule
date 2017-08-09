@@ -11,6 +11,12 @@
 .mainHeader {
 	width: 100%;
 	text-align: center;
+	border-bottom: 1px solid gray;
+}
+
+#username {
+	float: right;
+	font-size: 14px;
 }
 
 .filterBar {
@@ -37,3 +43,56 @@
 	float: right;
 	text-align: right;
 }
+
+.inProgressWindow {
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px;
+	height: 500px;
+	border: 1px solid gray;
+	overflow: scroll;
+
+}
+
+.innerItem {
+	margin-left: auto;
+	margin-right: auto;
+	width: 550px;
+	height: 150px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid gray;
+	text-align: center;
+}
+
+.bottomButtons {
+	width: 100%;
+	text-align: center;
+}
+
+#saveForLater {
+
+}
+
+#bury {
+
+}
+
+#inputBox {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#addToCap {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+
