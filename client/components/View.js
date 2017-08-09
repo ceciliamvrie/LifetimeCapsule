@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('ViewCtrl', function() {
+.controller('ViewCtrl', function(Caps) {
 
 	this.handleEdit = (event) => {
 	  //dynamically grabs each capsules data
@@ -15,7 +15,7 @@ angular.module('app')
   controller: 'ViewCtrl',
 
   bindings: {
-  	cap: '<'
+  	
   },
 
   templateUrl: '../templates/view.html'

@@ -6,14 +6,14 @@ angular.module('app')
 
   this.handleFilter = function(event) {
 
-    Caps.filterCaps(event.target.id, (err, res) => {
-      if (!err) {
-        console.log('the get request for filtered data is ', res);
-        this.capsData = res;
-      } else {
-        throw new Error(err);
-      }
-    })
+    // Caps.filterCaps(event.target.id, (err, res) => {
+    //   if (!err) {
+    //     console.log('the get request for filtered data is ', res);
+    //     this.capsData = res;
+    //   } else {
+    //     throw new Error(err);
+    //   }
+    // })
   }
  
   this.toggleToCreate = () => {
@@ -38,5 +38,8 @@ angular.module('app')
 })
 .component('homePage', {
   controller: 'HomeCtrl',
+  bindings: {
+
+  },
   templateUrl: '../templates/home.html'
 })
