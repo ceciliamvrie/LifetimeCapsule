@@ -61,6 +61,7 @@ app.post('/signin', (req, res) => {
 app.post('/create', (req, res) => {
   let newCapsule = Capsule({
     _user: req.session.user, // ?
+    capsuleName: req.body.capsuleName,
     contents: [],
     inProgress: true,
     unearthed: false,
