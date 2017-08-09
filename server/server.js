@@ -7,8 +7,9 @@ const Capsule = require('./models/capsule.js');
 const session = require('express-session');
 
 const app = express();
+
 app.use(bodyParser.urlencoded({extended: false}));
-app.use( bodyParser.json() );
+app.use(bodyParser.json());
 app.use(session({ secret: 'no-secret' }));
 app.use(express.static('client'));
 
@@ -40,7 +41,7 @@ app.post('/signup', (req, res) => {
       console.log('New user created');
       res.redirect('/home');
     }
-  })
+  });
 });
 
 app.get('/home', (req, res) => {
@@ -57,8 +58,23 @@ app.post('/signin', (req, res) => {
   })
 });
 
-app.get('/create', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/templates/create.html'));
+app.post('/create', (req, res) => {
+  let newCapsule = Capsule({
+    _user: req.session.user, // ?
+    contents: [],
+    inProgress: true,
+    unearthed: false,
+    unearthDate: null
+  });
+
+  newCapsule.save((err) => {
+    if (err) {
+      console.error('Could not create capsule in database:', err);
+    } else {
+      console.log('New empty capsule created for user ', req.session.user);
+      res.sendStatus(201);
+    }
+  });
 });
 
 app.get('/view', (req, res) => {
