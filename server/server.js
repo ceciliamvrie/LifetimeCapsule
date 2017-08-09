@@ -5,12 +5,12 @@ const db = require('./db/config.js');
 const User = require('./models/user.js');
 const Capsule = require('./models/capsule.js');
 const session = require('express-session');
+const util = require('./utility.js')
 
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(session({ secret: 'no-secret' }));
 app.use(express.static('client'));
 
 app.use((req, res, next) => {
@@ -19,7 +19,14 @@ app.use((req, res, next) => {
   next();
 })
 
+app.use(session({
+  secret: 'shhh, it\'s a secret',
+  resave: false,
+  saveUninitialized: true
+}));
+
 app.get('/', (req, res) => {
+  console.log(req.session)
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
@@ -37,7 +44,9 @@ app.post('/signup', (req, res) => {
       res.sendStatus(404);
     } else {
       console.log('New user created');
+      util.createSession(req, res, newUser);
       res.sendStatus(201);
+      console.log(req.session)
     }
   });
 });
@@ -61,6 +70,8 @@ app.post('/signin', (req, res) => {
         } else {
           console.log(`Successful user signin for email ${req.body.email}`);
           res.sendStatus(200);
+          util.createSession(req, res, user);
+          console.log(req.session)
         }
       });
     }
