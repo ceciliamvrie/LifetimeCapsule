@@ -25,7 +25,7 @@ angular.module('app')
       method: 'POST',
     })
     .then(function(res) {
-      cb(null, res);
+      cb(null, res.data);
     })
     .catch(function(err) {
       cb(err);
@@ -33,13 +33,13 @@ angular.module('app')
 
   };
 
-  const saveCap = function(input, cb) {
+  const saveCap = function(inputObj, cb) {
 
     $http({
-      url: `${STORE_URL}/edit/id`,
+      url: `${STORE_URL}/edit`,
       method: 'PUT',
       contentType: 'application/json',
-      data: JSON.stringify(input),
+      data: JSON.stringify(inputObj),
     })
     .then(function(res) {
       cb(null, res.data);

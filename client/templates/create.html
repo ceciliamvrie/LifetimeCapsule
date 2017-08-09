@@ -18,6 +18,26 @@
   </div>
   <div class="bottomButtons">
     <button id="saveForLater" type="button" ng-click="$ctrl.saveForLater()"">Save for Later</button>
-    <button id="bury" type="button" ng-click="$ctrl.bury()"">Bury</button>
+    <button id="bury" type="button" ng-click="$ctrl.bury()" data-toggle="modal" data-target="#myModal">Bury</button>
+  </div>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Enter Bury Date.</p>
+          <input type="text" ng-model="date"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.test(date)">Close</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

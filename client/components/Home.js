@@ -19,13 +19,13 @@ angular.module('app')
   this.toggleToCreate = () => {
     console.log('toggled', this.view)
     if (this.view) {
-      Caps.createCap((err, res) => {
+      Caps.createCap((err, capsuleId) => {
         if (err) {
           console.log('You dun screwed up');
           throw new Error(err);
         } else {
-          this.capsuleId = res;
-          console.log('capsuleId', res);
+          this.capsuleId = capsuleId;
+          console.log('capsuleId', capsuleId);
           this.view = false;
         }
       })
