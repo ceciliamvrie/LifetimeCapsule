@@ -6,6 +6,7 @@ const User = require('./models/user.js');
 const Capsule = require('./models/capsule.js');
 const session = require('express-session');
 const util = require('./utility.js')
+const CronJob = require('cron').CronJob;
 
 const app = express();
 
@@ -62,7 +63,7 @@ app.post('/signin', (req, res) => {
     } else {
       user.comparePassword(req.body.password, (err, matches) => {
         if (err) {
-          console.error('Signin error:', err);
+          console.error(`Signin error: ${err}`)
           res.sendStatus(404);
         } else if (!matches) {
           console.log('Password did not match');
@@ -90,10 +91,36 @@ app.post('/create', (req, res) => {
 
   newCapsule.save((err) => {
     if (err) {
-      console.error('Could not create capsule in database:', err);
+      console.error(`ERROR creating capsule in database: ${err}`)
     } else {
-      console.log('New empty capsule created for user ', req.session.user);
+      console.log(`New empty capsule created for user ${req.session.user}`);
       res.send(newCapsule._id);
+    }
+  });
+});
+
+app.put('/edit', (req, res) => {
+  let capsuleId = req.body.capsuleId;
+  let newContents = req.body.capsuleContent;
+
+  Capsule.findOne({ _id: capsuleId }, (err, capsule) => {
+    if (err) {
+      console.error(`ERROR: ${err}`);
+      res.sendStatus(404);
+    } else if (!capsule) {
+      console.log(`Could not find capsule with id ${capsuleId}`);
+      res.sendStatus(404);
+    } else {
+      capsule.contents = newContents;
+      capsule.save((err) => {
+        if (err) {
+          console.error(`ERROR editing capsule ${capsuleId}: ${err}`);
+          res.sendStatus(504);
+        } else {
+          console.log(`Capsule ${capsuleId} successfully edited`);
+          res.sendStatus(200);
+        }
+      });
     }
   });
 });
@@ -114,14 +141,22 @@ app.post('/bury', (req, res) => {
       capsule.unearthDate = unearthDate;
 
       /*
-        *  SET UP CRON TASK HERE
-      */
+      The first anonymous function will execute when the specified
+      unearthDate is reached.
 
-      
+      The second anonymous function will execute when the job stops.
+
+      The third parameter true tells the job to start right now.
+       */
+      let job = new CronJob(unearthDate, () => {
+
+      }, () => { // this function will run when the job stops
+
+      }, true);
     }
   });
 });
 
 app.listen(3000, () => {
-  console.log("Server listening on port 3000");
+  console.log('Server listening on port 3000');
 });
