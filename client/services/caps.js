@@ -1,4 +1,4 @@
-angular.module('homepage')
+angular.module('app')
 .factory('Caps', function($http) {
 
   var STORE_URL = 'http://127.0.0.1:3000';

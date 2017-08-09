@@ -20,10 +20,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-  if (req.session.loggedIn) {
-    res.sendFile(path.join(__dirname, '../client/home.html'));
-  }
-  res.sendFile(path.join(__dirname, '../client/templates/landing.html'));
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 
@@ -39,21 +36,18 @@ app.post('/signup', (req, res) => {
       console.error(err);
     } else {
       console.log('New user created');
-      res.redirect('/home');
+      res.sendStatus(201);
     }
   });
-});
-
-app.get('/home', (req, res) => {
-  res.render('home');
 });
 
 app.post('/signin', (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
-      throw new Error('Error on signin:', err);
-    } else {
+      console.log(err);
       res.sendStatus(404);
+    } else {
+      res.sendStatus(200);
     }
   })
 });
@@ -76,10 +70,6 @@ app.post('/create', (req, res) => {
       res.sendStatus(201);
     }
   });
-});
-
-app.get('/view', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/templates/view.html'));
 });
 
 app.listen(3000, () => {

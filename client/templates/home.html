@@ -2,7 +2,7 @@
     <h1 class="mainHeader">Life-Time Capsule</h1>
   </div>
   <div class="navbar">
-    <button $ctrl.toggleToView()">View</button>
+    <button ng-click="$ctrl.toggleToView()">View</button>
     <button ng-click="$ctrl.view = false; $ctrl.toggleToCreate()">Create</button>
   </div>
   <span ng-show=$ctrl.view>
