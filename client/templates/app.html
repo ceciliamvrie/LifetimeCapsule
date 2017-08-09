@@ -1,12 +1,8 @@
 <span ng-hide="$ctrl.signedIn">
-  Try
+  Bite
   <landing-page></landing-page>
 </span>
-<span ng-if="$ctrl.page === 'home'" ng-show="$ctrl.signedIn">
+<span ng-show="$ctrl.signedIn">
   Me
   <home-page></home-page>
-</span>
-<span ng-if="$ctrl.page === 'create'" ng-show="$ctrl.signedIn">
-  Fam
-  <create-page></create-page>
 </span>
