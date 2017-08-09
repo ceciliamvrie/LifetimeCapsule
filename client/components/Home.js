@@ -30,10 +30,15 @@ angular.module('app')
   }
 
   this.toggleToView = () => {
-    if (!this.view) {
-      alert('Should we save this session?')
+    if(!this.view) {
+      var saveProgress = confirm('Should we save this session?');
+      if(saveProgress) {
+        //save capsule
+      }
+      this.view = true;
     }
   }
+
 
 })
 .component('homePage', {
