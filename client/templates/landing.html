@@ -1,15 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-	  <title>Life-Time Capsule</title>
-	  <link href="style.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-	  <script src="../components/Landing.js"></script>
-    <script src="../services/auth.js"></script>
-  </head>
-
-  <body>
-    <landing ng-app="landing-page"> </landing>
-  </body>
-</html>
+<div>
+  <h1>Welcome to Life-Time Capsule</h1>
+  <span ng-show="$ctrl.butnClicked">
+    <button type="button" ng-click="$ctrl.getStarted()">Get Started</button>
+  </span>
+  <span ng-hide="$ctrl.butnClicked">
+    <button type="button" ng-click="$ctrl.toggle()">{{$ctrl.sisu}}</button>
+    <span ng-show="$ctrl.signup">
+      <div>
+        <form ng-submit="$ctrl.handleSignUp(username, password, email)">
+          <label> Name: </label>
+          <input type="text" ng-model="username"> </input>
+          <label> Password: </label>
+          <input type="password" ng-model="password"> </input>
+          <label> Email: </label>
+          <input type="text" ng-model="email"> </input>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+  </span>
+      <span ng-hide="$ctrl.signup">
+        <div>
+          <form ng-submit="$ctrl.handleSignIn(username, password)">
+            <label> Name: </label>
+            <input type="text" ng-model="username"> </input>
+            <label> Password: </label>
+            <input type="password" ng-model="password"> </input>
+            <button type="submit">Sign In</button>
+          </form>
+        </div>
+    </span>
+  </span>
+</div>

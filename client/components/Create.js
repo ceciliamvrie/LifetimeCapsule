@@ -1,10 +1,7 @@
-angular.module('homepage')
+angular.module('app')
 .controller('CreateCtrl', function() {
 })
 .component('createPage', {
   controller: 'CreateCtrl',
-  template: 
-    `<div>
-      <h1>Create</h1>
-    </div>`
+  templateUrl: '../templates/create.html'
 })
