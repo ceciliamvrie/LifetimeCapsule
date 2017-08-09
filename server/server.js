@@ -75,13 +75,13 @@ app.post('/signin', (req, res) => {
         }
       });
     }
-  })
+  });
 });
 
 app.post('/create', (req, res) => {
   let newCapsule = Capsule({
-    _user: req.session.user, // ?
-    capsuleName: req.body.capsuleName,
+    _user: req.session.user,
+    capsuleName: '',
     contents: [],
     inProgress: true,
     unearthed: false,
@@ -93,7 +93,31 @@ app.post('/create', (req, res) => {
       console.error('Could not create capsule in database:', err);
     } else {
       console.log('New empty capsule created for user ', req.session.user);
-      res.sendStatus(201);
+      res.send(newCapsule._id);
+    }
+  });
+});
+
+app.post('/bury', (req, res) => {
+  let capsuleId = req.body.capsuleId;
+  let unearthDate = req.body.unearthDate;
+
+  Capsule.findOne({ _id: capsuleId }, (err, capsule) => {
+    if (err) {
+      console.error(`ERROR: ${err}`);
+      res.sendStatus(404);
+    } else if (!capsule) {
+      console.log(`Could not find capsule with id ${capsuleId}`);
+      res.sendStatus(404);
+    } else {
+      capsule.buried = true;
+      capsule.unearthDate = unearthDate;
+
+      /*
+        *  SET UP CRON TASK HERE
+      */
+
+      
     }
   });
 });
