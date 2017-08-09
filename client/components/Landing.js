@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('LandingCtrl', function(Auth) {
+.controller('LandingCtrl', function($scope, Auth) {
   this.username = '';
   this.butnClicked = true;
   this.password = '';
@@ -14,23 +14,23 @@ angular.module('app')
   this.handleSignUp = (username, password, email) => {
   	console.log(username, password, email, 'signed Up')
   	var obj = {username: username, password: password, email: email};
-  	Auth.signup(obj, function(err, res) {
+  	Auth.signup(obj, (err, res) => {
       if (err) {
         console.error(err)
       } else {
-        console.log(res)
+      	this.handleSignIn(email, password)
         console.log('successful server response for signup');
       }
   	})
   }
 
   this.handleSignIn = (email, password) => {
-  	console.log(email, password, 'signed in');
   	var obj = {email: email, password: password};
   	Auth.signin(obj, function(err, res) {
       if (err) {
         console.error(err)
       } else {
+      	$scope.$ctrl.signedIn = true;
         console.log('successful server response for signin');
       }
   	})
@@ -48,5 +48,8 @@ angular.module('app')
 })
 .component('landingPage', {
   controller: 'LandingCtrl',
+  bindings: {
+  	signedIn: '='
+  },
   templateUrl: '../templates/landing.html'
 })

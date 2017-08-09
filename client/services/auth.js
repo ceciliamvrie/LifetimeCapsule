@@ -15,7 +15,7 @@ angular.module('app')
     })
     .then(function(res) {
       console.log('response', res)
-      cb(null, res.data);
+      cb(null, 'success');
     })
     .catch(function(err) {
       console.log('error',err)
@@ -36,7 +36,7 @@ angular.module('app')
   	})
   	.then(function(res) {
       console.log('response', res)
-  	  cb(null, res.data);
+  	  cb(null, 'success');
   	})
   	.catch(function(err) {
       console.log('whoops', err)
