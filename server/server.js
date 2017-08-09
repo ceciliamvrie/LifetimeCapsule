@@ -34,6 +34,7 @@ app.post('/signup', (req, res) => {
   newUser.save((err) => {
     if (err) {
       console.error(err);
+      res.sendStatus(404);
     } else {
       console.log('New user created');
       res.sendStatus(201);
