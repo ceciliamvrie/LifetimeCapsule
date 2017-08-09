@@ -20,6 +20,7 @@ angular.module('app')
 
   template: 
     `<div class="capsule">
+    
       <div class="capsuleBar">
         <i class="fa fa-pencil fa-fw" aria-hidden="true" ng-click="$ctrl.handleEdit($event)"></i>
         <i class="fa fa-envelope-o fa-fw" aria-hidden="true" ng-click="$ctrl.handleEmail($event)"></i>
