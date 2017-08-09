@@ -44,10 +44,24 @@ app.post('/signup', (req, res) => {
 app.post('/signin', (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
-      console.log(err);
+      console.error(`ERROR: ${err}`);
+      res.sendStatus(404);
+    } else if (!user) {
+      console.log(`Could not find user with email ${req.body.email}`);
       res.sendStatus(404);
     } else {
-      res.sendStatus(200);
+      user.comparePassword(req.body.password, (err, matches) => {
+        if (err) {
+          console.error('Signin error:', err);
+          res.sendStatus(404);
+        } else if (!matches) {
+          console.log('Password did not match');
+          res.sendStatus(404);
+        } else {
+          console.log(`Successful user signin for email ${req.body.email}`);
+          res.sendStatus(200);
+        }
+      });
     }
   })
 });

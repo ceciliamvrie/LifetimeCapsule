@@ -20,9 +20,9 @@
   </span>
       <span ng-hide="$ctrl.signup">
         <div>
-          <form ng-submit="$ctrl.handleSignIn(username, password)">
-            <label> Name: </label>
-            <input type="text" ng-model="username"> </input>
+          <form ng-submit="$ctrl.handleSignIn(email, password)">
+            <label> Email: </label>
+            <input type="text" ng-model="email"> </input>
             <label> Password: </label>
             <input type="password" ng-model="password"> </input>
             <button type="submit">Sign In</button>
