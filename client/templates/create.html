@@ -1,3 +1,24 @@
 <div>
-  <h1>Create</h1>
+  <h2 id="capTitle">What's the title of this capsule?</h2>
+  <input id="capNameInput" type="text" ng-model="capsuleName" placeholder="Enter title name"/>
+  <textarea id="inputBox" rows="4" cols="70" ng-model="input"> </textarea>
+
+  <button id="addToCap" type="button" ng-click="$ctrl.appendAndSave(input, capsuleName)"">Add to Capsule</button>
+  <div class="inProgressWindow">
+    <div class="innerItem" ng-repeat="input in $ctrl.currentCap track by $index">
+      <div class="capsuleBar">
+        <i id="viewAndEdit" class="fa fa-eye fa-fw" aria-hidden="true">
+          <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+          <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+        </i>
+      </div>
+      <h4> {{input.name}} </h4>
+      <p> {{input.input}} </p>
+    </div>
+  </div>
+  <div class="bottomButtons">
+    <button id="saveForLater" type="button" ng-click="$ctrl.saveForLater()"">Save for Later</button>
+    <button id="bury" type="button" ng-click="$ctrl.bury()"">Bury</button>
+    
+  </div>
 </div>
