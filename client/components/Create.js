@@ -5,6 +5,7 @@ angular.module('app')
   $scope.capsuleName = '';
   $scope.input = '';
   $scope.date = '';
+  $scope.recipient = '';
 
   this.appendAndSave = (input, capsuleName) => {
 
@@ -14,12 +15,12 @@ angular.module('app')
     var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
     Caps.saveCap(capObj, (err, res) => {
       if (err) {
+      	this.currentCap.shift();
       	throw new Error(err);
       } else {
       	console.log('successfully saved capsule', res);
       	$scope.capsuleName = '';
       	$scope.input = '';
-      	this.currentCap.shift();
       }
     });
   }		
@@ -29,7 +30,7 @@ angular.module('app')
   }
 
   this.test = (date) => {
-  	console.log('date is', $scope.date)
+  	console.log('date is', $scope.date, 'recipient is', $scope.recipient)
   }
 
   this.bury = () => {
