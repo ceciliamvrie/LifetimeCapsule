@@ -7,6 +7,7 @@ const capsuleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
+  capsuleName: String,
   contents: [],
   inProgress: Boolean,
   unearthed: Boolean,
