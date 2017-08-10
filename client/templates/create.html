@@ -19,7 +19,7 @@
     </div>
 
     <!-- Show capsules contents if in editing mode from View.js-->
-    <div ng-show="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.capsuleToEdit track by $index">
+    <div ng-show="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.capsuleToEdit.contents">
       <div class="capsuleBar">
         <i id="viewAndEdit" class="fa fa-eye fa-fw" aria-hidden="true">
           <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
