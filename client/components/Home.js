@@ -30,6 +30,7 @@ angular.module('app')
 
   this.editCapsule = (capsule) => {
     this.capsuleToEdit = capsule;
+    this.capsuleToEdit.contents = [{title: 'some title', input: 'some message'}];
     this.editingViewCapsule = true;
     this.view = false;
   }
@@ -45,7 +46,6 @@ angular.module('app')
           this.capsuleId = capsuleId;
           this.editingViewCapsule = false;
           this.view = false;
-
         }
       })
     }
