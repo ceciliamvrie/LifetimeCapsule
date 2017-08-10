@@ -5,6 +5,10 @@ angular.module('app')
   this.capsData = [{capsuleName: 'first one', contents: {title: 'some title', input: 'some message'}, inProgress: true},
    {capsuleName: 'second one', contents: {title: 'some title', input: 'some other message'}, inProgress: false}];
 
+   // Caps.filterCaps('All', (err, allCaps) => {
+   //   this.capsData = allCaps
+   // });
+
   this.handleFilter = function(event) {
 
     // Caps.filterCaps(event.target.id, (err, res) => {
@@ -28,9 +32,6 @@ angular.module('app')
           this.capsuleId = capsuleId;
           this.view = false;
 
-          // Caps.filterCaps('all', (err, allCaps) => {
-          //   this.capsData = allCaps
-          // });
         }
       })
     }
