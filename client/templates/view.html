@@ -5,4 +5,29 @@
     <i class="fa fa-envelope-o fa-fw" aria-hidden="true" ng-click="$ctrl.handleEmail($event)"></i>
   </div>
   <h1>{{$ctrl.cap}}</h1>
+
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Before you bury this...</h4>
+        </div>
+        <div class="modal-body">
+          <p>Enter Bury Date.</p>
+          <input type="text" ng-model="date"/>
+          <p>Intended Recipient.</p>
+          <input type="text" ng-model="recipient"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.test(date)">Bury</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
 </div>
