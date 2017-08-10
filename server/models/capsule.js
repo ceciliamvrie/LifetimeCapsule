@@ -9,7 +9,7 @@ const capsuleSchema = new Schema({
   },
   capsuleName: String,
   contents: [],
-  inProgress: Boolean,
+  buried: Boolean,
   unearthed: Boolean,
   unearthDate: Date
 });
