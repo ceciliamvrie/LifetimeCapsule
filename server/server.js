@@ -28,7 +28,6 @@ app.use(session({
 }));
 
 app.get('/', (req, res) => {
-  console.log(req.session)
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
@@ -71,6 +70,8 @@ app.post('/signin', (req, res) => {
         } else {
           console.log(`Successful user signin for email ${req.body.email}`);
           util.createSession(req, res, user);
+          console.log('Session');
+          console.log(req.session.user);
           res.sendStatus(200);
         }
       });
@@ -128,9 +129,10 @@ app.post('/create', (req, res) => {
     _user: req.session.user,
     capsuleName: '',
     contents: [],
-    inProgress: true,
+    buried: false,
     unearthed: false,
-    unearthDate: null
+    unearthDate: null,
+    createdAt: Date.now()
   });
 
   newCapsule.save((err) => {
