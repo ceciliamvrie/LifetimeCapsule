@@ -6,7 +6,7 @@ angular.module('app')
   const filterCaps = function(filterMethod, cb) {
 
     $http({
-      url: `${STORE_URL}/filter/${filterMethod}`,
+      url: `${STORE_URL}/capsules/${filterMethod}`,
       method: 'GET',
     })
     .then(function(res) {
