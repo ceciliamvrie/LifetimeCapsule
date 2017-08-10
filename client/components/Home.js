@@ -7,20 +7,25 @@ angular.module('app')
   this.capsData = [{capsuleName: 'first one', contents: [{title: 'some title', input: 'some message'}], inProgress: true},
    {capsuleName: 'second one', contents: [{name: 'some title', input: 'some other message'}], inProgress: false}];
 
-   // Caps.filterCaps('All', (err, allCaps) => {
-   //   this.capsData = allCaps
-   // });
+   Caps.filterCaps('all', (err, allCaps) => {
+     if (err) {
+      throw new Error(err);
+     } else {
+      console.log('getter')
+       this.capsData = allCaps
+     }
+   });
 
   this.handleFilter = function(event) {
 
-    // Caps.filterCaps(event.target.id, (err, res) => {
-    //   if (!err) {
-    //     console.log('the get request for filtered data is ', res);
-    //     this.capsData = res;
-    //   } else {
-    //     throw new Error(err);
-    //   }
-    // })
+    Caps.filterCaps(event.target.id, (err, res) => {
+      if (!err) {
+        console.log('the get request for filtered data is ', res);
+        this.capsData = res;
+      } else {
+        throw new Error(err);
+      }
+    })
   }
 
   this.editCapsule = (capsule) => {
