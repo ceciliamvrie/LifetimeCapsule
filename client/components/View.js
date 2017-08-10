@@ -15,7 +15,7 @@ angular.module('app')
   controller: 'ViewCtrl',
 
   bindings: {
-  	
+  	cap: '<'
   },
 
   templateUrl: '../templates/view.html'

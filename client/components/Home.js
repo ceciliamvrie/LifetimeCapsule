@@ -2,7 +2,8 @@ angular.module('app')
 .controller('HomeCtrl', function(Caps) {
   this.view = true;
   this.capsuleId = 0;
-  this.capsData = ['each', 'word', 'is', 'a', 'capsule'];
+  this.capsData = [{capsuleName: 'first one', contents: {title: 'some title', input: 'some message'}, inProgress: true},
+   {capsuleName: 'second one', contents: {title: 'some title', input: 'some other message'}, inProgress: false}];
 
   this.handleFilter = function(event) {
 
@@ -25,8 +26,11 @@ angular.module('app')
           throw new Error(err);
         } else {
           this.capsuleId = capsuleId;
-          console.log('capsuleId', capsuleId);
           this.view = false;
+
+          // Caps.filterCaps('all', (err, allCaps) => {
+          //   this.capsData = allCaps
+          // });
         }
       })
     }

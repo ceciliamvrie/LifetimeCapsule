@@ -10,6 +10,7 @@ angular.module('app')
       method: 'GET',
     })
     .then(function(res) {
+      console.log('caps data is ', res.data);
       cb(null, res.data);
     })
     .catch(function(err) {

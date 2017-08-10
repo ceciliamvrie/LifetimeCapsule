@@ -25,7 +25,8 @@
 </span>
 
 <span ng-show=$ctrl.view>
-  <view-page ng-repeat="cap in $ctrl.capsData track by $index" cap="cap"> </view-page>
+  <view-page class="col-md-6" ng-repeat="cap in $ctrl.capsData track by $index" cap="cap"> </view-page>
+  
 </span>
 
 <span ng-hide=$ctrl.view>

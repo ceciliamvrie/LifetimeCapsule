@@ -1,10 +1,18 @@
 <div class="capsule">
     
   <div class="capsuleBar">
+    <i class="fa fa-eye fa-fw" aria-hidden="true" data-toggle="modal" data-target="#myModal"> </i>
     <i class="fa fa-pencil fa-fw" aria-hidden="true" ng-click="$ctrl.handleEdit($event)"></i>
     <i class="fa fa-envelope-o fa-fw" aria-hidden="true" ng-click="$ctrl.handleEmail($event)"></i>
   </div>
-  <h1>{{$ctrl.cap}}</h1>
+
+  <div>
+    <p>{{$ctrl.cap.capsuleName}}</p>
+  </div>
+
+  <div class="inProgress" >
+    <p ng-show="$ctrl.cap.inProgress"> In Progress </p>
+  </div>
 
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -13,21 +21,16 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Before you bury this...</h4>
+          <h4 class="modal-title">{{$ctrl.cap.title}}</h4>
         </div>
         <div class="modal-body">
-          <p>Enter Bury Date.</p>
-          <input type="text" ng-model="date"/>
-          <p>Intended Recipient.</p>
-          <input type="text" ng-model="recipient"/>
+        <p>  {{$ctrl.cap.contents.input}} </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.test(date)">Bury</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
 
     </div>
   </div>
-  
 </div>
