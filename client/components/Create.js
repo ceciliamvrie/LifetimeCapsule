@@ -2,10 +2,15 @@ angular.module('app')
 .controller('CreateCtrl', function($scope, Caps) {
   this.capsuleId = $scope.$ctrl.capsuleId;
   this.currentCap = []; 
+  this.capsuleToEdit = $scope.$ctrl.capsuleToEdit.contents;
   $scope.capsuleName = '';
   $scope.input = '';
   $scope.date = '';
   $scope.recipient = '';
+
+  if (true) {
+  	console.log('yesssss')
+  }
 
   this.appendAndSave = (input, capsuleName) => {
 
@@ -27,6 +32,7 @@ angular.module('app')
 
   this.saveForLater = () => {
     alert('you just saved the crap out of this!')
+
   }
 
   this.test = (date) => {
@@ -49,7 +55,9 @@ angular.module('app')
   controller: 'CreateCtrl',
 
   bindings: {
-    capsuleId: '<'
+    capsuleId: '<',
+    capsuleToEdit: '<',
+    editingViewCapsule: '<'
   },
 
  templateUrl: '../templates/create.html'
