@@ -1,8 +1,15 @@
 angular.module('app')
 .controller('HomeCtrl', function(Caps) {
   this.view = true;
+  this.editingViewCapsule = false;
   this.capsuleId = 0;
-  this.capsData = ['each', 'word', 'is', 'a', 'capsule'];
+  this.capsuleToEdit = {};
+  this.capsData = [{capsuleName: 'first one', contents: [{title: 'some title', input: 'some message'}], inProgress: true},
+   {capsuleName: 'second one', contents: [{name: 'some title', input: 'some other message'}], inProgress: false}];
+
+   // Caps.filterCaps('All', (err, allCaps) => {
+   //   this.capsData = allCaps
+   // });
 
   this.handleFilter = function(event) {
 
@@ -15,6 +22,12 @@ angular.module('app')
     //   }
     // })
   }
+
+  this.editCapsule = (capsule) => {
+    this.capsuleToEdit = capsule;
+    this.editingViewCapsule = true;
+    this.view = false;
+  }
  
   this.toggleToCreate = () => {
     console.log('toggled', this.view)
@@ -25,8 +38,9 @@ angular.module('app')
           throw new Error(err);
         } else {
           this.capsuleId = capsuleId;
-          console.log('capsuleId', capsuleId);
+          this.editingViewCapsule = false;
           this.view = false;
+
         }
       })
     }

@@ -25,9 +25,10 @@
 </span>
 
 <span ng-show=$ctrl.view>
-  <view-page ng-repeat="cap in $ctrl.capsData track by $index" cap="cap"> </view-page>
+  <view-page class="col-md-6" ng-repeat="cap in $ctrl.capsData track by $index" cap="cap" edit-capsule="$ctrl.editCapsule"> </view-page>
+
 </span>
 
 <span ng-hide=$ctrl.view>
-  <create-page capsule-id="$ctrl.capsuleId"> </create-page>
+  <create-page capsule-id="$ctrl.capsuleId" capsule-to-edit="$ctrl.capsuleToEdit" editing-view-capsule="$ctrl.editingViewCapsule"> </create-page>
 </span>

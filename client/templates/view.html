@@ -1,8 +1,36 @@
 <div class="capsule">
     
   <div class="capsuleBar">
-    <i class="fa fa-pencil fa-fw" aria-hidden="true" ng-click="$ctrl.handleEdit($event)"></i>
+    <i class="fa fa-eye fa-fw" aria-hidden="true" data-toggle="modal" data-target="#myModal"> </i>
+    <i class="fa fa-pencil fa-fw" aria-hidden="true" ng-click="$ctrl.editCapsule($ctrl.cap)"></i>
     <i class="fa fa-envelope-o fa-fw" aria-hidden="true" ng-click="$ctrl.handleEmail($event)"></i>
   </div>
-  <h1>{{$ctrl.cap}}</h1>
+
+  <div>
+    <p>{{$ctrl.cap.capsuleName}}</p>
+  </div>
+
+  <div class="inProgress" >
+    <p ng-show="$ctrl.cap.inProgress"> In Progress </p>
+  </div>
+
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" id="viewModalDialog">
+
+      <!-- Modal content-->
+      <div class="modal-content" id="viewModalContent">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{$ctrl.cap.name}}</h4>
+        </div>
+        <div class="modal-body" id="viewModalBody">
+        <p>  {{$ctrl.cap.contents[0].input}} </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

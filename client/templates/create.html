@@ -5,7 +5,9 @@
 
   <button id="addToCap" type="button" ng-click="$ctrl.appendAndSave(input, capsuleName)"">Add to Capsule</button>
   <div class="inProgressWindow">
-    <div class="innerItem" ng-repeat="input in $ctrl.currentCap track by $index">
+
+    <!-- Regular content view for in progress capsule-->
+    <div ng-hide="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.currentCap track by $index">
       <div class="capsuleBar">
         <i id="viewAndEdit" class="fa fa-eye fa-fw" aria-hidden="true">
           <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
@@ -15,12 +17,26 @@
       <h4> {{input.name}} </h4>
       <p> {{input.input}} </p>
     </div>
+
+    <!-- Show capsules contents if in editing mode from View.js-->
+    <div ng-show="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.capsuleToEdit track by $index">
+      <div class="capsuleBar">
+        <i id="viewAndEdit" class="fa fa-eye fa-fw" aria-hidden="true">
+          <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
+          <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+        </i>
+      </div>
+      <h4> {{input.name}} </h4>
+      <p> {{input.input}} </p>
+    </div>
+
   </div>
   <div class="bottomButtons">
     <button id="saveForLater" type="button" ng-click="$ctrl.saveForLater()"">Save for Later</button>
-    <button id="bury" type="button" ng-click="$ctrl.bury()" data-toggle="modal" data-target="#myModal">Bury</button>
+    <button id="bury" type="button" ng-click="$ctrl.bury()" data-toggle="modal" data-target="#createModal">Bury</button>
   </div>
-  <div id="myModal" class="modal fade" role="dialog">
+
+  <div id="createModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -29,18 +45,22 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Before you bury this...</h4>
         </div>
+
         <div class="modal-body">
           <p>Enter Bury Date.</p>
           <input type="text" ng-model="date"/>
           <p>Intended Recipient.</p>
           <input type="text" ng-model="recipient"/>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.test(date)">Bury</button>
         </div>
+
       </div>
 
     </div>
   </div>
+
 </div>
