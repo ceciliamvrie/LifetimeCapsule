@@ -1,9 +1,9 @@
 angular.module('app')
-.controller('ViewCtrl', function(Caps) {
+.controller('ViewCtrl', function($scope, Caps) {
 
 	this.handleEdit = (event) => {
 	  //dynamically grabs each capsules data
-	  console.log(this.cap)
+
 	}
 
 	this.handleEmail = (event) => {
@@ -15,7 +15,8 @@ angular.module('app')
   controller: 'ViewCtrl',
 
   bindings: {
-  	cap: '<'
+  	cap: '<',
+  	editCapsule: '='
   },
 
   templateUrl: '../templates/view.html'

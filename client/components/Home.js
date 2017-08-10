@@ -2,6 +2,7 @@ angular.module('app')
 .controller('HomeCtrl', function(Caps) {
   this.view = true;
   this.capsuleId = 0;
+  this.capsuleToEdit = {};
   this.capsData = [{capsuleName: 'first one', contents: {title: 'some title', input: 'some message'}, inProgress: true},
    {capsuleName: 'second one', contents: {title: 'some title', input: 'some other message'}, inProgress: false}];
 
@@ -19,6 +20,11 @@ angular.module('app')
     //     throw new Error(err);
     //   }
     // })
+  }
+
+  this.editCapsule = (capsule) => {
+    this.capsuleToEdit = capsule;
+    
   }
  
   this.toggleToCreate = () => {
