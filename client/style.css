@@ -95,16 +95,16 @@
 
 }
 
-.modal-dialog {
+#viewModalDialog {
 	float: center;
 }
 
-.modal-content {
+#viewModalContent {
 	width: 700px;
 	height: 500px;
 }
 
-.modal-body {
+#viewModalBody {
 	width: 100%;
 	height: 75%;
 	overflow: scroll;
