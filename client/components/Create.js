@@ -31,6 +31,7 @@ angular.module('app')
   }		
 
   this.saveForLater = () => {
+  	console.log('passed ', this.capsuleToEdit.contents)
     alert('you just saved the crap out of this!')
 
   }
