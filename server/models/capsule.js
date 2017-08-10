@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const User = require('./user.js');
 
-const capsuleSchema = new Schema({
+const CapsuleSchema = new Schema({
   _user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -11,9 +11,10 @@ const capsuleSchema = new Schema({
   contents: [],
   buried: Boolean,
   unearthed: Boolean,
-  unearthDate: Date
+  unearthDate: Date,
+  createdAt: Date
 });
 
-const Capsule = mongoose.model('capsule', capsuleSchema);
+const Capsule = mongoose.model('Capsule', CapsuleSchema);
 
 module.exports = Capsule;

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const SALT_FACTOR = 10;
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
   username: {
     type: String,
     required: true
@@ -19,7 +19,7 @@ const userSchema = new Schema({
   }
 });
 
-userSchema.pre('save', function(next) {
+UserSchema.pre('save', function(next) {
   let user = this;
 
   if (!user.isModified('password')) return next();
@@ -36,7 +36,7 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.methods.comparePassword = function(inputPassword, cb) {
+UserSchema.methods.comparePassword = function(inputPassword, cb) {
   bcrypt.compare(inputPassword, this.password, function(err, matches) {
     if (err) {
       cb(err, null);
@@ -46,6 +46,6 @@ userSchema.methods.comparePassword = function(inputPassword, cb) {
   });
 };
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

@@ -8,12 +8,16 @@ angular.module('app')
    {capsuleName: 'second one', contents: [{name: 'some title', input: 'some other message'}], inProgress: false}];
 
    Caps.filterCaps('all', (err, allCaps) => {
+<<<<<<< HEAD
      if (err) {
       throw new Error(err);
      } else {
       console.log('getter')
        this.capsData = allCaps
      }
+=======
+     this.capsData = allCaps
+>>>>>>> Rename some schema stuff and add a createdAt property
    });
 
   this.handleFilter = function(event) {
@@ -25,7 +29,11 @@ angular.module('app')
       } else {
         throw new Error(err);
       }
+<<<<<<< HEAD
     })
+=======
+    });
+>>>>>>> Rename some schema stuff and add a createdAt property
   }
 
   this.editCapsule = (capsule) => {
@@ -34,7 +42,7 @@ angular.module('app')
     this.editingViewCapsule = true;
     this.view = false;
   }
- 
+
   this.toggleToCreate = () => {
     console.log('toggled', this.view)
     if (this.view) {
@@ -66,7 +74,7 @@ angular.module('app')
 .component('homePage', {
   controller: 'HomeCtrl',
   bindings: {
-  
+
   },
   templateUrl: '../templates/home.html'
 })
