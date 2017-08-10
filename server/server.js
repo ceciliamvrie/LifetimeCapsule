@@ -48,7 +48,6 @@ app.post('/signup', (req, res) => {
       console.log('New user created');
       util.createSession(req, res, newUser);
       res.sendStatus(201);
-      console.log(req.session)
     }
   });
 });
@@ -71,11 +70,25 @@ app.post('/signin', (req, res) => {
           res.sendStatus(404);
         } else {
           console.log(`Successful user signin for email ${req.body.email}`);
-          res.sendStatus(200);
           util.createSession(req, res, user);
-          console.log(req.session)
+          res.sendStatus(200);
         }
       });
+    }
+  });
+});
+
+app.get('/capsules', (req, res) => {
+  Capsule.find({ _user: req.session.user }, (err, capsules) => {
+    if (err) {
+      console.error(`Capsules retrieval error: ${err}`);
+      res.sendStatus(404);
+    } else if (!capsules) {
+      console.log('Could not retrieve capsules');
+      res.sendStatus(404);
+    } else {
+      console.log(`Successfully retrieved capsules for user ${req.session.user}`);
+      res.send(capsules);
     }
   });
 });
@@ -139,6 +152,7 @@ app.post('/bury', (req, res) => {
       res.sendStatus(404);
     } else {
       capsule.buried = true;
+      capsule.inProgress = false;
       capsule.unearthDate = unearthDate;
 
       /*
@@ -150,7 +164,7 @@ app.post('/bury', (req, res) => {
       The third parameter true tells the job to start right now.
        */
       let job = new CronJob(unearthDate, () => {
-
+        capsule.unearthed = true;
       }, () => { // this function will run when the job stops
 
       }, true);
