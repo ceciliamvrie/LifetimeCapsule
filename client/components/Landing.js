@@ -18,6 +18,7 @@ angular.module('app')
       if (err) {
         console.error(err)
       } else {
+        $scope.$ctrl.userId = res;
       	this.handleSignIn(email, password)
         console.log('successful server response for signup');
       }
@@ -30,6 +31,8 @@ angular.module('app')
       if (err) {
         console.error(err)
       } else {
+        console.log('res is ', res)
+        $scope.$ctrl.userId = res;
       	$scope.$ctrl.signedIn = true;
         console.log('successful server response for signin');
       }
@@ -49,7 +52,8 @@ angular.module('app')
 .component('landingPage', {
   controller: 'LandingCtrl',
   bindings: {
-  	signedIn: '='
+  	signedIn: '=',
+    userId: '<'
   },
   templateUrl: '../templates/landing.html'
 })

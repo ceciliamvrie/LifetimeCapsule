@@ -4,18 +4,18 @@ angular.module('app')
   var STORE_URL = 'http://127.0.0.1:3000';
 
   const signin = function(userObj, cb) {
-    console.log(userObj)
+
     $http({
       method: 'POST',
       url: `${STORE_URL}/signin`,
       headers: {
         'Content-Type': 'application/json'
       },
-      data: userObj
+      data: userObj, 
     })
     .then(function(res) {
-      console.log('response', res)
-      cb(null, 'success');
+      console.log('signed in id ', res.data);
+      cb(null, res.data);
     })
     .catch(function(err) {
       console.log('error',err)
@@ -36,7 +36,7 @@ angular.module('app')
   	})
   	.then(function(res) {
       console.log('response', res)
-  	  cb(null, 'success');
+  	  cb(null, res.data);
   	})
   	.catch(function(err) {
       console.log('whoops', err)
