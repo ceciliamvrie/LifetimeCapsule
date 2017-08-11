@@ -53,7 +53,7 @@ angular.module('app')
   controller: 'LandingCtrl',
   bindings: {
   	signedIn: '=',
-    userId: '<'
+    userId: '='
   },
   templateUrl: '../templates/landing.html'
 })

@@ -79,8 +79,8 @@ app.post('/signin', (req, res) => {
   });
 });
 
-app.get('/capsules/all', (req, res) => {
-  console.log('req body userId', req.body.userId);
+app.post('/capsules/all', (req, res) => {
+  console.log('req body userId', req.body);
   Capsule.find({ _user: req.body.userId }, (err, capsules) => {
     if (err) {
       console.error(`All capsules retrieval error: ${err}`);
