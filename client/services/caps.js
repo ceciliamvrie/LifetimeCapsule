@@ -4,7 +4,7 @@ angular.module('app')
   var STORE_URL = 'http://127.0.0.1:3000';
 
   const filterCaps = function(filterMethod, userId, cb) {
-    console.log('ajax ', userId)
+    
     $http({
       url: `${STORE_URL}/capsules/${filterMethod}`,
       method: 'POST',
@@ -12,7 +12,6 @@ angular.module('app')
       contentType: 'application/json'
     })
     .then(function(res) {
-      console.log('caps data is ', res.data);
       cb(null, res.data);
     })
     .catch(function(err) {

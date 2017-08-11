@@ -5,6 +5,7 @@ angular.module('app')
   this.capsuleId = 0;
   this.capsuleToEdit = {};
   this.capsData = [];
+  this.clear = '';
 
    // Caps.filterCaps('all', $scope.$ctrl.userId, (err, allCaps) => {
    //   if (err) {
@@ -18,7 +19,6 @@ angular.module('app')
   this.handleFilter = function(event) {
     Caps.filterCaps(event.target.id, $scope.$ctrl.userId, (err, res) => {
       if (!err) {
-        console.log('the get request for filtered data is ', res);
         this.capsData = res;
       } else {
         throw new Error(err);
@@ -31,6 +31,7 @@ angular.module('app')
     this.capsuleToEdit.contents = capsule.contents;
     this.capsuleId = capsule._id;
     this.editingViewCapsule = true;
+    this.clear = '';
     this.view = false;
   }
 
@@ -42,12 +43,28 @@ angular.module('app')
           console.log('You dun screwed up');
           throw new Error(err);
         } else {
-
           this.capsuleId = capsuleId;
-          this.editingViewCapsule = false;
+          this.clear = '';
+          this.capsuleToEdit = {};
           this.view = false;
         }
       })
+    } else {
+      var saveProgress = confirm('Are you sure you want to start a new capsule?');
+      if(saveProgress) {
+        Caps.createCap($scope.$ctrl.userId,(err, capsuleId) => {
+          if (err) {
+            console.log('You dun screwed up');
+            throw new Error(err);
+          } else {
+            console.log('created new cap and should wipe data')
+            this.capsuleId = capsuleId;
+            this.clear = '';
+            this.capsuleToEdit = {};
+            this.view = false;
+          }
+        })
+      }
     }
   }
 

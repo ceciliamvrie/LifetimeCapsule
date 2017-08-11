@@ -14,7 +14,6 @@ angular.module('app')
       data: userObj, 
     })
     .then(function(res) {
-      console.log('signed in id ', res.data);
       cb(null, res.data);
     })
     .catch(function(err) {
@@ -35,7 +34,6 @@ angular.module('app')
   	  headers: header
   	})
   	.then(function(res) {
-      console.log('response', res)
   	  cb(null, res.data);
   	})
   	.catch(function(err) {

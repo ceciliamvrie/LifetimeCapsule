@@ -3,9 +3,9 @@ angular.module('app')
   this.capsuleId = $scope.$ctrl.capsuleId;
   this.currentCap = []; 
   this.capsuleToEdit = $scope.$ctrl.capsuleToEdit;
-  $scope.capsuleName = '';
+  $scope.capsuleName = $scope.$ctrl.clear;
   $scope.contentTitle = '';
-  $scope.input = '';
+  $scope.input = $scope.$ctrl.clear;
   $scope.date = '';
   $scope.recipient = '';
 
@@ -42,7 +42,11 @@ angular.module('app')
 	      }
 	    });
     }
-  }		
+  }
+
+  this.changed = () => {
+  	console.log('changed')
+  }
 
   this.saveForLater = () => {
     
@@ -74,6 +78,8 @@ angular.module('app')
          	$scope.$ctrl.view = true;
          	$scope.capsuleName = '';
          	$scope.input = '';
+         	$scope.date = '';
+         	$scope.recipient = '';
          }
        });
    	} else {
@@ -92,6 +98,8 @@ angular.module('app')
  	      	$scope.$ctrl.view = true;
  	      	$scope.capsuleName = '';
  	      	$scope.input = '';
+ 	      	$scope.date = '';
+ 	      	$scope.recipient = '';
  	      }
  	    });
      }
@@ -104,7 +112,8 @@ angular.module('app')
     capsuleId: '<',
     capsuleToEdit: '<',
     editingViewCapsule: '<',
-    view: '='
+    view: '=',
+    clear: '='
   },
 
  templateUrl: '../templates/create.html'
