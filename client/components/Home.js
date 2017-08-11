@@ -35,7 +35,7 @@ angular.module('app')
   }
 
   this.toggleToCreate = () => {
-    console.log('toggled', this.view)
+
     if (this.view) {
       Caps.createCap($scope.$ctrl.userId,(err, capsuleId) => {
         if (err) {
@@ -53,12 +53,11 @@ angular.module('app')
 
   this.toggleToView = () => {
     if(!this.view) {
-      console.log('toggling to view id ', this.capsuleId)
-      var saveProgress = confirm('Should we save this session?');
+
+      var saveProgress = confirm('Are you sure you want to leave this capsule?');
       if(saveProgress) {
-        //save capsule
+        this.view = true;
       }
-      this.view = true;
     }
   }
 
