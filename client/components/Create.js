@@ -13,22 +13,23 @@ angular.module('app')
   this.appendAndSave = (input, momentoName) => {
     //check for content
     if ($scope.$ctrl.editingViewCapsule) {
-   		// **** contentTitle ng-model needs to be added to creat.html
-       this.capsuleToEdit.contents.unshift({input: input, name: $scope.capsuleName})
+       this.capsuleToEdit.contents.unshift({input: input, name: $scope.capsuleName});
 
-    // ** update capsule every time "add to capsule" is clicked **
-    var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
-    Caps.saveCap(capObj, (err, res) => {
-      if (err) {
-      	this.currentCap.shift();
-      	throw new Error(err);
-      } else {
-      	console.log('successfully saved capsule', res);
-      	$scope.momentoName = '';
-      	$scope.input = '';
-      }
-    });
-  }		
+      // ** update capsule every time "add to capsule" is clicked **
+      var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+      Caps.saveCap(capObj, (err, res) => {
+        if (err) {
+      	  this.currentCap.shift();
+      	  throw new Error(err);
+        } else {
+      	  console.log('successfully saved capsule', res);
+      	  $scope.momentoName = '';
+      	  $scope.input = '';
+        }
+      });
+    } else {
+ 	  // **** contentTitle ng-model needs to be added to creat.html 
+ 	    this.currentCap.unshift({input: input, name: $scope.capsuleName})
 
   this.deleteMemento = () => {
     //modal confirmation of deletion
