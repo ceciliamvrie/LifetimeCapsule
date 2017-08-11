@@ -84,52 +84,55 @@ angular.module('app')
     }
   }
 
-  this.bury = (years, months, days, recipient) => {
+ this.bury = (years, months, days, recipient) => {
     console.log('bury clicked', $scope.capsuleName);
-    var date = [Number(years), Number(months), Number(days)];
+
+    var date = [0, 0, 0]
+    date[0] = Number(years) || 0;
+    date[1] = Number(months) || 0;
+    date[2] = Number(days) || 0;
+
     console.log('unearthDate', date);
-  	// ****** See notes in caps.js for bury function ******
-   	if ($scope.$ctrl.editingViewCapsule) {
-   		// **** contentTitle ng-model needs to be added to creat.html
+      // ****** See notes in caps.js for bury function ******
+       if ($scope.$ctrl.editingViewCapsule) {
 
        var capObj = {
-       	 capsuleId: this.capsuleId,
-       	 capsuleContent: this.capsuleToEdit.contents,
-       	 unearthDate: date,
-       	 recipient: recipient
+            capsuleId: this.capsuleId,
+            capsuleContent: this.capsuleToEdit.contents,
+            unearthDate: date,
+            recipient: recipient
        };
        Caps.bury(capObj, (err, res) => {
          if (err) {
-         	this.currentCap.shift();
-         	throw new Error(err);
+             this.currentCap.shift();
+             throw new Error(err);
          } else {
-         	$scope.$ctrl.view = true;
-         	$scope.capsuleName = '';
-         	$scope.input = '';
-         	$scope.date = '';
-         	$scope.recipient = '';
+             $scope.$ctrl.view = true;
+             $scope.capsuleName = '';
+             $scope.input = '';
+             $scope.date = '';
+             $scope.recipient = '';
          }
        });
-   	} else {
- 	// **** contentTitle ng-model needs to be added to creat.html 
- 	    var capObj = {
- 	    	capsuleId: this.capsuleId,
- 	    	capsuleContent: this.currentCap,
- 	    	unearthDate: date,
- 	    	recipient: recipient
- 	      };
- 	    Caps.bury(capObj, (err, res) => {
- 	      if (err) {
- 	      	this.currentCap.shift();
- 	      	throw new Error(err);
- 	      } else {
- 	      	$scope.$ctrl.view = true;
- 	      	$scope.capsuleName = '';
- 	      	$scope.input = '';
- 	      	$scope.date = '';
- 	      	$scope.recipient = '';
- 	      }
- 	    });
+       } else {
+         var capObj = {
+             capsuleId: this.capsuleId,
+             capsuleContent: this.currentCap,
+             unearthDate: date,
+             recipient: recipient
+           };
+         Caps.bury(capObj, (err, res) => {
+           if (err) {
+               this.currentCap.shift();
+               throw new Error(err);
+           } else {
+               $scope.$ctrl.view = true;
+               $scope.capsuleName = '';
+               $scope.input = '';
+               $scope.date = '';
+               $scope.recipient = '';
+           }
+         });
      }
   }
 })
