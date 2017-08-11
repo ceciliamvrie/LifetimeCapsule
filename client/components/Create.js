@@ -3,45 +3,58 @@ angular.module('app')
   this.capsuleId = $scope.$ctrl.capsuleId;
   this.currentCap = []; 
   this.capsuleToEdit = $scope.$ctrl.capsuleToEdit;
-  $scope.capsuleName = $scope.$ctrl.clear;
-  $scope.contentTitle = '';
-  $scope.input = $scope.$ctrl.clear;
+  this.named = false;
+  this.capsuleName = '';
+  $scope.momentoName = '';
+  $scope.input = '';
   $scope.date = '';
   $scope.recipient = '';
 
-  this.appendAndSave = (input, capsuleName) => {
+  this.appendAndSave = (input, momentoName) => {
+    //check for content
+    this.currentCap.unshift({input: input, name: $scope.momentoName})
 
-  	if ($scope.$ctrl.editingViewCapsule) {
-  		// **** contentTitle ng-model needs to be added to creat.html
-      this.capsuleToEdit.contents.unshift({input: input, name: $scope.capsuleName})
+    // ** update capsule every time "add to capsule" is clicked **
+    var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+    Caps.saveCap(capObj, (err, res) => {
+      if (err) {
+      	this.currentCap.shift();
+      	throw new Error(err);
+      } else {
+      	console.log('successfully saved capsule', res);
+      	$scope.momentoName = '';
+      	$scope.input = '';
+      }
+    });
+  }		
 
-      var capObj = {capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
-      Caps.saveCap(capObj, (err, res) => {
-        if (err) {
-        	this.currentCap.shift();
-        	throw new Error(err);
-        } else {
-        	$scope.capsuleName = '';
-        	$scope.input = '';
-        }
-      });
+  this.deleteMemento = () => {
+    //modal confirmation of deletion
+    //true => remove from capsule in db and from currentCap array
+    //update view
+  }
 
+  this.setCapsuleName = () => {
+    var capName = document.getElementById('capName').value
+    //if(capName) {
+      this.capsuleName = capName;
+      this.named = true;
+      //adds name of capsule to DB
+      //show name as the top portion of the capsule
+    //}
+  }
 
-  	} else {
-	  // **** contentTitle ng-model needs to be added to creat.html 
-	    this.currentCap.unshift({input: input, name: $scope.capsuleName})
+  this.editMomento = () => {
+    //modal popup of edit window
+    //on save submit changes to db in place
+    //on save return edited momento to previous location
+  }
 
-	    var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
-	    Caps.saveCap(capObj, (err, res) => {
-	      if (err) {
-	      	this.currentCap.shift();
-	      	throw new Error(err);
-	      } else {
-	      	$scope.capsuleName = '';
-	      	$scope.input = '';
-	      }
-	    });
-    }
+  this.saveForLater = () => {
+    //check if capsule has a title
+  	console.log('passed ', this.capsuleToEdit.contents)
+    alert('you just saved the crap out of this!')
+    //send to view
   }
 
   this.changed = () => {
