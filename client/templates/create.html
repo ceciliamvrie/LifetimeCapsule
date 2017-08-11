@@ -19,9 +19,9 @@
     <!-- Regular content view for in progress capsule-->
     <div ng-hide="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.currentCap track by $index">
       <div class="capsuleBar">
-        <button><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
-        <button ng-click="$ctrl.track()"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
-        <button><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
+        <button ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
+        <button ng-click="$ctrl.editMomento($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
+        <button ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
       <h4> {{input.name}} </h4>
       <p> {{input.input}} </p>
@@ -30,9 +30,9 @@
     <!-- Show capsules contents if in editing mode from View.js-->
     <div ng-show="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.capsuleToEdit.contents">
       <div class="capsuleBar">
-          <button><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
-          <button ng-click="$ctrl.track()"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
-          <button><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
+          <button ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
+          <button ng-click="$ctrl.editMomento($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
+          <button ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
       <h4> {{input.name}} </h4>
       <p> {{input.input}} </p>
