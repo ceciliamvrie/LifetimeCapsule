@@ -17,7 +17,6 @@ angular.module('app')
    // });
 
   this.handleFilter = function(event) {
-
     Caps.filterCaps(event.target.id, $scope.$ctrl.userId, (err, res) => {
       if (!err) {
         console.log('the get request for filtered data is ', res);

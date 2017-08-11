@@ -4,10 +4,10 @@ angular.module('app')
   var STORE_URL = 'http://127.0.0.1:3000';
 
   const filterCaps = function(filterMethod, userId, cb) {
-
+    console.log('ajax ', userId)
     $http({
       url: `${STORE_URL}/capsules/${filterMethod}`,
-      method: 'GET',
+      method: 'POST',
       data: {userId: userId},
       contentType: 'application/json'
     })
@@ -18,21 +18,6 @@ angular.module('app')
     .catch(function(err) {
       cb(err);
     });
-
-    // jQuery.ajax({
-    //     url: "http://example.appspot.com/rest/app",
-    //     type: "POST",
-    //     data: JSON.stringify({"foo":"bar"}),
-    //     dataType: "json",
-    //     contentType: "application/json; charset=utf-8",
-    //     success: function (response) {
-    //         console.log("success");
-    //     },
-    //     error: function (response) {
-    //         console.log("failed");
-    //     }
-    // });
-
   };
 
   const createCap = function(userId, cb) {
