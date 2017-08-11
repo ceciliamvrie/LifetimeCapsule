@@ -172,6 +172,18 @@ app.put('/edit', (req, res) => {
   });
 });
 
+app.delete('/delete', (req, res) => {
+  Capsule.remove({ _id: req.body.capsuleId }, (err) => {
+    if (err) {
+      console.error(`Failed to remove capsule ${req.body.capsuleId} from the database`);
+      res.sendStatus(504);
+    } else {
+      console.log(`Successfully removed capsule ${req.body.capsuleId} from the database`);
+      res.sendStatus(204);
+    }
+  });
+});
+
 app.put('/bury', (req, res) => {
   let capsuleId = req.body.capsuleId;
   let unearthDate = req.body.unearthDate;
