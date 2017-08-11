@@ -10,36 +10,38 @@ angular.module('app')
   $scope.date = '';
   $scope.recipient = '';
 
-  this.appendAndSave = (input, momentoName) => {
-    //check for content
-    if ($scope.$ctrl.editingViewCapsule) {
-       this.capsuleToEdit.contents.unshift({input: input, name: $scope.capsuleName});
+   this.appendAndSave = (input, momentoName) => {
 
-      // ** update capsule every time "add to capsule" is clicked **
-      var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+      if ($scope.$ctrl.editingViewCapsule) {
+      this.capsuleToEdit.contents.unshift({input: input, name: $scope.capsuleName})
+
+      var capObj = {capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
-      	  this.currentCap.shift();
-      	  throw new Error(err);
+            this.currentCap.shift();
+            throw new Error(err);
         } else {
-      	  console.log('successfully saved capsule', res);
-      	  $scope.momentoName = '';
-      	  $scope.input = '';
+            $scope.capsuleName = '';
+            $scope.input = '';
         }
       });
-    } else {
- 	    this.currentCap.unshift({input: input, name: $scope.capsuleName});
-      var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
- 	    Caps.saveCap(capObj, (err, res) => {
- 	      if (err) {
- 	      	this.currentCap.shift();
- 	      	throw new Error(err);
- 	      } else {
- 	      	$scope.capsuleName = '';
- 	      	$scope.input = '';
- 	      }
- 	    });
-     }
+
+
+      } else {
+        this.currentCap.unshift({input: input, name: $scope.capsuleName})
+
+        var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+        Caps.saveCap(capObj, (err, res) => {
+          if (err) {
+              this.currentCap.shift();
+              throw new Error(err);
+          } else {
+              $scope.capsuleName = '';
+              $scope.input = '';
+          }
+        });
+    }
+  }
 
   this.deleteMemento = () => {
     //modal confirmation of deletion
