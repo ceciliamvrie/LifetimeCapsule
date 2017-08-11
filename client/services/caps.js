@@ -43,7 +43,7 @@ angular.module('app')
       url: `${STORE_URL}/edit`,
       method: 'PUT',
       contentType: 'application/json',
-      data: JSON.stringify(inputObj),
+      data: inputObj,
     })
     .then(function(res) {
       cb(null, res.data);
