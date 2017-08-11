@@ -15,7 +15,7 @@ angular.module('app')
       if ($scope.$ctrl.editingViewCapsule) {
       this.capsuleToEdit.contents.unshift({input: input, name: $scope.momentoName})
 
-      var capObj = {capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
+      var capObj = {capsuleName: this.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
             this.currentCap.shift();
@@ -30,7 +30,7 @@ angular.module('app')
       } else {
         this.currentCap.unshift({input: input, name: $scope.momentoName})
 
-        var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+        var capObj = {capsuleName: this.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
         Caps.saveCap(capObj, (err, res) => {
           if (err) {
               this.currentCap.shift();
@@ -51,12 +51,22 @@ angular.module('app')
 
   this.setCapsuleName = () => {
     var capName = document.getElementById('capsuleInput').value
-    //if(capName) {
+    if(capName !== null && capName !== undefined) {
       this.capsuleName = capName;
       this.named = true;
-      //adds name of capsule to DB
-      //show name as the top portion of the capsule
-    //}
+      var capObj = {capsuleName: this.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+      Caps.saveCap(capObj, (err, res) => {
+        if (err) {
+            this.currentCap.shift();
+            throw new Error(err);
+        } else {
+            $scope.momentoName = '';
+            $scope.input = '';
+        }
+      });
+    } else {
+      //warning to add capsule name
+    }
   }
 
   this.editMomento = () => {
@@ -74,7 +84,7 @@ angular.module('app')
   }
 
  this.bury = (years, months, days, recipient) => {
-    console.log('bury clicked', $scope.capsuleName);
+    console.log('bury clicked', this.capsuleName);
 
     var date = [0, 0, 0]
     date[0] = Number(years) || 0;
