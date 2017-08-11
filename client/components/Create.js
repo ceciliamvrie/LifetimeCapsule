@@ -12,7 +12,9 @@ angular.module('app')
 
   this.appendAndSave = (input, momentoName) => {
     //check for content
-    this.currentCap.unshift({input: input, name: $scope.momentoName})
+    if ($scope.$ctrl.editingViewCapsule) {
+   		// **** contentTitle ng-model needs to be added to creat.html
+       this.capsuleToEdit.contents.unshift({input: input, name: $scope.capsuleName})
 
     // ** update capsule every time "add to capsule" is clicked **
     var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
