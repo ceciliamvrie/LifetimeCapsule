@@ -4,8 +4,7 @@ angular.module('app')
   this.editingViewCapsule = false;
   this.capsuleId = 0;
   this.capsuleToEdit = {};
-  this.capsData = [{capsuleName: 'first one', contents: [{title: 'some title', input: 'some message'}], inProgress: true},
-   {capsuleName: 'second one', contents: [{name: 'some title', input: 'some other message'}], inProgress: false}];
+  this.capsData = [];
 
    // Caps.filterCaps('all', $scope.$ctrl.userId, (err, allCaps) => {
    //   if (err) {
@@ -29,7 +28,8 @@ angular.module('app')
 
   this.editCapsule = (capsule) => {
     this.capsuleToEdit = capsule;
-    this.capsuleToEdit.contents = [{title: 'some title', input: 'some message'}];
+    this.capsuleToEdit.contents = capsule.contents;
+    this.capsuleId = capsule._id;
     this.editingViewCapsule = true;
     this.view = false;
   }
@@ -37,11 +37,12 @@ angular.module('app')
   this.toggleToCreate = () => {
     console.log('toggled', this.view)
     if (this.view) {
-      Caps.createCap((err, capsuleId) => {
+      Caps.createCap($scope.$ctrl.userId,(err, capsuleId) => {
         if (err) {
           console.log('You dun screwed up');
           throw new Error(err);
         } else {
+
           this.capsuleId = capsuleId;
           this.editingViewCapsule = false;
           this.view = false;
@@ -52,6 +53,7 @@ angular.module('app')
 
   this.toggleToView = () => {
     if(!this.view) {
+      console.log('toggling to view id ', this.capsuleId)
       var saveProgress = confirm('Should we save this session?');
       if(saveProgress) {
         //save capsule

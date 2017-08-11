@@ -4,31 +4,54 @@ angular.module('app')
   this.currentCap = []; 
   this.capsuleToEdit = $scope.$ctrl.capsuleToEdit;
   $scope.capsuleName = '';
+  $scope.contentTitle = '';
   $scope.input = '';
   $scope.date = '';
   $scope.recipient = '';
 
   this.appendAndSave = (input, capsuleName) => {
 
-    this.currentCap.unshift({input: input, name: $scope.capsuleName})
+  	if ($scope.$ctrl.editingViewCapsule) {
+      this.capsuleToEdit.contents.unshift({input: input, name: $scope.capsuleName})
 
-    // ** update capsule every time "add to capsule" is clicked **
-    var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
-    Caps.saveCap(capObj, (err, res) => {
-      if (err) {
-      	this.currentCap.shift();
-      	throw new Error(err);
-      } else {
-      	console.log('successfully saved capsule', res);
-      	$scope.capsuleName = '';
-      	$scope.input = '';
-      }
-    });
+      // ** update capsule every time "add to capsule" is clicked **
+
+      var capObj = {capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
+      Caps.saveCap(capObj, (err, res) => {
+        if (err) {
+        	this.currentCap.shift();
+        	throw new Error(err);
+        } else {
+        	console.log('successfully saved capsule', res);
+        	$scope.capsuleName = '';
+        	$scope.input = '';
+        }
+      });
+
+
+  	} else {
+	  // **** contentTitle ng-model needs to be added to creat.html 
+	    this.currentCap.unshift({input: input, name: $scope.capsuleName})
+
+	    // ** update capsule every time "add to capsule" is clicked **
+
+	    var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+	    Caps.saveCap(capObj, (err, res) => {
+	      if (err) {
+	      	this.currentCap.shift();
+	      	throw new Error(err);
+	      } else {
+	      	console.log('successfully saved capsule', res);
+	      	$scope.capsuleName = '';
+	      	$scope.input = '';
+	      }
+	    });
+    }
   }		
 
   this.saveForLater = () => {
-  	console.log('passed ', this.capsuleToEdit.contents)
-    alert('you just saved the crap out of this!')
+  	console.log('passed ', this.capsuleId)
+    // alert('you just saved the crap out of this!')
 
   }
 

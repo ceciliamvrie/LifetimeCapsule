@@ -95,7 +95,7 @@ app.post('/capsules/all', (req, res) => {
   });
 });
 
-app.get('/capsules/buried', (req, res) => {
+app.post('/capsules/buried', (req, res) => {
   Capsule.find({ _user: req.body.userId, buried: true }, (err, capsules) => {
     if (err) {
       console.error(`Buried capsules retrieval error: ${err}`);
@@ -110,7 +110,7 @@ app.get('/capsules/buried', (req, res) => {
   });
 });
 
-app.get('/capsules/inProgress', (req, res) => {
+app.post('/capsules/inProgress', (req, res) => {
   Capsule.find({ _user: req.body.userId, buried: false }, (err, capsules) => {
     if (err) {
       console.error(`In progress capsules retrieval error: ${err}`);
@@ -149,7 +149,7 @@ app.post('/create', (req, res) => {
 app.put('/edit', (req, res) => {
   let capsuleId = req.body.capsuleId;
   let newContents = req.body.capsuleContent;
-
+  console.log('server capsuleId', capsuleId)
   Capsule.findOne({ _id: capsuleId }, (err, capsule) => {
     if (err) {
       console.error(`ERROR: ${err}`);
