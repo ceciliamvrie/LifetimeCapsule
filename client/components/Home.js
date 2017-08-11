@@ -7,6 +7,11 @@ angular.module('app')
   this.capsData = $scope.$ctrl.initialData;
   this.clear = '';
 
+  this.test = () => {
+    this.capsData = $scope.$ctrl.initialData;
+    console.log('caps data', $scope.$ctrl.initialData)
+  }
+
   this.handleFilter = function(event) {
     Caps.filterCaps(event.target.id, $scope.$ctrl.userId, (err, res) => {
       if (!err) {
@@ -75,7 +80,7 @@ angular.module('app')
   controller: 'HomeCtrl',
   bindings: {
     userId: '<',
-    initialData: '<'
+    initialData: '='
   },
   templateUrl: '../templates/home.html'
 })

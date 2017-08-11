@@ -1,16 +1,15 @@
 angular.module('app', [])
-.controller('AppCtrl', function(Caps) {
+.controller('AppCtrl', function($scope, Caps) {
   this.signedIn = false;
   this.userId = '';
   this.initialData = [];
 
   this.init = (id) => {
-  console.log()
-    Caps.filterCaps('all', this.userId, (err, allCaps) => {
+    Caps.filterCaps('all', id, (err, allCaps) => {
 	  if (err) {
 	    throw new Error(err);
 	  } else {
-	     this.initialData = allCaps
+	     this.initialData = allCaps;
 	  }
 	});
   }

@@ -4,7 +4,6 @@ angular.module('app')
   var STORE_URL = 'http://127.0.0.1:3000';
 
   const filterCaps = function(filterMethod, userId, cb) {
-    console.log('id is ', userId)
     $http({
       url: `${STORE_URL}/capsules/${filterMethod}`,
       method: 'POST',
