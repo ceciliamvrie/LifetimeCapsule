@@ -28,8 +28,18 @@ angular.module('app')
         }
       });
     } else {
- 	  // **** contentTitle ng-model needs to be added to creat.html 
- 	    this.currentCap.unshift({input: input, name: $scope.capsuleName})
+ 	    this.currentCap.unshift({input: input, name: $scope.capsuleName});
+      var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+ 	    Caps.saveCap(capObj, (err, res) => {
+ 	      if (err) {
+ 	      	this.currentCap.shift();
+ 	      	throw new Error(err);
+ 	      } else {
+ 	      	$scope.capsuleName = '';
+ 	      	$scope.input = '';
+ 	      }
+ 	    });
+     }
 
   this.deleteMemento = () => {
     //modal confirmation of deletion
