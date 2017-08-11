@@ -45,7 +45,6 @@ app.post('/signup', (req, res) => {
       res.sendStatus(404);
     } else {
       console.log('New user created');
-      // util.createSession(req, res, newUser);
       res.sendStatus(201);
     }
   });
@@ -70,8 +69,6 @@ app.post('/signin', (req, res) => {
         } else {
           console.log(`Successful user signin for email ${req.body.email}`);
           util.createSession(req, res, user);
-          // console.log('Session');
-          // console.log(req.session.user);
           res.send(user._id);
         }
       });
@@ -175,7 +172,7 @@ app.put('/edit', (req, res) => {
 app.put('/bury', (req, res) => {
   let capsuleId = req.body.capsuleId;
   let unearthDate = req.body.unearthDate;
-  console.log('capsuleId ****** unearthDate', capsuleId, unearthDate)
+
   Capsule.findOne({ _id: capsuleId }, (err, capsule) => {
     if (err) {
       console.error(`ERROR: ${err}`);
@@ -185,21 +182,22 @@ app.put('/bury', (req, res) => {
       res.sendStatus(404);
     } else {
       capsule.buried = true;
-      capsule.inProgress = false;
-      capsule.unearthDate = unearthDate;
+      capsule.unearthDate = util.parseDate(unearthDate);
 
       /*
-      The first anonymous function will execute when the specified
-      unearthDate is reached.
+      The first anonymous function will execute once when the specified
+      capsule.unearthDate is reached.
 
       The second anonymous function will execute when the job stops.
 
       The third parameter true tells the job to start right now.
        */
-      let job = new CronJob(unearthDate, () => {
+      let job = new CronJob(capsule.unearthDate, () => {
         capsule.unearthed = true;
-      }, () => { // this function will run when the job stops
-
+        capsule.buried = false;
+        console.log(`Unearthed capsule ${capsuleId}`);
+      }, () => {
+        console.log(`CRON job for ${capsuleId} ended`);
       }, true);
     }
   });
