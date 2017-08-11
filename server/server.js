@@ -203,7 +203,7 @@ app.put('/bury', (req, res) => {
       The third parameter true tells the job to start right now.
        */
       let job = new CronJob(capsule.unearthDate, () => {
-        
+
         capsule.unearthed = true;
         capsule.buried = false;
 
