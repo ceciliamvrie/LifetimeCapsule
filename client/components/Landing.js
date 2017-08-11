@@ -7,7 +7,6 @@ angular.module('app')
   this.sisu = 'Need to Sign In';
 
   this.getStarted = () => {
-  	console.log('hello world')
   	this.butnClicked = false;
   }
 
@@ -20,7 +19,7 @@ angular.module('app')
       } else {
         $scope.$ctrl.userId = res;
       	this.handleSignIn(email, password)
-        console.log('successful server response for signup');
+        // console.log('successful server response for signup');
       }
   	})
   }
@@ -31,10 +30,9 @@ angular.module('app')
       if (err) {
         console.error(err)
       } else {
-        console.log('res is ', res)
         $scope.$ctrl.userId = res;
       	$scope.$ctrl.signedIn = true;
-        console.log('successful server response for signin');
+        // console.log('successful server response for signin');
       }
   	})
   }
