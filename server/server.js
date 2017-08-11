@@ -184,6 +184,16 @@ app.put('/bury', (req, res) => {
       capsule.buried = true;
       capsule.unearthDate = util.parseDate(unearthDate);
 
+      capsule.save((err) => {
+        if (err) {
+          console.error(`ERROR burying capsule ${capsuleId}: ${err}`);
+          res.sendStatus(504);
+        } else {
+          console.log(`Capsule ${capsuleId} successfully buried`);
+          res.sendStatus(200);
+        }
+      });
+
       /*
       The first anonymous function will execute once when the specified
       capsule.unearthDate is reached.
@@ -193,9 +203,18 @@ app.put('/bury', (req, res) => {
       The third parameter true tells the job to start right now.
        */
       let job = new CronJob(capsule.unearthDate, () => {
+        
         capsule.unearthed = true;
         capsule.buried = false;
-        console.log(`Unearthed capsule ${capsuleId}`);
+
+        capsule.save((err) => {
+          if (err) {
+            console.error(`ERROR modifying capsule properties on completion of CRON job: ${err}`);
+          } else {
+            console.log(`Capsule ${capsule._id} successfully unearthed`);
+          }
+        });
+
       }, () => {
         console.log(`CRON job for ${capsuleId} ended`);
       }, true);
