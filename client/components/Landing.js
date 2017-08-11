@@ -32,6 +32,7 @@ angular.module('app')
       } else {
         $scope.$ctrl.userId = res;
       	$scope.$ctrl.signedIn = true;
+        $scope.$ctrl.init();
         // console.log('successful server response for signin');
       }
   	})
@@ -51,7 +52,8 @@ angular.module('app')
   controller: 'LandingCtrl',
   bindings: {
   	signedIn: '=',
-    userId: '='
+    userId: '=',
+    init: '<'
   },
   templateUrl: '../templates/landing.html'
 })

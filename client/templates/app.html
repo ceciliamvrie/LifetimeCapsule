@@ -1,6 +1,6 @@
 <span ng-hide="$ctrl.signedIn">
-  <landing-page user-id="$ctrl.userId" signed-in="$ctrl.signedIn"></landing-page>
+  <landing-page init="$ctrl.init" user-id="$ctrl.userId" signed-in="$ctrl.signedIn"></landing-page>
 </span>
 <span ng-show="$ctrl.signedIn">
-  <home-page user-id="$ctrl.userId"></home-page>
+  <home-page user-id="$ctrl.userId" initial-data="$ctrl.initialData"></home-page>
 </span>
