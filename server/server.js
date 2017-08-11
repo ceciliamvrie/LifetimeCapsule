@@ -7,6 +7,7 @@ const Capsule = require('./models/capsule.js');
 const session = require('express-session');
 const util = require('./utility.js')
 const CronJob = require('cron').CronJob;
+const emailService = require('./email.js');
 
 const app = express();
 
@@ -173,53 +174,62 @@ app.put('/bury', (req, res) => {
   let capsuleId = req.body.capsuleId;
   let unearthDate = req.body.unearthDate;
 
-  Capsule.findOne({ _id: capsuleId }, (err, capsule) => {
-    if (err) {
-      console.error(`ERROR: ${err}`);
-      res.sendStatus(404);
-    } else if (!capsule) {
-      console.log(`Could not find capsule with id ${capsuleId}`);
-      res.sendStatus(404);
-    } else {
-      capsule.buried = true;
-      capsule.unearthDate = util.parseDate(unearthDate);
-
-      capsule.save((err) => {
-        if (err) {
-          console.error(`ERROR burying capsule ${capsuleId}: ${err}`);
-          res.sendStatus(504);
-        } else {
-          console.log(`Capsule ${capsuleId} successfully buried`);
-          res.sendStatus(200);
-        }
-      });
-
-      /*
-      The first anonymous function will execute once when the specified
-      capsule.unearthDate is reached.
-
-      The second anonymous function will execute when the job stops.
-
-      The third parameter true tells the job to start right now.
-       */
-      let job = new CronJob(capsule.unearthDate, () => {
-
-        capsule.unearthed = true;
-        capsule.buried = false;
+  Capsule.findOne({ _id: capsuleId })
+    .populate('_user')
+    .exec((err, capsule) => {
+      if (err) {
+        console.error(`ERROR: ${err}`);
+        res.sendStatus(404);
+      } else if (!capsule) {
+        console.log(`Could not find capsule with id ${capsuleId}`);
+        res.sendStatus(404);
+      } else {
+        capsule.buried = true;
+        capsule.unearthDate = util.parseDate(unearthDate);
 
         capsule.save((err) => {
           if (err) {
-            console.error(`ERROR modifying capsule properties on completion of CRON job: ${err}`);
+            console.error(`ERROR burying capsule ${capsuleId}: ${err}`);
+            res.sendStatus(504);
           } else {
-            console.log(`Capsule ${capsule._id} successfully unearthed`);
+            console.log(`Capsule ${capsuleId} successfully buried`);
+            res.sendStatus(200);
           }
         });
 
-      }, () => {
-        console.log(`CRON job for ${capsuleId} ended`);
-      }, true);
-    }
-  });
+        /*
+        The first anonymous function will execute once when the specified
+        capsule.unearthDate is reached.
+
+        The second anonymous function will execute when the job stops.
+
+        The third parameter true tells the job to start right now.
+        */
+        let job = new CronJob(capsule.unearthDate, () => {
+
+          capsule.unearthed = true;
+          capsule.buried = false;
+
+          capsule.save((err) => {
+            if (err) {
+              console.error(`ERROR modifying capsule ${capsule._id} on completion of CRON job: ${err}`);
+            } else {
+              let recipient = capsule._user.email;
+              let message =
+                `
+                Hello, ${capsule._user.username}!
+                Your capsule ${capsule.capsuleName} is ready for viewing.
+                `;
+
+              emailService.sendEmail(recipient, message);
+              console.log(`Capsule ${capsule._id} successfully unearthed`);
+            }
+          });
+        }, () => {
+          console.log(`CRON job for ${capsuleId} ended`);
+        }, true);
+      }
+    });
 });
 
 app.listen(3000, () => {
