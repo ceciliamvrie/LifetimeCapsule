@@ -45,7 +45,7 @@ app.post('/signup', (req, res) => {
       res.sendStatus(404);
     } else {
       console.log('New user created');
-      util.createSession(req, res, newUser);
+      // util.createSession(req, res, newUser);
       res.sendStatus(201);
     }
   });
@@ -70,9 +70,9 @@ app.post('/signin', (req, res) => {
         } else {
           console.log(`Successful user signin for email ${req.body.email}`);
           util.createSession(req, res, user);
-          console.log('Session');
-          console.log(req.session.user);
-          res.sendStatus(200);
+          // console.log('Session');
+          // console.log(req.session.user);
+          res.send(user._id);
         }
       });
     }
@@ -80,7 +80,8 @@ app.post('/signin', (req, res) => {
 });
 
 app.get('/capsules/all', (req, res) => {
-  Capsule.find({ _user: req.session.user }, (err, capsules) => {
+  console.log('req body userId', req.body.userId);
+  Capsule.find({ _user: req.body.userId }, (err, capsules) => {
     if (err) {
       console.error(`All capsules retrieval error: ${err}`);
       res.sendStatus(404);
@@ -88,14 +89,14 @@ app.get('/capsules/all', (req, res) => {
       console.log('Could not retrieve all capsules');
       res.sendStatus(404);
     } else {
-      console.log(`Successfully retrieved all capsules for user ${req.session.user}`);
+      console.log(`Successfully retrieved all capsules for user ${req.body.userId}`);
       res.send(capsules);
     }
   });
 });
 
 app.get('/capsules/buried', (req, res) => {
-  Capsule.find({ _user: req.session.user, buried: true }, (err, capsules) => {
+  Capsule.find({ _user: req.body.userId, buried: true }, (err, capsules) => {
     if (err) {
       console.error(`Buried capsules retrieval error: ${err}`);
       res.sendStatus(404);
@@ -103,14 +104,14 @@ app.get('/capsules/buried', (req, res) => {
       console.log('Could not retrieve buried capsules');
       res.sendStatus(404);
     } else {
-      console.log(`Successfully retrieved buried capsules for user ${req.session.user}`);
+      console.log(`Successfully retrieved buried capsules for user ${req.body.userId}`);
       res.send(capsules);
     }
   });
 });
 
 app.get('/capsules/inProgress', (req, res) => {
-  Capsule.find({ _user: req.session.user, buried: false }, (err, capsules) => {
+  Capsule.find({ _user: req.body.userId, buried: false }, (err, capsules) => {
     if (err) {
       console.error(`In progress capsules retrieval error: ${err}`);
       res.sendStatus(404);
@@ -118,7 +119,7 @@ app.get('/capsules/inProgress', (req, res) => {
       console.log('Could not retrieve in progress capsules');
       res.sendStatus(404);
     } else {
-      console.log(`Successfully retrieved in progress capsules for user ${req.session.user}`);
+      console.log(`Successfully retrieved in progress capsules for user ${req.body.userId}`);
       res.send(capsules);
     }
   });
@@ -126,7 +127,7 @@ app.get('/capsules/inProgress', (req, res) => {
 
 app.post('/create', (req, res) => {
   let newCapsule = Capsule({
-    _user: req.session.user,
+    _user: req.body.userId,
     capsuleName: '',
     contents: [],
     buried: false,
@@ -139,7 +140,7 @@ app.post('/create', (req, res) => {
     if (err) {
       console.error(`ERROR creating capsule in database: ${err}`)
     } else {
-      console.log(`New empty capsule created for user ${req.session.user}`);
+      console.log(`New empty capsule created for user ${req.body.userId}`);
       res.send(newCapsule._id);
     }
   });
