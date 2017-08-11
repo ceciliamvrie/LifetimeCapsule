@@ -145,6 +145,7 @@ app.post('/create', (req, res) => {
 });
 
 app.put('/edit', (req, res) => {
+  let newName = req.body.capsuleName;
   let capsuleId = req.body.capsuleId;
   let newContents = req.body.capsuleContent;
   console.log('server capsuleId', capsuleId)
@@ -156,6 +157,7 @@ app.put('/edit', (req, res) => {
       console.log(`Could not find capsule with id ${capsuleId}`);
       res.sendStatus(404);
     } else {
+      capsule.capsuleName = newName;
       capsule.contents = newContents;
       capsule.save((err) => {
         if (err) {
