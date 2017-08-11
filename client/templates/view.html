@@ -11,7 +11,10 @@
   </div>
 
   <div class="inProgress" >
-    <p ng-show="$ctrl.cap.buried"> In Progress </p>
+    <p ng-hide="$ctrl.cap.buried"> In Progress </p>
+  </div>
+  <div class="inProgress" >
+    <p ng-show="$ctrl.cap.buried"> Buried </p>
   </div>
 
   <div id="myModal" class="modal fade" role="dialog">
