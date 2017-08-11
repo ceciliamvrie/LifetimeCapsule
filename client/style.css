@@ -117,11 +117,11 @@
 	width: 25%;
 }
 
-#capsuleTitle {
+#capsuleName {
 	text-align: center;
 }
 
-#inputBox {
+#inputBox, #capsuleInput, #momentoInput {
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -129,7 +129,7 @@
   margin-bottom: 10px;
 }
 
-#addToCap {
+#addToCap, #setCapName {
 	margin-left: auto;
 	margin-right: auto;
 	display: block;

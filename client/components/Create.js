@@ -13,7 +13,7 @@ angular.module('app')
    this.appendAndSave = (input, momentoName) => {
 
       if ($scope.$ctrl.editingViewCapsule) {
-      this.capsuleToEdit.contents.unshift({input: input, name: $scope.capsuleName})
+      this.capsuleToEdit.contents.unshift({input: input, name: $scope.momentoName})
 
       var capObj = {capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
@@ -21,14 +21,14 @@ angular.module('app')
             this.currentCap.shift();
             throw new Error(err);
         } else {
-            $scope.capsuleName = '';
+            $scope.momentoName = '';
             $scope.input = '';
         }
       });
 
 
       } else {
-        this.currentCap.unshift({input: input, name: $scope.capsuleName})
+        this.currentCap.unshift({input: input, name: $scope.momentoName})
 
         var capObj = {capsuleId: this.capsuleId, capsuleContent: this.currentCap};
         Caps.saveCap(capObj, (err, res) => {
@@ -36,7 +36,7 @@ angular.module('app')
               this.currentCap.shift();
               throw new Error(err);
           } else {
-              $scope.capsuleName = '';
+              $scope.momentoName = '';
               $scope.input = '';
           }
         });
@@ -50,7 +50,7 @@ angular.module('app')
   }
 
   this.setCapsuleName = () => {
-    var capName = document.getElementById('capName').value
+    var capName = document.getElementById('capsuleInput').value
     //if(capName) {
       this.capsuleName = capName;
       this.named = true;
@@ -63,17 +63,6 @@ angular.module('app')
     //modal popup of edit window
     //on save submit changes to db in place
     //on save return edited momento to previous location
-  }
-
-  this.saveForLater = () => {
-    //check if capsule has a title
-  	console.log('passed ', this.capsuleToEdit.contents)
-    alert('you just saved the crap out of this!')
-    //send to view
-  }
-
-  this.changed = () => {
-  	console.log('changed')
   }
 
   this.saveForLater = () => {
