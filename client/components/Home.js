@@ -4,17 +4,13 @@ angular.module('app')
   this.editingViewCapsule = false;
   this.capsuleId = 0;
   this.capsuleToEdit = {};
-  this.capsData = [];
+  this.capsData = $scope.$ctrl.initialData;
   this.clear = '';
 
-   // Caps.filterCaps('all', $scope.$ctrl.userId, (err, allCaps) => {
-   //   if (err) {
-   //    throw new Error(err);
-   //   } else {
-   //    console.log($scope.$ctrl.userId)
-   //     this.capsData = allCaps
-   //   }
-   // });
+  this.test = () => {
+    this.capsData = $scope.$ctrl.initialData;
+    console.log('caps data', $scope.$ctrl.initialData)
+  }
 
   this.handleFilter = function(event) {
     Caps.filterCaps(event.target.id, $scope.$ctrl.userId, (err, res) => {
@@ -83,7 +79,8 @@ angular.module('app')
 .component('homePage', {
   controller: 'HomeCtrl',
   bindings: {
-    userId: '<'
+    userId: '<',
+    initialData: '='
   },
   templateUrl: '../templates/home.html'
 })
