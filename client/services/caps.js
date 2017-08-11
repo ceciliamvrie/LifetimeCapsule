@@ -55,14 +55,12 @@ angular.module('app')
   };
 
   const bury = function(input, cb) {
-    // Not sure if to add this on server side or Front End
-    // since it's being 'buried', the inprogress property
-    // needs to be set to false and a unearthed date is set
+
     $http({
-      url: `${STORE_URL}/bury/id`,
+      url: `${STORE_URL}/bury`,
       method: 'PUT',
       contentType: 'application/json',
-      data: JSON.stringify(input),
+      data: input,
     })
     .then(function(res) {
       cb(null, res.data);

@@ -172,10 +172,10 @@ app.put('/edit', (req, res) => {
   });
 });
 
-app.post('/bury', (req, res) => {
+app.put('/bury', (req, res) => {
   let capsuleId = req.body.capsuleId;
   let unearthDate = req.body.unearthDate;
-
+  console.log('capsuleId ****** unearthDate', capsuleId, unearthDate)
   Capsule.findOne({ _id: capsuleId }, (err, capsule) => {
     if (err) {
       console.error(`ERROR: ${err}`);
