@@ -4,7 +4,7 @@ angular.module('app')
   this.butnClicked = true;
   this.password = '';
   this.signup = true;
-  this.sisu = 'Need to Sign In';
+  this.sisu = 'Need to Sign In?';
 
   this.getStarted = () => {
   	this.butnClicked = false;
@@ -41,7 +41,7 @@ angular.module('app')
   	this.signup = !this.signup;
     this.style = !this.style;
   	if (this.signup) {
-  	  this.sisu = 'Need to Sign In';
+  	  this.sisu = 'Need to Sign In?';
   	} else {
   	  this.sisu = 'Create an Account';
   	}

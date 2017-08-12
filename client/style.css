@@ -10,6 +10,12 @@
 	margin-top: 250px;
 }
 
+.toggler {
+	color: grey;
+	margin-left: 60%;
+	line-height: 40px;
+}
+
 .toggledWelcome {
 	font-size: 52px;
 	text-align: center;
@@ -25,6 +31,11 @@
   margin-top: 100px;
 }
 
+.container {
+	margin-top: 20px;
+	text-align: center;
+	line-height: 27px;
+}
 /** Buttons **/
 .btn {
   color: #fff;
@@ -45,9 +56,9 @@
 
 }
 
-.container {
-	text-align: center;
-}
+
+
+
 
 .navbar {
 	width: 100%;
