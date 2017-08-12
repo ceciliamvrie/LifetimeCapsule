@@ -4,6 +4,7 @@ angular.module('app')
   this.currentCap = []; 
   this.capsuleToEdit = $scope.$ctrl.capsuleToEdit;
   this.named = false;
+  this.editIndex = null;
   $scope.capsuleName = '';
   $scope.momentoName = '';
   $scope.input = '';
@@ -51,11 +52,7 @@ angular.module('app')
       var capObj = {capsuleName: capName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
-            this.currentCap.shift();
             throw new Error(err);
-        } else {
-            $scope.momentoName = '';
-            $scope.input = '';
         }
       });
     } else {
@@ -66,12 +63,40 @@ angular.module('app')
     console.log(this.currentCap[index]);
     //modal popup of momento
   }
+
+  this.getIndex = (index) => {
+    this.editIndex = index;
+  }
   
-  this.editMomento = (index) => {
-    console.log(this.currentCap[index]);
-    //modal popup of edit window
-    //on save submit changes to db in place
-    //on save return edited momento to previous location
+  this.editMomento = (input, momentoName) => {
+    console.log(this.editIndex, input, momentoName);
+    $scope.momentoName = momentoName;
+    this.currentCap[this.editIndex] = {input: input, name: $scope.momentoName};
+    if ($scope.$ctrl.editingViewCapsule) {
+
+      var capObj = {capsuleName: $scope.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
+      Caps.saveCap(capObj, (err, res) => {
+        if (err) {
+            throw new Error(err);
+        } else {
+            $scope.momentoName = '';
+            $scope.input = '';
+        }
+      });
+
+      } else {
+
+        var capObj = {capsuleName: $scope.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+        Caps.saveCap(capObj, (err, res) => {
+          if (err) {
+              throw new Error(err);
+          } else {
+              $scope.momentoName = '';
+              $scope.input = '';
+          }
+        });
+    }
+    this.editIndex = null;
   }
 
   this.deleteMomento = (index) => {

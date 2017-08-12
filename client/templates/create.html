@@ -2,7 +2,7 @@
   <div ng-hide="$ctrl.named">
     <h3 id="capsuleName">Name Your Capsule</h3>
     <input id="capsuleInput" type="text" ng-model="capsuleName" placeholder="Capsule Name"/>
-    <button id="setCapName" type="button" ng-click="$ctrl.setCapsuleName(capsuleName)"">Set Capsule Name</button>
+    <button id="setCapName" type="button" ng-click="$ctrl.setCapsuleName(capsuleName)">Set Capsule Name</button>
   </div>
 
   <div>
@@ -10,7 +10,7 @@
     <textarea id="inputBox" rows="4" cols="70" ng-model="input"> </textarea>
   </div>
 
-  <button id="addToCap" type="button" ng-click="$ctrl.appendAndSave(input, momentoName)"">Add to Capsule</button>
+  <button id="addToCap" type="button" ng-click="$ctrl.appendAndSave(input)">Add to Capsule</button>
   <div class="inProgressWindow">
 
     <div ng-show="$ctrl.named">
@@ -19,9 +19,9 @@
     <!-- Regular content view for in progress capsule-->
     <div ng-hide="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.currentCap track by $index">
       <div class="capsuleBar">
-        <button ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
-        <button ng-click="$ctrl.editMomento($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
-        <button ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
+        <button type="button" ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
+        <button type="button" data-toggle="modal" data-target="#editModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
+        <button type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
       <h4> {{input.name}} </h4>
       <p> {{input.input}} </p>
@@ -30,9 +30,9 @@
     <!-- Show capsules contents if in editing mode from View.js-->
     <div ng-show="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.capsuleToEdit.contents">
       <div class="capsuleBar">
-          <button ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
-          <button ng-click="$ctrl.editMomento($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
-          <button ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
+          <button type="button" ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
+          <button type="button" data-toggle="modal" data-target="#editModal" ng-click="() => {$ctrl.editIndex = $index}"p><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
+          <button type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
       <h4> {{input.name}} </h4>
       <p> {{input.input}} </p>
@@ -41,10 +41,10 @@
   </div>
   <div class="bottomButtons">
     <button id="saveForLater" type="button" ng-click="$ctrl.saveForLater()"">Save for Later</button>
-    <button id="bury" type="button" data-toggle="modal" data-target="#createModal">Bury</button>
+    <button id="bury" type="button" data-toggle="modal" data-target="#buryModal">Bury</button>
   </div>
 
-  <div id="createModal" class="modal fade" role="dialog">
+  <div id="buryModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -76,6 +76,31 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.bury(years, months, days, recipient)">Bury</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="editModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Change your momento!</h4>
+        </div>
+
+        <div class="modal-body">
+          <input id="momentoEditInput" type="text" ng-model="momentoModalName" placeholder="Momento Name"/>
+          <textarea id="inputBox" rows="4" cols="70" ng-model="modalInput"> </textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.editMomento(modalInput, momentoModalName)">Submit Change</button>
         </div>
 
       </div>
