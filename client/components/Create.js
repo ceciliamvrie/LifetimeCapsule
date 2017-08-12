@@ -80,21 +80,17 @@ angular.module('app')
       //warning to add capsule name
     }
   }
-  this.viewMomento = (index) => {
-    console.log(this.currentCap[index]);
-    //modal popup of momento
-  }
 
   this.getIndex = (index) => {
-    this.editIndex = index;
+    this.capIndex = index;
   }
   
   this.editMomento = (input, momentoName) => {
-    console.log(this.editIndex, input, momentoName);
+    console.log(this.capIndex, input, momentoName);
     $scope.momentoName = momentoName;
     
     if ($scope.$ctrl.editingViewCapsule) {
-      $scope.$ctrl.capsuleToEdit.contents[this.editIndex] = {input: input, name: $scope.momentoName};
+      $scope.$ctrl.capsuleToEdit.contents[this.capIndex] = {input: input, name: $scope.momentoName};
       var capObj = {capsuleName: $scope.$ctrl.editedCapsuleName, capsuleId: $scope.$ctrl.capsuleId, capsuleContent: $scope.$ctrl.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
@@ -106,7 +102,7 @@ angular.module('app')
       });
 
       } else {
-      	this.currentCap[this.editIndex] = {input: input, name: $scope.momentoName};
+      	this.currentCap[this.capIndex] = {input: input, name: $scope.momentoName};
         var capObj = {capsuleName: $scope.$ctrl.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
         Caps.saveCap(capObj, (err, res) => {
           if (err) {
