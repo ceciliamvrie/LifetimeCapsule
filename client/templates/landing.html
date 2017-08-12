@@ -1,7 +1,9 @@
 <div>
-  <h1>Welcome to Life-Time Capsule</h1>
+  <h1 class="welcome">Welcome to Life-Time Capsule</h1>
   <span ng-show="$ctrl.butnClicked">
-    <button type="button" ng-click="$ctrl.getStarted()">Get Started</button>
+    <div class="buttonContainer">
+      <button class="getStartedButton btn" type="button" ng-click="$ctrl.getStarted()">Get Started</button>
+    </div>
   </span>
   <span ng-hide="$ctrl.butnClicked">
     <button type="button" ng-click="$ctrl.toggle()">{{$ctrl.sisu}}</button>
