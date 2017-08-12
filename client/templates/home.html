@@ -2,25 +2,25 @@
     <h1 class="mainHeader">Life-Time Capsule</h1>
 </div>
 
-<div class="navbar">
-  <button ng-click="$ctrl.toggleToView()">View</button>
-  <button ng-click="$ctrl.toggleToCreate()">Create</button>
-</div>
+<nav class="navbar">
+  <button class="btn view" ng-click="$ctrl.toggleToView()">View Capsules</button>
+  <button class="btn create" ng-click="$ctrl.toggleToCreate()">Create A Capsule</button>
 
-<span ng-show=$ctrl.view>
-  <div class="filterBar">
-    <div class="filterButton" id="all" ng-click="$ctrl.handleFilter($event)">
-      All
-    </div>
-    <div class="filterButton" id="buried" ng-click="$ctrl.handleFilter($event)">
-      Buried
-    </div>
+  <span ng-show=$ctrl.view>
+    <div class="filterBar">
+      <div class="btn filterButton button-two" id="all" ng-click="$ctrl.handleFilter($event)">
+        All
+      </div>
+      <div class="btn filterButton button-two" id="buried" ng-click="$ctrl.handleFilter($event)">
+        Buried
+      </div>
 
-    <div class="filterButton" id="inProgress" ng-click="$ctrl.handleFilter($event)">
-      In Progress
+      <div class="btn filterButton button-two" id="inProgress" ng-click="$ctrl.handleFilter($event)">
+        In Progress
+      </div>
     </div>
-  </div>
-</span>
+  </span>
+</nav>
 
 <span ng-show="$ctrl.view">
 
