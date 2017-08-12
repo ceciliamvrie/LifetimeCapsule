@@ -11,9 +11,11 @@
 }
 
 .toggler {
-	color: grey;
-	margin-left: 60%;
-	line-height: 40px;
+    color: grey;
+    margin-left: -4.0%;
+    line-height: 40px;
+    position: absolute;
+    margin-top: 20%;
 }
 
 .toggledWelcome {
@@ -123,7 +125,6 @@
   transition: 0.5s;
 }
 
-
 .capsule {
 	width: 400px;
 	height:  400px;
@@ -219,4 +220,61 @@
 	display: block;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+
+/** Login **/
+.signup {
+	margin-top: 10px;
+}
+
+.po {
+	text-align: center;
+	width: 100%;
+}
+.login{
+	height: 300px;
+  width: 100%;
+  padding: 10px;
+  z-index: 2;
+  margin-top: 50px;
+}
+
+.login input[type=text]{
+  border: 1px solid grey;
+  width: 250px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: grey;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  height: 40px;
+  font-weight: 400;
+  padding: 8px;
+}
+
+.login input[type=password]{
+	border: 1px solid grey;
+  line-height: 30px;
+  width: 250px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: grey;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  height: 40px;
+  font-weight: 400;
+  padding: 8px;
+}
+
+.login input[type=text]:focus{
+	outline: none;
+	border: 1.5px solid grey;
+}
+
+.login input[type=password]:focus{
+	outline: none;
+	border: 1.5px solid grey;
 }
