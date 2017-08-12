@@ -41,9 +41,13 @@ angular.module('app')
     }
   }
 
-  this.setCapsuleName = () => {
-
-    var capName = document.getElementById('capsuleInput').value
+  this.setCapsuleName = (name) => {
+    var capName;
+    if(name) {
+      capName = name;
+    } else {
+      capName = document.getElementById('capsuleInput').value;
+    }
     if(capName !== null && capName !== undefined) {
       $scope.$ctrl.capsuleName = capName;
       $scope.$ctrl.named = true;

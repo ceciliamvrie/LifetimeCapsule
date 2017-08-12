@@ -14,7 +14,7 @@
   <div class="inProgressWindow">
 
     <div ng-show="$ctrl.named">
-      <h2 ng-hide="$ctrl.editingViewCapsule">{{$ctrl.capsuleName}}<button ng-click="modalPopupEditCapName"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button></h2>
+      <h2 ng-hide="$ctrl.editingViewCapsule">{{$ctrl.capsuleName}}<button data-toggle="modal" data-target="#editCapsuleNameModal"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button></h2>
 
       <h2 ng-show="$ctrl.editingViewCapsule">{{$ctrl.editedCapsuleName}}<button ng-click="modalPopupEditCapName"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button></h2>
 
@@ -104,6 +104,30 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.editMomento(modalInput, momentoModalName)">Submit Change</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="editCapsuleNameModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Change your capsule name!</h4>
+        </div>
+
+        <div class="modal-body">
+          <input id="capsuleEditInput" type="text" ng-model="capsuleModalName" placeholder="Capsule Name"/>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.setCapsuleName(capsuleModalName)">Submit Change</button>
         </div>
 
       </div>

@@ -28,7 +28,10 @@
         </div>
         <div class="modal-body" id="viewModalBody">
 	        <div ng-repeat="c in $ctrl.cap.contents track by $index">
-	          <p>  {{}}asdfasd </p>
+	          <div>
+              <h4>{{c.name}}</h4>
+              <p>{{c.input}}</p>
+            <div>
 	        </div>
         </div>
         <div class="modal-footer">
