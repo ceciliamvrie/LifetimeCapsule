@@ -50,6 +50,7 @@ angular.module('app')
     }
     if(capName !== null && capName !== undefined) {
       $scope.$ctrl.capsuleName = capName;
+      $scope.$ctrl.editedCapsuleName = capName;
       $scope.$ctrl.named = true;
       var capObj = {capsuleName: capName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
       Caps.saveCap(capObj, (err, res) => {
