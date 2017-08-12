@@ -70,12 +70,9 @@ angular.module('app')
     }
   }
 
-<<<<<<< HEAD
-  this.toggleToView = () => {
-=======
+
   this.toggleToView = function() {
 
->>>>>>> fa2db6cc5442ceb9b7dae6d6828bbc8d2dbbca18
     $scope.$ctrl.first = false;
     if(!this.view) {
 
@@ -83,22 +80,15 @@ angular.module('app')
       if(saveProgress) {
         Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
           if (!err) {
-<<<<<<< HEAD
-=======
-            console.log('should refresh')
->>>>>>> fa2db6cc5442ceb9b7dae6d6828bbc8d2dbbca18
             this.capsData = res;
           } else {
             throw new Error(err);
           }
         });
-<<<<<<< HEAD
-=======
         this.capsuleName = '';
         this.currentCap = [];
         this.editingViewCapsule = false;
         this.named = false;
->>>>>>> fa2db6cc5442ceb9b7dae6d6828bbc8d2dbbca18
         this.view = true;
       }
     }
@@ -111,12 +101,8 @@ angular.module('app')
   bindings: {
     userId: '<',
     initialData: '=',
-<<<<<<< HEAD
-    first: '='
-=======
     first: '=',
     editedCapsuleName: '<'
->>>>>>> fa2db6cc5442ceb9b7dae6d6828bbc8d2dbbca18
   },
   templateUrl: '../templates/home.html'
 })
