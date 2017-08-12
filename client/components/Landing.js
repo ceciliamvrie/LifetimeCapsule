@@ -5,6 +5,8 @@ angular.module('app')
   this.password = '';
   this.signup = true;
   this.sisu = 'Need to Sign In?';
+  this.error = 'true';
+
 
   this.getStarted = () => {
   	this.butnClicked = false;
@@ -14,8 +16,12 @@ angular.module('app')
   	console.log(username, password, email, 'signed Up')
   	var obj = {username: username, password: password, email: email};
   	Auth.signup(obj, (err, res) => {
+      var handle = setTimeout(() => confirm('Please enter a valid username, passoword, and email'), 100);
       if (err) {
-        console.error(err)
+        this.error = !this.error;
+        if (handle) {
+          this.error = true;
+        }
       } else {
         $scope.$ctrl.userId = res;
       	this.handleSignIn(email, password)
@@ -28,7 +34,7 @@ angular.module('app')
   	var obj = {email: email, password: password};
   	Auth.signin(obj, function(err, res) {
       if (err) {
-        console.error(err)
+        alert('Your email and password do not match');
       } else {
         $scope.$ctrl.userId = res;
       	$scope.$ctrl.signedIn = true;
