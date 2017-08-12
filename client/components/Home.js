@@ -72,12 +72,15 @@ angular.module('app')
   }
 
 
-  this.toggleToView = function() {
+  this.toggleToView = function(buried) {
 
     $scope.$ctrl.first = false;
     if(!this.view) {
-
-      var saveProgress = confirm('Are you sure you want to leave this capsule?');
+      if (!buried) {
+        var saveProgress = confirm('Are you sure you want to leave this capsule?');
+      } else {
+        var saveProgress = true;
+      }
       if(saveProgress) {
         Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
           if (!err) {

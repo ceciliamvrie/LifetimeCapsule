@@ -165,58 +165,58 @@ angular.module('app')
     }
   }
 
- this.bury = (years, months, days, recipient) => {
-    console.log('bury clicked', $scope.$ctrl.capsuleName);
+  this.bury = (years, months, days, recipient) => {
 
     var date = [0, 0, 0]
     date[0] = Number(years) || 0;
     date[1] = Number(months) || 0;
     date[2] = Number(days) || 0;
 
-    console.log('unearthDate', date);
-      // ****** See notes in caps.js for bury function ******
-       if ($scope.$ctrl.editingViewCapsule) {
+    if ($scope.$ctrl.editingViewCapsule) {
 
-       var capObj = {
-            capsuleId: this.capsuleId,
-            capsuleContent: this.capsuleToEdit.contents,
-            unearthDate: date,
-            recipient: recipient
-       };
-       Caps.bury(capObj, (err, res) => {
-         if (err) {
-             this.currentCap.shift();
-             throw new Error(err);
-         } else {
-             $scope.$ctrl.view = true;
-             $scope.$ctrl.capsuleName = '';
-             $scope.input = '';
-             $scope.date = '';
-             $scope.recipient = '';
-             this.currentCap = [];
-         }
-       });
-       } else {
-         var capObj = {
-             capsuleId: this.capsuleId,
-             capsuleContent: this.currentCap,
-             unearthDate: date,
-             recipient: recipient
-           };
-         Caps.bury(capObj, (err, res) => {
-           if (err) {
-               this.currentCap.shift();
-               throw new Error(err);
-           } else {
-               $scope.$ctrl.view = true;
-               $scope.$ctrl.capsuleName = '';
-               $scope.input = '';
-               $scope.date = '';
-               $scope.recipient = '';
-               this.currentCap = [];
-           }
-         });
-     }
+      var capObj = {
+        capsuleId: this.capsuleId,
+        capsuleContent: this.capsuleToEdit.contents,
+        unearthDate: date,
+        recipient: recipient
+      };
+
+      Caps.bury(capObj, (err, res) => {
+        if (err) {
+          this.currentCap.shift();
+          throw new Error(err);
+        } else {
+          $scope.$ctrl.view = true;
+          $scope.$ctrl.capsuleName = '';
+          $scope.input = '';
+          $scope.date = '';
+          $scope.recipient = '';
+          this.currentCap = [];
+          $scope.$ctrl.viewToggle(true);
+        }
+      });
+    } else {
+      var capObj = {
+        capsuleId: this.capsuleId,
+        capsuleContent: this.currentCap,
+        unearthDate: date,
+        recipient: recipient
+      };
+      Caps.bury(capObj, (err, res) => {
+        if (err) {
+          this.currentCap.shift();
+          throw new Error(err);
+        } else {
+          $scope.$ctrl.view = true;
+          $scope.$ctrl.capsuleName = '';
+          $scope.input = '';
+          $scope.date = '';
+          $scope.recipient = '';
+          this.currentCap = [];
+          $scope.$ctrl.viewToggle(true);
+       }
+      });
+    }
   }
 })
 .component('createPage', {
