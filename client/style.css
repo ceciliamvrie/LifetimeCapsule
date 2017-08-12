@@ -11,11 +11,10 @@
 }
 
 .toggler {
-    color: grey;
-    margin-left: -4.0%;
-    line-height: 40px;
-    position: absolute;
-    margin-top: 20%;
+	color: grey;
+	line-height: 40px;
+	position: relative;
+	top: 290px;
 }
 
 .toggledWelcome {
