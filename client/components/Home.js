@@ -25,7 +25,11 @@ angular.module('app')
     this.capsuleId = capsule._id;
     this.editingViewCapsule = true;
     this.clear = '';
-    this.view = false;
+    if (capsule.buried) {
+      alert('GET YOUR HANDS OFF THIS! IT\'S NOT READY TO BE UNEARTHED YET!!');
+    } else {
+      this.view = false;
+    }
   }
 
   this.toggleToCreate = () => {
@@ -50,7 +54,6 @@ angular.module('app')
             console.log('You dun screwed up');
             throw new Error(err);
           } else {
-            console.log('created new cap and should wipe data')
             this.capsuleId = capsuleId;
             this.clear = '';
             this.capsuleToEdit = {};
