@@ -16,12 +16,11 @@ angular.module('app')
   	console.log(username, password, email, 'signed Up')
   	var obj = {username: username, password: password, email: email};
   	Auth.signup(obj, (err, res) => {
+      var handle = setTimeout(() => confirm('Please enter a valid username, passoword, and email'), 100);
       if (err) {
         this.error = !this.error;
-        console.log(this.error)
-        var handle = confirm('Please enter a valid username, passoword, and email');
         if (handle) {
-          this.error = !this.error
+          this.error = true;
         }
       } else {
         $scope.$ctrl.userId = res;

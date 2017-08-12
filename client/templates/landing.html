@@ -13,11 +13,11 @@
         <div>
           <form ng-submit="$ctrl.handleSignUp(username, password, email)">
             <label> Name: </label>
-            <input ng-style="($ctrl.error ? {'background-color': '#EE9999'}  : {'background-color': '#EE9999'})" type="text" ng-model="username"> </input>
+            <input ng-style="{'background-color' : (($ctrl.error == true) && 'red') || 'white'}" type="text" ng-model="username"> </input>
             <label> Password: </label>
-            <input ng-style="($ctrl.error ? {'background-color': '#EE9999'}  : {'background-color': '#EE9999'})" type="password" ng-model="password"> </input>
+            <input ng-style="{'background-color' : (($ctrl.error == true) && 'red') || 'white'}" type="password" ng-model="password"> </input>
             <label> Email: </label>
-            <input ng-style="($ctrl.error ? {'background-color': '#EE9999'}  : {'background-color': '#EE9999'})"  type="text" ng-model="email"> </input>
+            <input ng-style="{'background-color' : (($ctrl.error == true) && 'red') || 'white'}" type="text" ng-model="email"> </input>
             <button class="btn" type="submit">Sign Up</button>
           </form>
         </div>
