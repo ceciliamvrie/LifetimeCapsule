@@ -2,7 +2,7 @@
     
   <div class="capsuleBar">
     <i class="fa fa-eye fa-fw" aria-hidden="true" data-toggle="modal" data-target="#myModal"> </i>
-    <i class="fa fa-pencil fa-fw" aria-hidden="true" ng-click="$ctrl.editCapsule($ctrl.cap)"></i>
+    <i ng-hide="$ctrl.cap.buried" class="fa fa-pencil fa-fw" aria-hidden="true" ng-click="$ctrl.editCapsule($ctrl.cap)"></i>
     <i class="fa fa-envelope-o fa-fw" aria-hidden="true" ng-click="$ctrl.handleEmail($event)"></i>
   </div>
 
@@ -28,7 +28,10 @@
         </div>
         <div class="modal-body" id="viewModalBody">
 	        <div ng-repeat="c in $ctrl.cap.contents track by $index">
-	          <p>  {{}}asdfasd </p>
+	          <div>
+              <h4>{{c.name}}</h4>
+              <p>{{c.input}}</p>
+            <div>
 	        </div>
         </div>
         <div class="modal-footer">
