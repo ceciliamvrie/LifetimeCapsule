@@ -26,6 +26,7 @@ angular.module('app')
     this.capsuleToEdit = capsule;
     this.capsuleToEdit.contents = capsule.contents;
     this.capsuleId = capsule._id;
+    this.capsuleName = capsule.capsuleName;
     this.editingViewCapsule = true;
     this.editedCapsuleName = capsule.capsuleName;
     if (capsule.buried) {
