@@ -21,7 +21,12 @@ angular.module('app')
     });
   }
 
+  this.viewCapsule = (capsule) => {
+    
+  }
+
   this.editCapsule = (capsule) => {
+    console.log('capsule', capsule);
     $scope.$ctrl.first = false;
     this.capsuleToEdit = capsule;
     this.capsuleToEdit.contents = capsule.contents;
@@ -29,12 +34,8 @@ angular.module('app')
     this.capsuleName = capsule.capsuleName;
     this.editingViewCapsule = true;
     this.editedCapsuleName = capsule.capsuleName;
-    if (capsule.buried) {
-      alert('GET YOUR HANDS OFF THIS! IT\'S NOT READY TO BE UNEARTHED YET!!');
-    } else {
-      this.view = false;
-      this.named = true;
-    }
+    this.named = true;
+    this.view = false;
   }
 
   this.toggleToCreate = () => {

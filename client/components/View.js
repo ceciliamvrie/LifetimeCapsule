@@ -1,15 +1,9 @@
 angular.module('app')
 .controller('ViewCtrl', function($scope, Caps) {
-
-	this.handleEdit = (event) => {
-	  //dynamically grabs each capsules data
-
-	}
-
-	this.handleEmail = (event) => {
-      //dynamically grabs each capsules data
-	  console.log(this.cap)
-	}
+  this.viewCapsule = (cap) => {
+  	$scope.currentCap = cap._id;
+  	console.log('current cap is ', $scope.currentCap)
+  }
 })
 .component('viewPage', {
   controller: 'ViewCtrl',
@@ -17,7 +11,8 @@ angular.module('app')
   bindings: {
   	cap: '<',
   	editCapsule: '=',
-  	init: '<'
+  	init: '<',
+  	viewCapsule: '='
   },
 
   templateUrl: '../templates/view.html'
