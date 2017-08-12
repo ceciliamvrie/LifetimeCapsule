@@ -10,6 +10,10 @@ angular.module('app')
   $scope.date = '';
   $scope.recipient = '';
 
+  this.test = (i) => {
+  	console.log('index is ', i)
+  }
+  
    this.appendAndSave = (input, momentoName) => {
 
       if ($scope.$ctrl.editingViewCapsule) {
