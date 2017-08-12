@@ -3,9 +3,8 @@ angular.module('app')
   this.capsuleId = $scope.$ctrl.capsuleId;
   this.currentCap = []; 
   this.capsuleToEdit = $scope.$ctrl.capsuleToEdit;
-  this.named = false;
   this.editIndex = null;
-  $scope.capsuleName = '';
+  this.capsuleName = '';
   $scope.momentoName = '';
   $scope.input = '';
   $scope.date = '';
@@ -16,7 +15,7 @@ angular.module('app')
       if ($scope.$ctrl.editingViewCapsule) {
       this.capsuleToEdit.contents.unshift({input: input, name: $scope.momentoName})
 
-      var capObj = {capsuleName: $scope.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
+      var capObj = {capsuleName: this.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
             this.currentCap.shift();
@@ -31,7 +30,7 @@ angular.module('app')
       } else {
         this.currentCap.unshift({input: input, name: $scope.momentoName})
 
-        var capObj = {capsuleName: $scope.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+        var capObj = {capsuleName: this.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
         Caps.saveCap(capObj, (err, res) => {
           if (err) {
               this.currentCap.shift();
@@ -48,7 +47,7 @@ angular.module('app')
     var capName = document.getElementById('capsuleInput').value
     if(capName !== null && capName !== undefined) {
       this.capsuleName = capName;
-      this.named = true;
+      $scope.$ctrl.named = true;
       var capObj = {capsuleName: capName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
@@ -71,10 +70,10 @@ angular.module('app')
   this.editMomento = (input, momentoName) => {
     console.log(this.editIndex, input, momentoName);
     $scope.momentoName = momentoName;
-    this.currentCap[this.editIndex] = {input: input, name: $scope.momentoName};
+    
     if ($scope.$ctrl.editingViewCapsule) {
-
-      var capObj = {capsuleName: $scope.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
+      $scope.$ctrl.capsuleToEdit.contents[this.editIndex] = {input: input, name: $scope.momentoName};
+      var capObj = {capsuleName: $scope.$ctrl.editedCapsuleName, capsuleId: $scope.$ctrl.capsuleId, capsuleContent: $scope.$ctrl.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
             throw new Error(err);
@@ -85,8 +84,8 @@ angular.module('app')
       });
 
       } else {
-
-        var capObj = {capsuleName: $scope.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+      	this.currentCap[this.editIndex] = {input: input, name: $scope.momentoName};
+        var capObj = {capsuleName: this.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
         Caps.saveCap(capObj, (err, res) => {
           if (err) {
               throw new Error(err);
@@ -102,10 +101,10 @@ angular.module('app')
   this.deleteMomento = (index) => {
     var deletThis = confirm('Are you sure you want to delete this momento?');
     if(deletThis) {
-      var deleted = this.currentCap.splice(index, 1);
+      
       if ($scope.$ctrl.editingViewCapsule) {
-
-      var capObj = {capsuleName: $scope.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
+      $scope.$ctrl.capsuleToEdit.contents.splice(index, 1);
+      var capObj = {capsuleName: $scope.$ctrl.editedCapsuleName, capsuleId: $scope.$ctrl.capsuleId, capsuleContent: $scope.$ctrl.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
             console.log('oops');
@@ -118,8 +117,8 @@ angular.module('app')
 
 
       } else {
-
-        var capObj = {capsuleName: $scope.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+      	this.currentCap.splice(index, 1);
+        var capObj = {capsuleName: this.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
         Caps.saveCap(capObj, (err, res) => {
           if (err) {
               console.log('oopsee');
@@ -135,10 +134,12 @@ angular.module('app')
   }
 
   this.saveForLater = () => {
-    
+
     var saveProgress = confirm('you just saved the crap out of this!');
     if(saveProgress) {
-      $scope.$ctrl.view = true;
+      $scope.momentoName = '';
+      $scope.input = '';
+      $scope.$ctrl.viewToggle();
     }
   }
 
@@ -166,10 +167,11 @@ angular.module('app')
              throw new Error(err);
          } else {
              $scope.$ctrl.view = true;
-             $scope.capsuleName = '';
+             this.capsuleName = '';
              $scope.input = '';
              $scope.date = '';
              $scope.recipient = '';
+             this.currentCap = [];
          }
        });
        } else {
@@ -185,10 +187,11 @@ angular.module('app')
                throw new Error(err);
            } else {
                $scope.$ctrl.view = true;
-               $scope.capsuleName = '';
+               this.capsuleName = '';
                $scope.input = '';
                $scope.date = '';
                $scope.recipient = '';
+               this.currentCap = [];
            }
          });
      }
@@ -202,7 +205,10 @@ angular.module('app')
     capsuleToEdit: '<',
     editingViewCapsule: '<',
     view: '=',
-    clear: '='
+    clear: '=',
+    named: '=',
+    editedCapsuleName: '=',
+    viewToggle: '<'
   },
 
  templateUrl: '../templates/create.html'

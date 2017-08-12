@@ -14,7 +14,10 @@
   <div class="inProgressWindow">
 
     <div ng-show="$ctrl.named">
-      <h2>{{$ctrl.capsuleName}}<button ng-click="modalPopupEditCapName"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button></h2>
+      <h2 ng-hide="$ctrl.editingViewCapsule">{{$ctrl.capsuleName}}<button ng-click="modalPopupEditCapName"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button></h2>
+
+      <h2 ng-show="$ctrl.editingViewCapsule">{{$ctrl.editedCapsuleName}}<button ng-click="modalPopupEditCapName"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button></h2>
+
     </div>
     <!-- Regular content view for in progress capsule-->
     <div ng-hide="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.currentCap track by $index">
@@ -31,7 +34,7 @@
     <div ng-show="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.capsuleToEdit.contents">
       <div class="capsuleBar">
           <button type="button" ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
-          <button type="button" data-toggle="modal" data-target="#editModal" ng-click="() => {$ctrl.editIndex = $index}"p><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
+           <button type="button" data-toggle="modal" data-target="#editModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
           <button type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
       <h4> {{input.name}} </h4>
