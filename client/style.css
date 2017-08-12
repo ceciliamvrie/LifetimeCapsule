@@ -10,6 +10,13 @@
 	margin-top: 250px;
 }
 
+.toggledWelcome {
+	font-size: 52px;
+	text-align: center;
+	line-height: 120px;
+	margin-top: 60px;
+}
+
 .buttonContainer {
 	text-align: center;
 }
@@ -36,6 +43,10 @@
 
   &:hover { text-decoration: none; }
 
+}
+
+.container {
+	text-align: center;
 }
 
 .navbar {

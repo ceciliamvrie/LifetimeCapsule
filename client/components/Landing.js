@@ -39,6 +39,7 @@ angular.module('app')
 
   this.toggle = () => {
   	this.signup = !this.signup;
+    this.style = !this.style;
   	if (this.signup) {
   	  this.sisu = 'Need to Sign In';
   	} else {

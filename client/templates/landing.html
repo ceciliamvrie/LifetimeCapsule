@@ -1,12 +1,13 @@
 <div>
-  <h1 class="welcome">Welcome to Life-Time Capsule</h1>
+  <h1 ng-hide="$ctrl.butnClicked" class="toggledWelcome">Welcome to Life-Time Capsule</h1>
+  <h1 ng-show="$ctrl.butnClicked" class="welcome">Welcome to Life-Time Capsule</h1>
   <span ng-show="$ctrl.butnClicked">
     <div class="buttonContainer">
       <button class="getStartedButton btn" type="button" ng-click="$ctrl.getStarted()">Get Started</button>
     </div>
   </span>
   <span ng-hide="$ctrl.butnClicked">
-    <button type="button" ng-click="$ctrl.toggle()">{{$ctrl.sisu}}</button>
+    <button ng-hide="$ctrl.butnClicked" type="button" ng-click="$ctrl.toggle()">{{$ctrl.sisu}}</button>
     <span ng-show="$ctrl.signup">
       <div>
         <form ng-submit="$ctrl.handleSignUp(username, password, email)">
