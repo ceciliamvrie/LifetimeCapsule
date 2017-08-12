@@ -52,12 +52,30 @@ angular.module('app')
       $scope.$ctrl.capsuleName = capName;
       $scope.$ctrl.editedCapsuleName = capName;
       $scope.$ctrl.named = true;
-      var capObj = {capsuleName: capName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+      if ($scope.$ctrl.editingViewCapsule) {
+
+      var capObj = {capsuleName: $scope.$ctrl.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
-            throw new Error(err);
-        }
+          throw new Error(err);
+        } else {
+          $scope.momentoName = '';
+          $scope.input = '';
+        } 
       });
+
+   } else {
+
+     var capObj = {capsuleName: $scope.$ctrl.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+     Caps.saveCap(capObj, (err, res) => {
+       if (err) {
+        throw new Error(err);
+       } else {
+        $scope.momentoName = '';
+        $scope.input = '';
+       }
+     });
+    }
     } else {
       //warning to add capsule name
     }
