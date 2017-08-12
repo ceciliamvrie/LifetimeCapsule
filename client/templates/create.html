@@ -1,8 +1,8 @@
 <div>
   <div ng-hide="$ctrl.named">
     <h3 id="capsuleName">Name Your Capsule</h3>
-    <input id="capsuleInput" type="text" ng-model="capsuleName" placeholder="Capsule Name"/>
-    <button id="setCapName" type="button" ng-click="$ctrl.setCapsuleName(capsuleName)">Set Capsule Name</button>
+    <input id="capsuleInput" type="text" ng-model="capsuleNameModel" placeholder="Capsule Name"/>
+    <button id="setCapName" type="button" ng-click="$ctrl.setCapsuleName(capsuleNameModel); capsuleNameModel = ''">Set Capsule Name</button>
   </div>
 
   <div>

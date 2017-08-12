@@ -1,9 +1,9 @@
 angular.module('app')
 .controller('CreateCtrl', function($scope, Caps) {
   this.capsuleId = $scope.$ctrl.capsuleId;
-  this.currentCap = []; 
   this.capsuleToEdit = $scope.$ctrl.capsuleToEdit;
   this.editIndex = null;
+  this.capsuleNameModel = '';
   this.capsuleName = '';
   $scope.momentoName = '';
   $scope.input = '';
@@ -44,6 +44,7 @@ angular.module('app')
   }
 
   this.setCapsuleName = () => {
+
     var capName = document.getElementById('capsuleInput').value
     if(capName !== null && capName !== undefined) {
       this.capsuleName = capName;
@@ -205,10 +206,10 @@ angular.module('app')
     capsuleToEdit: '<',
     editingViewCapsule: '<',
     view: '=',
-    clear: '=',
     named: '=',
     editedCapsuleName: '=',
-    viewToggle: '<'
+    viewToggle: '<',
+    currentCap: '='
   },
 
  templateUrl: '../templates/create.html'

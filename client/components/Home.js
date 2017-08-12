@@ -5,6 +5,7 @@ angular.module('app')
   this.capsuleId = 0;
   this.capsuleToEdit = {};
   this.capsData = [];
+  this.currentCap = [];
   this.editedCapsuleName = '';
   this.clear = '';
   this.named = false;
@@ -44,7 +45,6 @@ angular.module('app')
           throw new Error(err);
         } else {
           this.capsuleId = capsuleId;
-          this.clear = '';
           this.capsuleToEdit = {};
           this.view = false;
         }
@@ -58,7 +58,6 @@ angular.module('app')
             throw new Error(err);
           } else {
             this.capsuleId = capsuleId;
-            this.clear = '';
             this.capsuleToEdit = {};
             this.view = false;
             this.editingViewCapsule = false;
@@ -83,6 +82,7 @@ angular.module('app')
             throw new Error(err);
           }
         });
+        this.currentCap = [];
         this.editingViewCapsule = false;
         this.named = false;
         this.view = true;
