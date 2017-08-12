@@ -36,6 +36,7 @@
 	text-align: center;
 	line-height: 27px;
 }
+
 /** Buttons **/
 .btn {
   color: #fff;
@@ -56,18 +57,29 @@
 
 }
 
+/** View and Create Page **/
+.create {
+  margin-left: 5px
+}
 
-
-
+.view {
+	margin-right: 5px;
+}
 
 .navbar {
-	width: 100%;
+	/*position: relative;*/
 	text-align: center;
+  padding: 20px 10px 20px 10px;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid grey;
 }
 
 .mainHeader {
 	width: 100%;
+	font-size: 52px;
 	text-align: center;
+	padding-bottom: 20px;
 	border-bottom: 1px solid gray;
 }
 
@@ -87,8 +99,30 @@
 
 .filterButton {
 	display: inline-block;
-	padding: 10px;
+	text-align: center;
+  cursor: pointer;
+	margin-left: 15px;
+  font-size: 14px;
 }
+
+/*Button Two*/
+.button-two {
+  border-radius: 4px;
+  background-color: #9E9E9E;
+  border: none;
+  width: 150px;
+  transition: all 0.5s;
+	margin-top: 18px;
+}
+
+
+.button-two span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
 
 .capsule {
 	width: 400px;
@@ -113,7 +147,7 @@
 
 #viewAndEdit {
 	height: 10%;
-	width: 55%;
+	width: 10px;
 	float: right;
 	text-align: right;
 }
