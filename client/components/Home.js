@@ -44,6 +44,7 @@ angular.module('app')
           console.log('You dun screwed up');
           throw new Error(err);
         } else {
+          this.capsuleName = '';
           this.capsuleId = capsuleId;
           this.capsuleToEdit = {};
           this.view = false;
@@ -57,6 +58,8 @@ angular.module('app')
             console.log('You dun screwed up');
             throw new Error(err);
           } else {
+            this.capsuleName = '';
+            this.currentCap = [];
             this.capsuleId = capsuleId;
             this.capsuleToEdit = {};
             this.view = false;
@@ -82,6 +85,7 @@ angular.module('app')
             throw new Error(err);
           }
         });
+        this.capsuleName = '';
         this.currentCap = [];
         this.editingViewCapsule = false;
         this.named = false;
