@@ -9,36 +9,35 @@ angular.module('app')
   $scope.date = '';
   $scope.recipient = '';
 
-   this.appendAndSave = (input) => {
+  this.appendAndSave = (input) => {
 
-      if ($scope.$ctrl.editingViewCapsule) {
+    if ($scope.$ctrl.editingViewCapsule) {
       this.capsuleToEdit.contents.unshift({input: input, name: $scope.momentoName})
 
       var capObj = {capsuleName: $scope.$ctrl.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.capsuleToEdit.contents};
       Caps.saveCap(capObj, (err, res) => {
         if (err) {
-            this.currentCap.shift();
-            throw new Error(err);
+          this.currentCap.shift();
+          throw new Error(err);
         } else {
-            $scope.momentoName = '';
-            $scope.input = '';
-        }
+          $scope.momentoName = '';
+          $scope.input = '';
+        } 
       });
 
+   } else {
+     this.currentCap.unshift({input: input, name: $scope.momentoName})
 
-      } else {
-        this.currentCap.unshift({input: input, name: $scope.momentoName})
-
-        var capObj = {capsuleName: $scope.$ctrl.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
-        Caps.saveCap(capObj, (err, res) => {
-          if (err) {
-              this.currentCap.shift();
-              throw new Error(err);
-          } else {
-              $scope.momentoName = '';
-              $scope.input = '';
-          }
-        });
+     var capObj = {capsuleName: $scope.$ctrl.capsuleName, capsuleId: this.capsuleId, capsuleContent: this.currentCap};
+     Caps.saveCap(capObj, (err, res) => {
+       if (err) {
+        this.currentCap.shift();
+        throw new Error(err);
+       } else {
+        $scope.momentoName = '';
+        $scope.input = '';
+       }
+     });
     }
   }
 

@@ -26,6 +26,7 @@ angular.module('app')
     this.capsuleToEdit = capsule;
     this.capsuleToEdit.contents = capsule.contents;
     this.capsuleId = capsule._id;
+    this.capsuleName = capsule.capsuleName;
     this.editingViewCapsule = true;
     this.editedCapsuleName = capsule.capsuleName;
     if (capsule.buried) {
@@ -70,6 +71,7 @@ angular.module('app')
     }
   }
 
+
   this.toggleToView = function() {
 
     $scope.$ctrl.first = false;
@@ -79,7 +81,6 @@ angular.module('app')
       if(saveProgress) {
         Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
           if (!err) {
-            console.log('should refresh')
             this.capsData = res;
           } else {
             throw new Error(err);
