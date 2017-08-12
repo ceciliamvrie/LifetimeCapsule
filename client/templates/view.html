@@ -24,10 +24,12 @@
       <div class="modal-content" id="viewModalContent">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">{{$ctrl.cap.name}}</h4>
+          <h4 class="modal-title">{{$ctrl.cap.buried}}</h4>
         </div>
         <div class="modal-body" id="viewModalBody">
-        <p>  {{$ctrl.cap.contents[0].input}} </p>
+	        <div ng-repeat="c in $ctrl.cap.contents track by $index">
+	          <p>  {{}}asdfasd </p>
+	        </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

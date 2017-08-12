@@ -2,6 +2,63 @@
   background-color: #000000;
   color: #DDDDDD;
 }*/
+/** Welcome Page **/
+.welcome {
+	font-size: 52px;
+	text-align: center;
+	line-height: 120px;
+	margin-top: 250px;
+}
+
+.toggler {
+	color: grey;
+	margin-left: 60%;
+	line-height: 40px;
+}
+
+.toggledWelcome {
+	font-size: 52px;
+	text-align: center;
+	line-height: 120px;
+	margin-top: 60px;
+}
+
+.buttonContainer {
+	text-align: center;
+}
+
+.getStartedButton {
+  margin-top: 100px;
+}
+
+.container {
+	margin-top: 20px;
+	text-align: center;
+	line-height: 27px;
+}
+/** Buttons **/
+.btn {
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size:16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 auto 2em;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  width: 100%;
+
+  &:hover { text-decoration: none; }
+
+}
+
+
+
+
 
 .navbar {
 	width: 100%;
@@ -129,6 +186,3 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-
-
-
