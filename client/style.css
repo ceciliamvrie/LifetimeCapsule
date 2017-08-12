@@ -58,6 +58,10 @@
 
 }
 
+#hey {
+	background-color: blue;
+}
+
 /** View and Create Page **/
 .create {
   margin-left: 5px
@@ -201,10 +205,16 @@
 	overflow: scroll;
 }
 
-#modalCloseButn {
+/*#modalCloseButn {
 	position: absolute;
-	left: 75%;
-	bottom: 0;
+	left: 85%;
+	bottom: 10%;
+}*/
+
+#modalBodyBorder {
+	border: 2px solid gray;
+	border-radius: 7px;
+	margin: 10px;
 }
 
 #capsuleName {

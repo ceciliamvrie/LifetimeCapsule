@@ -34,6 +34,7 @@ angular.module('app')
   }
 
   this.handleSignIn = (email, password) => {
+    console.log(email, password, 'signed In')
   	var obj = {email: email, password: password};
   	Auth.signin(obj, function(err, res) {
       if (err) {

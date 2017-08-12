@@ -1,7 +1,7 @@
 <div class="capsule">
     
   <div class="capsuleBar">
-    <i class="fa fa-eye fa-fw" aria-hidden="true" data-toggle="modal" data-target="#{{$ctrl.cap._id}}" ng-click="$ctrl.viewCapsule($ctrl.cap)"> </i>
+    <i class="fa fa-eye fa-fw" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.viewCapsule($ctrl.cap)"></i>
     <i ng-hide="$ctrl.cap.buried" class="fa fa-pencil fa-fw" aria-hidden="true" ng-click="$ctrl.editCapsule($ctrl.cap)"></i>
     <i class="fa fa-envelope-o fa-fw" aria-hidden="true" ng-click="$ctrl.handleEmail($event)"></i>
   </div>
@@ -17,28 +17,10 @@
     <p ng-show="$ctrl.cap.buried"> Buried </p>
   </div>
 
-<span ng-model="currentCap"> {{currentCap}}
-  <div id="{{currentCap}}" class="modal fade" role="dialog">
+  <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog" id="viewModalDialog">
-
-      <!-- Modal content-->
-      <div class="modal-content" id="viewModalContent">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">{{$ctrl.cap.capsuleName}}</h4>
-        </div>
-        <div class="modal-body" id="viewModalBody">
-          <div ng-repeat="c in $ctrl.cap.contents track by $index">
-            <h4>{{c.name}}</h4>
-            <p>{{c.input}}</p>
-          <div>
-        </div>
-      </div>
-        <div class="modal-footer">
-          <button type="button" id="modalCloseButn" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
 
     </div>
   </div>
-</span>
+  
 </div>
