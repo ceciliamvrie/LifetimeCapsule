@@ -37,7 +37,13 @@ angular.module('app')
   	var obj = {email: email, password: password};
   	Auth.signin(obj, function(err, res) {
       if (err) {
-        alert('Your email and password do not match');
+        this.error = !this.error
+        var handle = setTimeout(() => ('Your email and password do not match'), 100);
+        if (handle) {
+          if (!this.error) {
+            this.error = !this.error
+          }
+        }
       } else {
         $scope.$ctrl.userId = res;
       	$scope.$ctrl.signedIn = true;
