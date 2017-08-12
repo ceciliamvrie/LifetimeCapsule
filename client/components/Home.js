@@ -5,7 +5,9 @@ angular.module('app')
   this.capsuleId = 0;
   this.capsuleToEdit = {};
   this.capsData = [];
+  this.editedCapsuleName = '';
   this.clear = '';
+  this.named = false;
 
   this.handleFilter = function(event) {
     $scope.$ctrl.first = false;
@@ -24,8 +26,13 @@ angular.module('app')
     this.capsuleToEdit.contents = capsule.contents;
     this.capsuleId = capsule._id;
     this.editingViewCapsule = true;
-    this.clear = '';
-    this.view = false;
+    this.editedCapsuleName = capsule.capsuleName;
+    if (capsule.buried) {
+      alert('GET YOUR HANDS OFF THIS! IT\'S NOT READY TO BE UNEARTHED YET!!');
+    } else {
+      this.view = false;
+      this.named = true;
+    }
   }
 
   this.toggleToCreate = () => {
@@ -50,7 +57,6 @@ angular.module('app')
             console.log('You dun screwed up');
             throw new Error(err);
           } else {
-            console.log('created new cap and should wipe data')
             this.capsuleId = capsuleId;
             this.clear = '';
             this.capsuleToEdit = {};
@@ -62,7 +68,8 @@ angular.module('app')
     }
   }
 
-  this.toggleToView = () => {
+  this.toggleToView = function() {
+
     $scope.$ctrl.first = false;
     if(!this.view) {
 
@@ -70,15 +77,18 @@ angular.module('app')
       if(saveProgress) {
         Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
           if (!err) {
+            console.log('should refresh')
             this.capsData = res;
           } else {
             throw new Error(err);
           }
         });
+        this.editingViewCapsule = false;
+        this.named = false;
         this.view = true;
       }
     }
-  }
+  }.bind(this)
 
 
 })
@@ -87,7 +97,8 @@ angular.module('app')
   bindings: {
     userId: '<',
     initialData: '=',
-    first: '='
+    first: '=',
+    editedCapsuleName: '<'
   },
   templateUrl: '../templates/home.html'
 })

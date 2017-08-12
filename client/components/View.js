@@ -16,8 +16,7 @@ angular.module('app')
 
   bindings: {
   	cap: '<',
-  	editCapsule: '=',
-  	init: '<'
+  	editCapsule: '='
   },
 
   templateUrl: '../templates/view.html'
