@@ -1,8 +1,9 @@
-/** {
-  background-color: #000000;
-  color: #DDDDDD;
-}*/
-/** Welcome Page **/
+* {
+  font-family: 'Helvetica';
+  font-size: 20px;
+  background-color: #91A1BE;
+  color: #885533;
+}
 .welcome {
 	font-size: 52px;
 	text-align: center;
@@ -17,7 +18,7 @@
 }
 
 .toggler {
-	color: grey;
+	color: #885533;
 	line-height: 40px;
 	position: relative;
 	top: 290px;
@@ -46,10 +47,10 @@
 
 /** Buttons **/
 .btn {
-  color: #fff;
+  color: #885533;
   cursor: pointer;
   display: block;
-  font-size:16px;
+  font-size:20px;
   font-weight: 400;
   line-height: 45px;
   margin: 0 auto 2em;
@@ -65,7 +66,7 @@
 }
 
 #hey {
-	background-color: blue;
+	background-color: #91BEA1;
 }
 
 /** View and Create Page **/
@@ -100,7 +101,7 @@
 
 #username {
 	float: right;
-	font-size: 14px;
+	font-size: 20px;
 }
 
 .filterBar {
@@ -113,13 +114,13 @@
 	text-align: center;
   cursor: pointer;
 	margin-left: 15px;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 /*Button Two*/
 .button-two {
   border-radius: 4px;
-  background-color: #9E9E9E;
+  background-color: #91BEA1;
   border: none;
   width: 150px;
   transition: all 0.5s;
@@ -293,9 +294,9 @@
   height: 30px;
   margin: 5px;
   border-radius: 4px;
-  background-color: grey;
+  background-color: #91A1BE;
   font-family: 'Exo', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   height: 40px;
   font-weight: 400;
   padding: 8px;
@@ -308,9 +309,9 @@
   height: 30px;
   margin: 5px;
   border-radius: 4px;
-  background-color: grey;
+  background-color: #91A1BE;
   font-family: 'Exo', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   height: 40px;
   font-weight: 400;
   padding: 8px;
