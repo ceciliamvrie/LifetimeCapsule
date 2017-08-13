@@ -10,12 +10,17 @@
 	margin-top: 250px;
 }
 
+#logoutButton, #deleteButn {
+	text-align: right;
+	float: right;
+	margin: 5px;
+}
+
 .toggler {
-    color: grey;
-    margin-left: -4.0%;
-    line-height: 40px;
-    position: absolute;
-    margin-top: 20%;
+	color: grey;
+	line-height: 40px;
+	position: relative;
+	top: 290px;
 }
 
 .toggledWelcome {
@@ -57,6 +62,10 @@
 
   &:hover { text-decoration: none; }
 
+}
+
+#hey {
+	background-color: blue;
 }
 
 /** View and Create Page **/
@@ -187,6 +196,14 @@
 
 }
 
+#viewDetails {
+	padding-left: 15px;
+	padding-right: 15px;
+	word-wrap: break-word;         /* All browsers since IE 5.5+ */
+	overflow-wrap: break-word;
+	overflow: scroll;
+}
+
 #viewModalDialog {
 	float: center;
 }
@@ -198,8 +215,33 @@
 
 #viewModalBody {
 	width: 100%;
-	height: 75%;
+	height: 85%;
 	overflow: scroll;
+}
+
+.momentoInput {
+	padding-left: 10px;
+	padding-right: 10px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+/*#modalCloseButn {
+	position: absolute;
+	left: 85%;
+	bottom: 10%;
+}*/
+
+.modalBodyBorder:hover {
+	background: #F3F3F3;
+	cursor: pointer;
+}
+
+.modalBodyBorder {
+	border: 2px solid gray;
+	border-radius: 7px;
+	margin: 10px;
 }
 
 #capsuleName {

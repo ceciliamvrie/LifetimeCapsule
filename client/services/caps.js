@@ -68,11 +68,29 @@ angular.module('app')
     });
 
   };
+
+  const deleteCap = function(inputObj, cb) {
+
+    $http({
+      url: `${STORE_URL}/delete`,
+      method: 'POST',
+      contentType: 'application/json',
+      data: inputObj,
+    })
+    .then(function(res) {
+      cb(null, res.data);
+    })
+    .catch(function(err) {
+      cb(err);
+    });
+
+  };
   
   return {
     filterCaps: filterCaps,
     saveCap: saveCap,
     bury: bury,
-    createCap: createCap
+    createCap: createCap,
+    deleteCap: deleteCap
   };
 })

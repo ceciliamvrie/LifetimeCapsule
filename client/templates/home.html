@@ -5,6 +5,7 @@
 <nav class="navbar">
   <button class="btn view" ng-click="$ctrl.toggleToView()">View Capsules</button>
   <button class="btn create" ng-click="$ctrl.toggleToCreate()">Create A Capsule</button>
+  <button id="logoutButton" ng-click="$ctrl.logOut()">Logout</button>
 
   <span ng-show=$ctrl.view>
     <div class="filterBar">
@@ -24,14 +25,14 @@
 
 <span ng-show="$ctrl.view">
 
-  <view-page ng-hide="$ctrl.first" class="col-md-6" ng-repeat="cap in $ctrl.capsData track by $index" cap="cap" edit-capsule="$ctrl.editCapsule"> </view-page>
+  <view-page ng-hide="$ctrl.first" class="col-md-6" ng-repeat="cap in $ctrl.capsData track by $index" view-capsule="$ctrl.viewCapsule" cap="cap" index="$index" edit-capsule="$ctrl.editCapsule" delete-cap="$ctrl.deleteCap"> </view-page>
 
-  <view-page ng-show="$ctrl.first" class="col-md-6" ng-repeat="cap in $ctrl.initialData track by $index" cap="cap" edit-capsule="$ctrl.editCapsule"> </view-page>
+  <view-page ng-show="$ctrl.first" class="col-md-6" ng-repeat="cap in $ctrl.initialData track by $index" view-capsule="$ctrl.viewCapsule" cap="cap" index="$index" edit-capsule="$ctrl.editCapsule" delete-cap="$ctrl.deleteCap"> </view-page>
 
 </span>
 
 <span ng-hide="$ctrl.view">
 
-  <create-page view-toggle="$ctrl.toggleToView" named="$ctrl.named" capsule-id="$ctrl.capsuleId" capsule-to-edit="$ctrl.capsuleToEdit" editing-view-capsule="$ctrl.editingViewCapsule" view="$ctrl.view" edited-capsule-name="$ctrl.editedCapsuleName" current-cap="$ctrl.currentCap" capsule-name="$ctrl.capsuleName"> </create-page>
+  <create-page view-toggle="$ctrl.toggleToView" named="$ctrl.named" capsule-id="$ctrl.capsuleId" capsule-to-edit="$ctrl.capsuleToEdit" editing-view-capsule="$ctrl.editingViewCapsule" view="$ctrl.view" edited-capsule-name="$ctrl.editedCapsuleName" current-cap="$ctrl.currentCap" capsule-name="$ctrl.capsuleName" delete-cap="$ctrl.deleteCap"> </create-page>
 
 </span>

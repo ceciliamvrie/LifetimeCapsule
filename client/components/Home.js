@@ -21,6 +21,10 @@ angular.module('app')
     });
   }
 
+  this.viewCapsule = (capsule) => {
+    
+  }
+
   this.editCapsule = (capsule) => {
     $scope.$ctrl.first = false;
     this.capsuleToEdit = capsule;
@@ -29,12 +33,8 @@ angular.module('app')
     this.capsuleName = capsule.capsuleName;
     this.editingViewCapsule = true;
     this.editedCapsuleName = capsule.capsuleName;
-    if (capsule.buried) {
-      alert('GET YOUR HANDS OFF THIS! IT\'S NOT READY TO BE UNEARTHED YET!!');
-    } else {
-      this.view = false;
-      this.named = true;
-    }
+    this.named = true;
+    this.view = false;
   }
 
   this.toggleToCreate = () => {
@@ -48,6 +48,7 @@ angular.module('app')
           this.capsuleName = '';
           this.capsuleId = capsuleId;
           this.capsuleToEdit = {};
+          this.named = false;
           this.view = false;
         }
       })
@@ -59,10 +60,12 @@ angular.module('app')
             console.log('You dun screwed up');
             throw new Error(err);
           } else {
+            this.named = false;
             this.capsuleName = '';
             this.currentCap = [];
             this.capsuleId = capsuleId;
             this.capsuleToEdit = {};
+            this.named = false;
             this.view = false;
             this.editingViewCapsule = false;
           }
@@ -77,7 +80,7 @@ angular.module('app')
     $scope.$ctrl.first = false;
     if(!this.view) {
       if (!buried) {
-        var saveProgress = confirm('Are you sure you want to leave this capsule?');
+        var saveProgress = confirm('Are you sure you want to leave this capsule? \n We\'ll save this one if you do.');
       } else {
         var saveProgress = true;
       }
@@ -95,9 +98,44 @@ angular.module('app')
         this.named = false;
         this.view = true;
       }
+    } else {
+      Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
+        if (!err) {
+          this.capsData = res;
+        } else {
+          throw new Error(err);
+        }
+      });
     }
   }.bind(this)
 
+
+  this.deleteCap = (capId, index) => {
+  console.log('deleted cap');
+    var saveProgress = confirm('Remove this capsule?...forever??');
+
+    if(saveProgress) {
+      
+      var capObj = {capsuleId: capId}
+      Caps.deleteCap(capObj, (err, res) => {
+        if (err) {
+          throw new Error(err);
+        } else {
+          if (index) {
+            $scope.$ctrl.initialData.splice(index, 1);
+            this.capsData.splice(index, 1);
+          } else {
+            this.toggleToView(true);
+          }
+        }
+      });
+    }
+  }
+
+  this.logOut = () => {
+    console.log('logged out')
+    $scope.$ctrl.signedIn = false;
+  }
 
 })
 .component('homePage', {
@@ -106,7 +144,8 @@ angular.module('app')
     userId: '<',
     initialData: '=',
     first: '=',
-    editedCapsuleName: '<'
+    editedCapsuleName: '<',
+    signedIn: '='
   },
   templateUrl: '../templates/home.html'
 })

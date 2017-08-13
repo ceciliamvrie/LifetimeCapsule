@@ -13,7 +13,6 @@ angular.module('app', [])
   	    throw new Error(err);
   	  } else {
         this.initialData = allCaps;
-        console.log('initial caps ', this.initialData)
       }
     });
 
