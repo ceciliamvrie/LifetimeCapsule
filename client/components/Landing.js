@@ -45,8 +45,10 @@ angular.module('app')
           }
         }
       } else {
+        $scope.username = '';
+        $scope.password = '';
         $scope.$ctrl.userId = res;
-      	$scope.$ctrl.signedIn = true;
+        $scope.$ctrl.signedIn = true;
         $scope.$ctrl.init(res);
       }
   	})

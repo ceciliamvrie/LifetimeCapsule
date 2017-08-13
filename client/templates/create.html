@@ -7,6 +7,16 @@
 
   <div>
     <input id="momentoInput" type="text" ng-model="momentoName" placeholder="Momento Name"/>
+<!-- ********************* -->
+    <form >
+      <div>
+      <input type="file" ng-model="files" ng-file-select="$ctrl.onFileSelect(files)" ng-change="$ctrl.onFileSelect(files)"/>
+      <button ng-click="$ctrl.onFileSelect(files)">
+ 
+      </div>
+    </form>
+<!-- ********************* -->
+
     <textarea id="inputBox" rows="4" cols="70" ng-model="input" placeholder="Add a message"> </textarea>
   </div>
 
