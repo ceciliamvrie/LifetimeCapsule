@@ -107,6 +107,24 @@ angular.module('app')
   }.bind(this)
 
 
+  this.deleteCap = (capId, index) => {
+
+    var saveProgress = confirm('Remove this capsule?...forever??');
+
+    if(saveProgress) {
+      
+      var capObj = {capsuleId: capId}
+      Caps.deleteCap(capObj, (err, res) => {
+        if (err) {
+          throw new Error(err);
+        } else {
+          $scope.$ctrl.initialData.splice(index, 1);
+          this.capsData.splice(index, 1);
+        }
+      });
+    }
+  }
+
 })
 .component('homePage', {
   controller: 'HomeCtrl',
