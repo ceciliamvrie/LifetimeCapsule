@@ -4,7 +4,7 @@ angular.module('app', [])
   this.userId = '';
   this.initialData = [];
   this.first = true;
-  this.hello = 'hello';
+  this.email = '';
 
   this.init = (id) => {
 

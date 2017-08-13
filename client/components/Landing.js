@@ -45,6 +45,7 @@ angular.module('app')
           }
         }
       } else {
+        $scope.$ctrl.email = email;
         $scope.username = '';
         $scope.password = '';
         $scope.$ctrl.userId = res;
@@ -70,7 +71,8 @@ angular.module('app')
   bindings: {
   	signedIn: '=',
     userId: '=',
-    init: '='
+    init: '=',
+    email: '='
   },
   templateUrl: '../templates/landing.html'
 })
