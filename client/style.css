@@ -190,6 +190,14 @@
 
 }
 
+#viewDetails {
+	padding-left: 15px;
+	padding-right: 15px;
+	word-wrap: break-word;         /* All browsers since IE 5.5+ */
+	overflow-wrap: break-word;
+	overflow: scroll;
+}
+
 #viewModalDialog {
 	float: center;
 }
@@ -206,7 +214,10 @@
 }
 
 .momentoInput {
-
+	padding-left: 10px;
+	padding-right: 10px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	overflow: hidden;
 }
 
@@ -216,7 +227,7 @@
 	bottom: 10%;
 }*/
 
-#modalBodyBorder {
+.modalBodyBorder {
 	border: 2px solid gray;
 	border-radius: 7px;
 	margin: 10px;
