@@ -128,6 +128,11 @@ angular.module('app')
     }
   }
 
+  this.logOut = () => {
+    console.log('logged out')
+    $scope.$ctrl.signedIn = false;
+  }
+
 })
 .component('homePage', {
   controller: 'HomeCtrl',
@@ -135,7 +140,8 @@ angular.module('app')
     userId: '<',
     initialData: '=',
     first: '=',
-    editedCapsuleName: '<'
+    editedCapsuleName: '<',
+    signedIn: '='
   },
   templateUrl: '../templates/home.html'
 })

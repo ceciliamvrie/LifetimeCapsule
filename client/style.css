@@ -10,6 +10,11 @@
 	margin-top: 250px;
 }
 
+#logoutButton {
+	text-align: right;
+	float: right;
+}
+
 .toggler {
 	color: grey;
 	line-height: 40px;

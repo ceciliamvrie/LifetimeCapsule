@@ -1,5 +1,6 @@
 angular.module('app')
 .controller('CreateCtrl', function($scope, Caps) {
+
   this.capsuleId = $scope.$ctrl.capsuleId;
   this.capsuleToEdit = $scope.$ctrl.capsuleToEdit;
   this.capIndex = null;

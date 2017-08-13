@@ -16,6 +16,8 @@
     "bower": "^1.8.0",
     "cron": "^1.2.1",
     "express-session": "^1.15.5",
+    "moment": "^2.18.1",
+    "moment-precise-range-plugin": "^1.2.4",
     "mongoose": "^4.11.6",
     "nodemailer": "^4.0.1"
   },

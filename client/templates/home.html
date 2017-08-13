@@ -5,6 +5,7 @@
 <nav class="navbar">
   <button class="btn view" ng-click="$ctrl.toggleToView()">View Capsules</button>
   <button class="btn create" ng-click="$ctrl.toggleToCreate()">Create A Capsule</button>
+  <button id="logoutButton" ng-click="$ctrl.logOut()">Logout</button>
 
   <span ng-show=$ctrl.view>
     <div class="filterBar">
