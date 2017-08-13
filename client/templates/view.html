@@ -1,7 +1,7 @@
 <div class="capsule">
     
   <div class="capsuleBar">
-    <i class="fa fa-eye fa-fw" aria-hidden="true" data-toggle="modal" data-target="#myModal" ng-click="$ctrl.viewCapsule($ctrl.cap)"></i>
+    <i class="fa fa-eye fa-fw" aria-hidden="true" data-toggle="modal" data-target="#viewModal" ng-click="$ctrl.viewCapsule($ctrl.cap)"></i>
     <i ng-hide="$ctrl.cap.buried" class="fa fa-pencil fa-fw" aria-hidden="true" ng-click="$ctrl.editCapsule($ctrl.cap)"></i>
     <i class="fa fa-envelope-o fa-fw" aria-hidden="true" ng-click="$ctrl.handleEmail($event)"></i>
   </div>
@@ -17,10 +17,8 @@
     <p ng-show="$ctrl.cap.buried"> Buried </p>
   </div>
 
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog" id="viewModalDialog">
+  <div id="viewModal" class="modal fade" role="dialog">
 
-    </div>
   </div>
   
 </div>
