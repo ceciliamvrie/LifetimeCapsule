@@ -148,6 +148,28 @@ angular.module('app')
      }
     });
   }
+
+  this.momentoDetails = (momento) => {
+
+    $('#viewMomentoModal').html(
+      `
+       <div class="modal-dialog" id="viewModalDialog">
+      <div class="modal-content" id="viewModalContent"> 
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="momentoDetails">${$scope.$ctrl.capsuleName}</h4>
+        </div>
+        <div class="viewModal-body" id="viewModalBody">
+          <div id="momentoDetails"> 
+            <h4>${momento.name}</h4>
+            <p id="viewDetails">${momento.input}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    `
+    );
+  }
 })
 .component('createPage', {
   controller: 'CreateCtrl',
