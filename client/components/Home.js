@@ -133,7 +133,6 @@ angular.module('app')
   }
 
   this.logOut = () => {
-    console.log('logged out')
     $scope.$ctrl.signedIn = false;
   }
 
@@ -145,7 +144,8 @@ angular.module('app')
     initialData: '=',
     first: '=',
     editedCapsuleName: '<',
-    signedIn: '='
+    signedIn: '=',
+    email: '<'
   },
   templateUrl: '../templates/home.html'
 })
