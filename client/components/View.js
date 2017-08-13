@@ -1,7 +1,7 @@
 angular.module('app')
 .controller('ViewCtrl', function($scope, Caps) {
-  this.clearModal = () => {
-  	$('.viewModal-dialog').html('')
+  this.viewDetails = () => {
+  	console.log('view details was clicked!!!')
   }
   this.viewCapsule = (cap) => {
     $('#viewModal').html(
@@ -21,7 +21,7 @@ angular.module('app')
 
     for (var i = 0; i < cap.contents.length; i++) {
       $('.viewModal-body').append(
-      	  `<div id="modalBodyBorder">
+      	  `<div id="modalBodyBorder" ng-click="$ctrl.viewDetails()">
     	    <h4>${cap.contents[i].name}</h4>
     	    <p>${cap.contents[i].input}</p>
     	  </div>`
