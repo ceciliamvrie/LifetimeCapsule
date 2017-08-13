@@ -26,7 +26,6 @@ angular.module('app')
   }
 
   this.editCapsule = (capsule) => {
-    console.log('capsule', capsule);
     $scope.$ctrl.first = false;
     this.capsuleToEdit = capsule;
     this.capsuleToEdit.contents = capsule.contents;
