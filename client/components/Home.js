@@ -48,6 +48,7 @@ angular.module('app')
           this.capsuleName = '';
           this.capsuleId = capsuleId;
           this.capsuleToEdit = {};
+          this.named = false;
           this.view = false;
         }
       })
@@ -64,6 +65,7 @@ angular.module('app')
             this.currentCap = [];
             this.capsuleId = capsuleId;
             this.capsuleToEdit = {};
+            this.named = false;
             this.view = false;
             this.editingViewCapsule = false;
           }

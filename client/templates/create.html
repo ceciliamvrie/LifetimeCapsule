@@ -5,13 +5,16 @@
     <button id="setCapName" type="button" ng-click="$ctrl.setCapsuleName(capsuleNameModel); capsuleNameModel = ''">Set Capsule Name</button>
   </div>
 
+
   <div>
     <input id="momentoInput" type="text" ng-model="momentoName" placeholder="Momento Name"/>
     <textarea id="inputBox" rows="4" cols="70" ng-model="input" placeholder="Add a message"> </textarea>
   </div>
 
-  <button id="addToCap" type="button" ng-click="$ctrl.appendAndSave(input)">Add to Capsule</button>
+
+  <button id="addToCap" type="button" ng-click="$ctrl.capsuleChange(input, true)">Add to Capsule</button>
   <div class="inProgressWindow">
+
 
     <div ng-show="$ctrl.named">
       <h2 ng-hide="$ctrl.editingViewCapsule">{{$ctrl.capsuleName}}<button data-toggle="modal" data-target="#editCapsuleNameModal"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button></h2>
@@ -19,10 +22,11 @@
       <h2 ng-show="$ctrl.editingViewCapsule">{{$ctrl.editedCapsuleName}}<button data-toggle="modal" data-target="#editCapsuleNameModal"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button></h2>
 
     </div>
+
     <!-- Regular content view for in progress capsule-->
     <div ng-hide="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.currentCap track by $index">
       <div class="capsuleBar">
-        <button type="button" ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
+        <button type="button" data-toggle="modal" data-target="#viewModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
         <button type="button" data-toggle="modal" data-target="#editModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
         <button type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
@@ -30,10 +34,11 @@
       <p class="momentoInput"> {{input.input}} </p>
     </div>
 
+
     <!-- Show capsules contents if in editing mode from View.js-->
     <div ng-show="$ctrl.editingViewCapsule" class="innerItem" ng-repeat="input in $ctrl.capsuleToEdit.contents">
       <div class="capsuleBar">
-          <button type="button" ng-click="$ctrl.viewMomento($index)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
+          <button type="button" data-toggle="modal" data-target="#viewModal" ng-click="$ctrl.getIndex($index)"></i></button>
            <button type="button" data-toggle="modal" data-target="#editModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
           <button type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
@@ -41,11 +46,13 @@
       <p class="momentoInput"> {{input.input}} </p>
     </div>
 
+
   </div>
   <div class="bottomButtons">
     <button id="saveForLater" type="button" ng-click="$ctrl.saveForLater()"">Save for Later</button>
     <button id="bury" type="button" data-toggle="modal" data-target="#buryModal">Bury</button>
   </div>
+
 
   <div id="buryModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -128,6 +135,25 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="$ctrl.setCapsuleName(capsuleModalName)">Submit Change</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="viewMomentoModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{}}</h4>
+        </div>
+
+        <div class="modal-body">
+          <input id="capsuleEditInput" type="text" ng-model="capsuleModalName" placeholder="Capsule Name"/>
         </div>
 
       </div>
