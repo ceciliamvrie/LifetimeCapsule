@@ -59,6 +59,7 @@ angular.module('app')
             console.log('You dun screwed up');
             throw new Error(err);
           } else {
+            this.named = false;
             this.capsuleName = '';
             this.currentCap = [];
             this.capsuleId = capsuleId;
