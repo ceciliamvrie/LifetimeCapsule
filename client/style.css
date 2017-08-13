@@ -227,6 +227,11 @@
 	bottom: 10%;
 }*/
 
+.modalBodyBorder:hover {
+	background: #F3F3F3;
+	cursor: pointer;
+}
+
 .modalBodyBorder {
 	border: 2px solid gray;
 	border-radius: 7px;
