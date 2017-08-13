@@ -134,6 +134,7 @@ angular.module('app')
 
   this.logOut = () => {
     $scope.$ctrl.signedIn = false;
+    $scope.$ctrl.first = true;
   }
 
 })
