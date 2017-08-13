@@ -79,7 +79,6 @@ angular.module('app')
   this.deleteMomento = (index) => {
     var deletThis = confirm('Are you sure you want to delete this momento?');
     if(deletThis) {
-      
       if ($scope.$ctrl.editingViewCapsule) {
         $scope.$ctrl.capsuleToEdit.contents.splice(index, 1);
         var capObj = {capsuleName: $scope.$ctrl.editedCapsuleName, capsuleId: $scope.$ctrl.capsuleId, capsuleContent: $scope.$ctrl.capsuleToEdit.contents};
@@ -93,7 +92,6 @@ angular.module('app')
   }
 
   this.saveForLater = () => {
-
     var saveProgress = confirm('Save any changes and view your capsules?');
     if(saveProgress) {
       if ($scope.$ctrl.editingViewCapsule) {
