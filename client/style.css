@@ -205,6 +205,11 @@
 	overflow: scroll;
 }
 
+.momentoInput {
+
+	overflow: hidden;
+}
+
 /*#modalCloseButn {
 	position: absolute;
 	left: 85%;

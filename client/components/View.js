@@ -21,9 +21,9 @@ angular.module('app')
 
     for (var i = 0; i < cap.contents.length; i++) {
       $('.viewModal-body').append(
-      	  `<div id="modalBodyBorder" ng-click="$ctrl.viewDetails()">
+      	  `<div id="modalBodyBorder" ng-click="$ctrl.viewDetails">
     	    <h4>${cap.contents[i].name}</h4>
-    	    <p>${cap.contents[i].input}</p>
+    	    <p class="momentoInput">${cap.contents[i].input}</p>
     	  </div>`
         )
     }
