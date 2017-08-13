@@ -196,10 +196,15 @@
 
 }
 
+#momentoDetails {
+	text-align: center;
+	float: center;
+}
+
 #viewDetails {
 	padding-left: 15px;
 	padding-right: 15px;
-	word-wrap: break-word;         /* All browsers since IE 5.5+ */
+	word-wrap: break-word;     
 	overflow-wrap: break-word;
 	overflow: scroll;
 }
