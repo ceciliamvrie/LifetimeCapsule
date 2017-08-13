@@ -24,9 +24,9 @@
 
 <span ng-show="$ctrl.view">
 
-  <view-page ng-hide="$ctrl.first" class="col-md-6" ng-repeat="cap in $ctrl.capsData track by $index" view-capsule="$ctrl.viewCapsule" cap="cap" edit-capsule="$ctrl.editCapsule"> </view-page>
+  <view-page ng-hide="$ctrl.first" class="col-md-6" ng-repeat="cap in $ctrl.capsData track by $index" view-capsule="$ctrl.viewCapsule" cap="cap" index="$index" edit-capsule="$ctrl.editCapsule" delete-cap="$ctrl.deleteCap"> </view-page>
 
-  <view-page ng-show="$ctrl.first" class="col-md-6" ng-repeat="cap in $ctrl.initialData track by $index" view-capsule="$ctrl.viewCapsule" cap="cap" edit-capsule="$ctrl.editCapsule"> </view-page>
+  <view-page ng-show="$ctrl.first" class="col-md-6" ng-repeat="cap in $ctrl.initialData track by $index" view-capsule="$ctrl.viewCapsule" cap="cap" index="$index" edit-capsule="$ctrl.editCapsule" delete-cap="$ctrl.deleteCap"> </view-page>
 
 </span>
 

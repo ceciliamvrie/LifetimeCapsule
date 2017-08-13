@@ -161,7 +161,7 @@ angular.module('app')
     if(saveProgress) {
       $scope.momentoName = '';
       $scope.input = '';
-      $scope.$ctrl.viewToggle();
+      $scope.$ctrl.viewToggle(true);
     }
   }
 

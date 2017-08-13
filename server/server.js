@@ -172,7 +172,7 @@ app.put('/edit', (req, res) => {
   });
 });
 
-app.delete('/delete', (req, res) => {
+app.post('/delete', (req, res) => {
   Capsule.remove({ _id: req.body.capsuleId }, (err) => {
     if (err) {
       console.error(`Failed to remove capsule ${req.body.capsuleId} from the database`);

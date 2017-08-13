@@ -60,7 +60,9 @@ angular.module('app')
   	cap: '<',
   	editCapsule: '=',
   	init: '<',
-  	viewCapsule: '='
+  	viewCapsule: '=',
+  	deleteCap: '=',
+  	index: '<'
   },
 
   templateUrl: '../templates/view.html'
