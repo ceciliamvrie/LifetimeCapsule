@@ -18,7 +18,7 @@ angular.module('app')
   	Auth.signup(obj, (err, res) => {
       if (err) {
         this.error = !this.error
-        var handle = setTimeout(() => confirm('Please enter a valid username, passoword, and email'), 100);
+        var handle = confirm('Please enter a valid username, passoword, and email');
         if (handle) {
           if (!this.error) {
             this.error = !this.error

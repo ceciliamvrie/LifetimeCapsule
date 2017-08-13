@@ -77,7 +77,7 @@ angular.module('app')
     $scope.$ctrl.first = false;
     if(!this.view) {
       if (!buried) {
-        var saveProgress = confirm('Are you sure you want to leave this capsule?');
+        var saveProgress = confirm('Are you sure you want to leave this capsule? \n We\'ll save this one if you do.');
       } else {
         var saveProgress = true;
       }
@@ -95,6 +95,14 @@ angular.module('app')
         this.named = false;
         this.view = true;
       }
+    } else {
+      Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
+        if (!err) {
+          this.capsData = res;
+        } else {
+          throw new Error(err);
+        }
+      });
     }
   }.bind(this)
 
