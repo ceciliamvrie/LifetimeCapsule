@@ -161,7 +161,8 @@ angular.module('app')
     editedCapsuleName: '=',
     viewToggle: '<',
     currentCap: '=', 
-    capsuleName: '='
+    capsuleName: '=',
+    deleteCap: '=',
   },
 
  templateUrl: '../templates/create.html'

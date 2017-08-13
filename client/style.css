@@ -10,9 +10,10 @@
 	margin-top: 250px;
 }
 
-#logoutButton {
+#logoutButton, #deleteButn {
 	text-align: right;
 	float: right;
+	margin: 5px;
 }
 
 .toggler {
