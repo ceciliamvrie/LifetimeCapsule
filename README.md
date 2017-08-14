@@ -1,3 +1,4 @@
 # LifetimeCapsule
 
-#run npm install...That's it
+*  run `npm install`
+*  run `npm start`
