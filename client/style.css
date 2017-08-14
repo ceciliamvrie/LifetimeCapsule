@@ -78,7 +78,9 @@ p {
   vertical-align: middle;
   width: 100%;
 
-  &:hover { text-decoration: none; }
+  &:hover { 
+    text-decoration: none;
+    background-color: #CCCCCC; }
 
 }
 
