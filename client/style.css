@@ -136,6 +136,7 @@
 /** View Page **/
 
 .capsule {
+<<<<<<< HEAD
   width: 225px;
   height:  225px;
   border: 1px solid;
@@ -154,6 +155,49 @@
 .inProgress {
   position: absolute;
   bottom: 20px;
+=======
+	width: 250px;
+	height:  250px;
+	border: 1px solid;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 5px;
+
+}
+
+.viewCapName {
+  text-align: center;
+}
+
+.capsuleBar {
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+
+}
+
+.momentoBar {
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.iconOptions {
+	background-color: #F4F4F4;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+}
+
+#capsuleNameMargin {
+	text-align: center;
+	float: center;
+}
+
+.inProgress {
+  margin-top: 25%;
+  text-align: center;
 }
 
 
@@ -177,6 +221,18 @@
 #viewModalContent {
   width: 700px;
   height: 500px;
+} 
+
+.innerItem {
+	margin-left: auto;
+	margin-right: auto;
+	width: 550px;
+	height: 115px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	text-align: center;
 }
 
 #viewModalBody {
@@ -249,8 +305,8 @@
 }*/
 
 .modalBodyBorder:hover {
-  background: #F3F3F3;
-  cursor: pointer;
+	background: #F4F4F4;
+	cursor: pointer;
 }
 
 .modalBodyBorder {
