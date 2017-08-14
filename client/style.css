@@ -135,6 +135,14 @@
 
 /** View Page **/
 
+.loginName {
+  font-weight: bold;
+}
+
+.logoutButton {
+  background-color: #c08585; 
+}
+
 .capsule {
   width: 225px;
   height:  225px;
