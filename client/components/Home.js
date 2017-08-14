@@ -102,7 +102,6 @@ angular.module('app')
 
 
   this.deleteCap = (capId, index) => {
-  console.log('deleted cap');
     var saveProgress = confirm('Remove this capsule?...forever??');
 
     if(saveProgress) {
@@ -112,12 +111,7 @@ angular.module('app')
         if (err) {
           throw new Error(err);
         } else {
-          if (index) {
-            $scope.$ctrl.initialData.splice(index, 1);
-            $scope.$ctrl.capsData.splice(index, 1);
-          } else {
-            this.toggleToView(true);
-          }
+          this.toggleToView(true);
         }
       });
     }
