@@ -216,22 +216,24 @@ input { text-align:center; }
 .momentoBar {
 	height: 10%;
 	width: 100%;
-	text-align: center;
-	margin-bottom: 30px;
+	text-align: right; 
+  margin-bottom: 30px;
 }
 
 .iconOptions {
 	background-color: #F4F4F4;
 	border: 1px solid lightgray;
 	border-radius: 3px;
+  text-align: right;
 }
 
 #capsuleNameMargin {
-	text-align: center;
-	float: center;
+	text-align: right;
 }
 
-
+.break {
+  word-break: break-all;
+}
 
 
 #username {
@@ -385,6 +387,7 @@ input { text-align:center; }
 }
 
 #inputBox, #capsuleInput, #momentoInput, #momentoModalInput {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   display: block;

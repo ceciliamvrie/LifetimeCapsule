@@ -1,13 +1,13 @@
 <div>
   <div class="createCapsuleName" ng-hide="$ctrl.named">
-    <input id="capsuleInput" type="text" ng-model="capsuleNameModel" rows="2" maxlength="40" placeholder="Capsule Name"/>
+    <input id="capsuleInput" type="text" ng-model="capsuleNameModel" maxlength="40" placeholder="Capsule Name"/>
     <button class="btn" id="setCapName" type="button" ng-click="$ctrl.setCapsuleName(capsuleNameModel); capsuleNameModel = ''">Set Capsule Name</button>
   </div>
 
   <span ng-show="$ctrl.named">
     <div>
       <input id="momentoInput" type="text" ng-model="momentoName" maxlength="40" placeholder="Momento Name"/>
-      <textarea id="inputBox" rows="4" cols="70" ng-model="input" maxlength="188" placeholder="Add a message"> </textarea>
+      <textarea id="inputBox" rows="4" cols="70" ng-model="input" placeholder="Add a message"> </textarea>
     </div>
 
 
@@ -28,7 +28,7 @@
 
       <h4 id="capHeader" ng-show="$ctrl.editingViewCapsule">{{$ctrl.editedCapsuleName}}</h4>
       <div ng-show="$ctrl.editingViewCapsule">
-        <button id="capsuleNameMargin" class="iconOptions" data-toggle="modal" data-target="#editCapsuleNameModal"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit Capsule Name</button>
+        <button id="capsuleNameMargin" class="iconOptions" data-toggle="modal" data-target="#editCapsuleNameModal"></i> Edit Capsule Name</button>
         <button id="deleteButn" ng-click="$ctrl.deleteCap($ctrl.capsuleId)"> Delete this Capsule </button>
       </div>
 
@@ -41,8 +41,8 @@
         <button class="iconOptions" type="button" data-toggle="modal" data-target="#editModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
         <button class="iconOptions" type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
-      <h4> {{input.name}} </h4>
-      <p class="momentoInput"> {{input.input}} </p>
+      <h4 class="break"> {{input.name}} </h4>
+      <p class="momentoInput break"> {{input.input}} </p>
     </div>
 
 
@@ -53,8 +53,8 @@
            <button class="iconOptions" type="button" data-toggle="modal" data-target="#editModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
           <button class="iconOptions" type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
-      <h4> {{input.name}} </h4>
-      <p class="momentoInput"> {{input.input}} </p>
+      <h4 class="break"> {{input.name}} </h4>
+      <p class="momentoInput break"> {{input.input}} </p>
     </div>
 
 
