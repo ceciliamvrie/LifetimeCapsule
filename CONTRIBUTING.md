@@ -20,7 +20,6 @@ Be careful when adding new dependencies to your project.  When your project has 
 *  Back-end
   *  Add email verification on signup
   *  Improve CRON job to send periodic reminders if a capsule has not yet been opened
-  *  Change CRON job to do a daily scan of the database for capsules to be unearthed on that day.  (This is more future proof and secure than spawning a new CRON job for each capsule on creation, because if the server ever crashes, we lose all those CRON jobs.)
   *  Add a new CRON job to remind users X weeks ahead of unearth date
 *  Front-end
   *  Add a tutorial capsule for new users
