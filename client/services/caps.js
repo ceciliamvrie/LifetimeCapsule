@@ -11,6 +11,7 @@ angular.module('app')
       contentType: 'application/json'
     })
     .then(function(res) {
+      // gets all the capsules return matching the filer
       cb(null, res.data);
     })
     .catch(function(err) {
@@ -27,6 +28,7 @@ angular.module('app')
       contentType: 'application/json'
     })
     .then(function(res) {
+      // Returns the newly created capsules' id
       cb(null, res.data);
     })
     .catch(function(err) {
@@ -36,7 +38,7 @@ angular.module('app')
   };
 
   const saveCap = function(inputObj, cb) {
-
+  
     $http({
       url: `${STORE_URL}/edit`,
       method: 'PUT',
@@ -44,6 +46,7 @@ angular.module('app')
       data: inputObj,
     })
     .then(function(res) {
+      // doesn't actually get anything back
       cb(null, res.data);
     })
     .catch(function(err) {
@@ -61,6 +64,7 @@ angular.module('app')
       data: input,
     })
     .then(function(res) {
+      // doesn't actually get anything back
       cb(null, res.data);
     })
     .catch(function(err) {
@@ -78,6 +82,7 @@ angular.module('app')
       data: inputObj,
     })
     .then(function(res) {
+      // doesn't actually get anything back
       cb(null, res.data);
     })
     .catch(function(err) {
