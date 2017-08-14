@@ -5,15 +5,16 @@ angular.module('app')
 
   const signin = function(userObj, cb) {
 
+    var header = {'Content-Type': 'application/json'};
+
     $http({
       method: 'POST',
       url: `${STORE_URL}/signin`,
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: header,
       data: userObj, 
     })
     .then(function(res) {
+      // gets the user id back from the server
       cb(null, res.data);
     })
     .catch(function(err) {
@@ -34,6 +35,7 @@ angular.module('app')
   	  headers: header
   	})
   	.then(function(res) {
+      // doesn't actually get anything back
   	  cb(null, res.data);
   	})
   	.catch(function(err) {

@@ -1,25 +1,29 @@
 angular.module('app')
 .controller('LandingCtrl', function($scope, Auth) {
-  this.username = '';
-  this.butnClicked = true;
-  this.password = '';
-  this.signup = true;
-  this.sisu = 'Need to Sign Up?';
-  this.error = false;
 
+  this.username = '';
+  this.password = '';
+  this.butnClicked = true;
+  this.signup = true;
+  this.error = false;
+  this.sisu = 'Need to Sign Up?';
 
   this.getStarted = () => {
   	this.butnClicked = false;
   }
 
   this.handleSignUp = (username, password, email) => {
+
     this.error = false;
   	var obj = {username: username, password: password, email: email};
+
     Auth.signup(obj, (err, res) => {
       if (err) {
         this.error = true
       } else {
         $scope.$ctrl.userId = res;
+
+        // Sign them in if successful sign up
         this.handleSignIn(email, password)
         setTimeout(this.toggle, 100);
       }
@@ -27,8 +31,10 @@ angular.module('app')
   }
 
   this.handleSignIn = (email, password) => {
+
     this.error = false;
   	var obj = {email: email, password: password};
+    
   	Auth.signin(obj, (err, res) => {
       if (err) {
         this.error = true;

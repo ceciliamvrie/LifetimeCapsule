@@ -1,7 +1,8 @@
-<span ng-hide="$ctrl.signedIn">
-  <landing-page email="$ctrl.email" init="$ctrl.init" user-id="$ctrl.userId" signed-in="$ctrl.signedIn"> </landing-page>
-</span>
-<span ng-show="$ctrl.signedIn">
 
-  <home-page email="$ctrl.email" first="$ctrl.first" user-id="$ctrl.userId" caps-data="$ctrl.capsData" signed-in="$ctrl.signedIn"></home-page>
+<span ng-hide="$ctrl.signedIn">
+  <landing-page email="$ctrl.email" init="$ctrl.init" user-id="$ctrl.userId" signed-in="$ctrl.signedIn">
+</span>
+
+<span ng-show="$ctrl.signedIn">
+  <home-page email="$ctrl.email" first="$ctrl.first" user-id="$ctrl.userId" caps-data="$ctrl.capsData" signed-in="$ctrl.signedIn"/>
 </span>
