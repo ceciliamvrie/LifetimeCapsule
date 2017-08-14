@@ -1,22 +1,25 @@
 <div>
-  <div ng-hide="$ctrl.named">
-    <h3 class="btn" id="capsuleName">Name Your Capsule</h3>
-    <input id="capsuleInput" type="text" ng-model="capsuleNameModel" placeholder="Capsule Name"/>
+  <div class="createCapsuleName" ng-hide="$ctrl.named">
+    <input id="capsuleInput" type="text" ng-model="capsuleNameModel" maxlength="40" placeholder="Capsule Name"/>
     <button class="btn" id="setCapName" type="button" ng-click="$ctrl.setCapsuleName(capsuleNameModel); capsuleNameModel = ''">Set Capsule Name</button>
   </div>
 
+  <span ng-show="$ctrl.named">
+    <div>
+      <input id="momentoInput" type="text" ng-model="momentoName" maxlength="40" placeholder="Momento Name"/>
+      <textarea id="inputBox" rows="4" cols="70" ng-model="input" placeholder="Add a message"> </textarea>
+    </div>
 
-  <div>
-    <input id="momentoInput" type="text" ng-model="momentoName" placeholder="Momento Name"/>
 
-    <textarea id="inputBox" rows="4" cols="70" ng-model="input" placeholder="Add a message"> </textarea>
+    <button id="addToCap" type="button" ng-click="$ctrl.capsuleChange(input, true)">Add to Capsule</button>
+  </span>
+
+  <div id="nameCapsulePl0x" ng-hide="$ctrl.named">
+    Name your capsule to make changes!
   </div>
 
-
-  <button id="addToCap" type="button" ng-click="$ctrl.capsuleChange(input, true)">Add to Capsule</button>
-  <div class="inProgressWindow">
-
-    <div ng-show="$ctrl.named">
+  <div ng-show="$ctrl.named" class="inProgressWindow">
+    <div>
       <h4 id="capHeader" ng-hide="$ctrl.editingViewCapsule">{{$ctrl.capsuleName}}</h4>
       <div ng-hide="$ctrl.editingViewCapsule">
         <button id="capsuleNameMargin" class="iconOptions" data-toggle="modal" data-target="#editCapsuleNameModal"> <i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit Capsule Name</button>
@@ -25,7 +28,7 @@
 
       <h4 id="capHeader" ng-show="$ctrl.editingViewCapsule">{{$ctrl.editedCapsuleName}}</h4>
       <div ng-show="$ctrl.editingViewCapsule">
-        <button id="capsuleNameMargin" class="iconOptions" data-toggle="modal" data-target="#editCapsuleNameModal"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit Capsule Name</button>
+        <button id="capsuleNameMargin" class="iconOptions" data-toggle="modal" data-target="#editCapsuleNameModal"></i> Edit Capsule Name</button>
         <button id="deleteButn" ng-click="$ctrl.deleteCap($ctrl.capsuleId)"> Delete this Capsule </button>
       </div>
 
@@ -38,8 +41,8 @@
         <button class="iconOptions" type="button" data-toggle="modal" data-target="#editModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
         <button class="iconOptions" type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
-      <h4> {{input.name}} </h4>
-      <p class="momentoInput"> {{input.input}} </p>
+      <h4 class="break"> {{input.name}} </h4>
+      <p class="momentoInput break"> {{input.input}} </p>
     </div>
 
 
@@ -50,13 +53,13 @@
            <button class="iconOptions" type="button" data-toggle="modal" data-target="#editModal" ng-click="$ctrl.getIndex($index)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
           <button class="iconOptions" type="button" ng-click="$ctrl.deleteMomento($index)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></button>
       </div>
-      <h4> {{input.name}} </h4>
-      <p class="momentoInput"> {{input.input}} </p>
+      <h4 class="break"> {{input.name}} </h4>
+      <p class="momentoInput break"> {{input.input}} </p>
     </div>
 
 
   </div>
-  <div class="bottomButtons">
+  <div ng-show="$ctrl.named" class="bottomButtons">
     <button class="btn" id="saveForLater" type="button" ng-click="$ctrl.saveForLater()">Save for Later</button>
     <button class="btn" id="bury" type="button" data-toggle="modal" data-target="#buryModal">Bury</button>
   </div>
@@ -112,8 +115,8 @@
         </div>
 
         <div class="modal-body">
-          <input id="momentoEditInput" type="text" ng-model="momentoModalName" placeholder="Momento Name"/>
-          <textarea id="inputBox" rows="4" cols="70" ng-model="modalInput"> </textarea>
+          <input id="momentoEditInput" type="text" maxlength="40" ng-model="momentoModalName" placeholder="Momento Name"/>
+          <textarea id="inputBox" rows="4" cols="70" maxlength="188" ng-model="modalInput"> </textarea>
         </div>
 
         <div class="modal-footer">
@@ -137,7 +140,7 @@
         </div>
 
         <div class="modal-body">
-          <input id="capsuleEditInput" type="text" ng-model="capsuleModalName" placeholder="Capsule Name"/>
+          <input id="capsuleEditInput" type="text" rows="2" maxlength="40" ng-model="capsuleModalName" placeholder="Capsule Name"/>
         </div>
 
         <div class="modal-footer">

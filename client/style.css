@@ -46,6 +46,8 @@ p {
   margin-top: 50px;
 }
 
+input { text-align:center; }
+
 .container input{
   text-align: center;
   border: 1px solid #c5b5b5;
@@ -78,7 +80,9 @@ p {
   vertical-align: middle;
   width: 100%;
 
-  &:hover { text-decoration: none; }
+  &:hover { 
+    text-decoration: none;
+    background-color: #CCCCCC; }
 
 }
 
@@ -205,26 +209,31 @@ p {
 }
 }*/
 
+.createCapsuleName {
+  margin-bottom: 20px;
+}
 
 .momentoBar {
 	height: 10%;
 	width: 100%;
-	text-align: center;
-	margin-bottom: 30px;
+	text-align: right; 
+  margin-bottom: 30px;
 }
 
 .iconOptions {
 	background-color: #F4F4F4;
 	border: 1px solid lightgray;
 	border-radius: 3px;
+  text-align: right;
 }
 
 #capsuleNameMargin {
-	text-align: center;
-	float: center;
+	text-align: right;
 }
 
-
+.break {
+  word-break: break-all;
+}
 
 
 #username {
@@ -358,6 +367,10 @@ p {
   bottom: 10%;
 }*/
 
+#nameCapsulePl0x {
+  text-align: center;
+}
+
 .modalBodyBorder:hover {
   /*background-color: #F3F3F3;*/
   cursor: pointer;
@@ -374,6 +387,7 @@ p {
 }
 
 #inputBox, #capsuleInput, #momentoInput, #momentoModalInput {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   display: block;
