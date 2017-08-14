@@ -1,8 +1,8 @@
 * {
   font-family: 'Helvetica';
   font-size: 20px;
-  background-color: #91A1BE;
-  color: #885533;
+  background-color: #FFFFFF;
+  color: #222222;
 }
 /* Landing Page CSS */
 
@@ -45,7 +45,7 @@
   height: 30px;
   margin: 5px;
   border-radius: 4px;
-  background-color: #91A1BE;
+  background-color: #FFFFFF;
   font-family: 'Exo', sans-serif;
   font-size: 20px;
   height: 40px;
@@ -58,8 +58,8 @@
 }
 
 .btn {
-  background-color: rgba(145,190,161,0.35);
-  color: #885533;
+  background-color: rgba(225,225,225,0.55);
+  color: #222222;
   cursor: pointer;
   display: block;
   font-size:20px;
@@ -80,7 +80,7 @@
 .warning {color: #CC3333;}
 
 .toggler {
-  color: #885533;
+  color: #222222;
   line-height: 40px;
   position: relative;
 }
@@ -134,6 +134,14 @@
 .col-md-6 { text-align: center; }
 
 /** View Page **/
+
+.loginName {
+  font-weight: bold;
+}
+
+.logoutButton {
+  background-color: #c08585; 
+}
 
 .capsule {
   width: 225px;
@@ -330,8 +338,8 @@
 }*/
 
 .modalBodyBorder:hover {
-	background: #F4F4F4;
-	cursor: pointer;
+  /*background-color: #F3F3F3;*/
+  cursor: pointer;
 }
 
 .modalBodyBorder {
