@@ -8,7 +8,7 @@
 }
 
 p {
-    margin: 0 0 -13px;
+    margin: 0 0 -3px;
     font-size: 16px;
     font-weight: bold;
 }
@@ -167,7 +167,7 @@ p {
   text-align: right;
 }
 
-.inProgress {
+/*.inProgress {
   position: absolute;
   bottom: 20px;
 	width: 250px;
@@ -191,6 +191,8 @@ p {
 	margin-bottom: 10px;
 
 }
+}*/
+
 
 .momentoBar {
 	height: 10%;
@@ -243,7 +245,7 @@ p {
 #viewModalContent {
   width: 700px;
   height: 500px;
-} 
+}
 
 .inProgress {
 	position: absolute;
@@ -307,7 +309,7 @@ p {
 #momentoDetails {
   text-align: center;
   float: center;
-} 
+}
 
 #capHeader {
 	width: absolute;
