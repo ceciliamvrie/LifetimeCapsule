@@ -4,9 +4,7 @@ const express = require('express');
 const db = require('./db/config.js');
 const User = require('./models/user.js');
 const Capsule = require('./models/capsule.js');
-const session = require('express-session');
 const util = require('./utility.js')
-const CronJob = require('cron').CronJob;
 const emailService = require('./email.js');
 const cronScan = require('./cronScan.js');
 
@@ -22,12 +20,6 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 })
-
-app.use(session({
-  secret: 'shhh, it\'s a secret',
-  resave: false,
-  saveUninitialized: true
-}));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
@@ -70,7 +62,6 @@ app.post('/signin', (req, res) => {
           res.sendStatus(404);
         } else {
           console.log(`Successful user signin for email ${req.body.email}`);
-          util.createSession(req, res, user);
           res.send(user._id);
         }
       });
