@@ -46,6 +46,8 @@ p {
   margin-top: 50px;
 }
 
+input { text-align:center; }
+
 .container input{
   text-align: center;
   border: 1px solid #c5b5b5;
@@ -207,6 +209,9 @@ p {
 }
 }*/
 
+.createCapsuleName {
+  margin-bottom: 20px;
+}
 
 .momentoBar {
 	height: 10%;
@@ -359,6 +364,10 @@ p {
   left: 85%;
   bottom: 10%;
 }*/
+
+#nameCapsulePl0x {
+  text-align: center;
+}
 
 .modalBodyBorder:hover {
   /*background-color: #F3F3F3;*/
