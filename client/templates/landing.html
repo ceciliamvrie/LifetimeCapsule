@@ -1,43 +1,47 @@
 <div>
-  <h1 ng-hide="$ctrl.butnClicked" class="toggledWelcome">Welcome to Life-Time Capsule</h1>
-  <h1 ng-show="$ctrl.butnClicked" class="welcome">Welcome to Life-Time Capsule</h1>
+  <h1 ng-show="$ctrl.butnClicked" id="siteGreeting">Welcome to Life-Time Capsule</h1>
+  <h1 ng-hide="$ctrl.butnClicked" id="welcomeMessage">Welcome to Life-Time Capsule</h1>
+
   <span ng-show="$ctrl.butnClicked">
     <div class="buttonContainer">
       <button class="getStartedButton btn" type="button" ng-click="$ctrl.getStarted()">Get Started</button>
     </div>
   </span>
-  <div class="container"
+
+  <div class="container"> <!-- Container -->
     <span ng-hide="$ctrl.butnClicked">
-      <a href="#" class="toggler" ng-hide="$ctrl.butnClicked" type="button" ng-click="$ctrl.toggle()">{{$ctrl.sisu}}</a>
-      <span ng-show="$ctrl.signup">
-        <div>
-          <form class="login" ng-submit="$ctrl.handleSignUp(username, password, email)">
-            <div class="po">
-              <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#885533'}" type="text" placeholder="Username" ng-model="username"> </input>
-            </div>
-            <div class="po">
-              <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#885533'}" type="password" placeholder="Password" ng-model="password"> </input>
-            </div>
-            <div class="po">
-              <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#885533'}" type="text" placeholder="Email" ng-model="email"> </input>
-            </div>
-            <button class="btn signup" type="submit">Sign Up</button>
-          </form>
-        </div>
+    <span ng-hide="$ctrl.signup">
+      <div>
+        <form class="signup" ng-submit="$ctrl.handleSignUp(username, password, email)"> <!-- Signup -->
+          <div class="signupInput"><!-- signupInput -->
+            <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#3C8C6F'}" type="text" placeholder="Username" ng-model="username"> </input>
+          </div>
+          <div class="signupInput">
+            <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#3C8C6F'}" type="password" placeholder="Password" ng-model="password"> </input>
+          </div>
+          <div class="signupInput">
+            <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#3C8C6F'}" type="text" placeholder="Email" ng-model="email"> </input>
+          </div>
+          <p ng-show="$ctrl.error" class="warning">Please enter a valid username, password, and email.</p><!-- Warning -->
+          <button class="btn signup" type="submit">Sign Up</button> <!-- btn --> <!-- signup -->
+        </form>
+      </div>
     </span>
-  </div>
-      <span ng-hide="$ctrl.signup">
-        <div class="login container">
-          <form ng-submit="$ctrl.handleSignIn(email, password)">
-            <div class="po">
-              <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#885533'}" type="text" placeholder="Email" ng-model="email"> </input>
-            </div>
-            <div class="po">
-              <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#885533'}" type="password" placeholder="Password" ng-model="password"> </input>
-            </div>
-            <button class="btn signup" type="submit">Sign In</button>
-          </form>
-        </div>
+
+    <span ng-show="$ctrl.signup">
+      <div>
+        <form ng-submit="$ctrl.handleSignIn(email, password)">
+          <div class="signInput"> <!-- signInput -->
+            <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#3C8C6F'}" type="text" placeholder="Email" ng-model="email"> </input>
+          </div>
+          <div class="signInput"> <!-- signInput -->
+            <input ng-style="{'background-color' : (($ctrl.error == true) && 'rgb(249, 126, 126)') || '#91BEA1', 'color' : (($ctrl.error == true) && 'rgb(164, 76, 76)') || '#3C8C6F'}" type="password" placeholder="Password" ng-model="password"> </input>
+          </div>
+          <p ng-show="$ctrl.error" class="warning">Please enter a valid username and password.</p> <!-- Warning -->
+          <button class="btn signup" type="submit">Sign In</button> <!-- btn  --> <!-- signup -->
+        </form>
+      </div>
     </span>
+    <a href="#" class="toggler" type="button" ng-click="$ctrl.toggle()">{{$ctrl.sisu}}</a> <!-- toggler -->
   </span>
 </div>

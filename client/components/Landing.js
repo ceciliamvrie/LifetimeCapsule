@@ -4,8 +4,8 @@ angular.module('app')
   this.butnClicked = true;
   this.password = '';
   this.signup = true;
-  this.sisu = 'Need to Sign In?';
-  this.error = 'true';
+  this.sisu = 'Need to Sign Up?';
+  this.error = false;
 
 
   this.getStarted = () => {
@@ -13,37 +13,25 @@ angular.module('app')
   }
 
   this.handleSignUp = (username, password, email) => {
-  	console.log(username, password, email, 'signed Up')
+    this.error = false;
   	var obj = {username: username, password: password, email: email};
-  	Auth.signup(obj, (err, res) => {
+    Auth.signup(obj, (err, res) => {
       if (err) {
-        this.error = !this.error
-        var handle = confirm('Please enter a valid username, passoword, and email');
-        if (handle) {
-          if (!this.error) {
-            this.error = !this.error
-          }
-        }
-
+        this.error = true
       } else {
         $scope.$ctrl.userId = res;
-      	this.handleSignIn(email, password)
-        // console.log('successful server response for signup');
+        this.handleSignIn(email, password)
+        setTimeout(this.toggle, 100);
       }
   	})
   }
 
   this.handleSignIn = (email, password) => {
+    this.error = false;
   	var obj = {email: email, password: password};
-  	Auth.signin(obj, function(err, res) {
+  	Auth.signin(obj, (err, res) => {
       if (err) {
-        this.error = !this.error
-        var handle = setTimeout(() => ('Your email and password do not match'), 100);
-        if (handle) {
-          if (!this.error) {
-            this.error = !this.error
-          }
-        }
+        this.error = true;
       } else {
         $scope.$ctrl.email = email;
         $scope.username = '';
@@ -56,12 +44,13 @@ angular.module('app')
   }
 
   this.toggle = () => {
+    this.error = false;
   	this.signup = !this.signup;
     this.style = !this.style;
   	if (this.signup) {
-  	  this.sisu = 'Need to Sign In?';
+  	  this.sisu = 'Need to Sign Up?';
   	} else {
-  	  this.sisu = 'Create an Account';
+  	  this.sisu = 'Have an account? Sign In!';
   	}
   }
 
