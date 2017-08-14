@@ -136,7 +136,6 @@
 /** View Page **/
 
 .capsule {
-<<<<<<< HEAD
   width: 225px;
   height:  225px;
   border: 1px solid;
@@ -155,7 +154,6 @@
 .inProgress {
   position: absolute;
   bottom: 20px;
-=======
 	width: 250px;
 	height:  250px;
 	border: 1px solid;
@@ -167,6 +165,7 @@
 
 .viewCapName {
   text-align: center;
+  float: center;
 }
 
 .capsuleBar {
@@ -196,8 +195,11 @@
 }
 
 .inProgress {
-  margin-top: 25%;
+	position: absolute;
+  bottom: 0;
+  width: 65%;
   text-align: center;
+  float: center;
 }
 
 
@@ -279,6 +281,7 @@
   text-align: center;
 }
 
+<<<<<<< HEAD
 .bottomButtons {
   width: 100%;
   text-align: center;
@@ -287,6 +290,28 @@
 #momentoDetails {
   text-align: center;
   float: center;
+} 
+
+#capHeader {
+	width: absolute;
+	text-align: center;
+	float: center;
+}
+
+#viewModalContent {
+	width: 700px;
+	height: 500px;
+	text-align: center;
+	float: center;
+}
+
+#viewModalBody {
+	width: 100%;
+	height: 85%;
+	overflow: scroll;
+	text-align: center;
+	float: center;
+>>>>>>> some stylying
 }
 
 

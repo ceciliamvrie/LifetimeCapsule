@@ -16,12 +16,9 @@
 
   <p  class="viewCapName">{{$ctrl.cap.capsuleName}}</p>
 
-  <div class="inProgress" >
-    <p ng-hide="$ctrl.cap.buried"> "In Progress" </p>
-  </div>
-  <div class="inProgress" >
-    <p ng-show="$ctrl.cap.buried"> Buried </p>
-  </div>
+  <p class="inProgress" ng-hide="$ctrl.cap.buried"> "In Progress" </p>
+
+  <p class="inProgress" ng-show="$ctrl.cap.buried"> Buried </p>
 
   <div class="ticker">
     <ticker capsule="$ctrl.cap"></ticker>
