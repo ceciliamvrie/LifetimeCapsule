@@ -1,12 +1,12 @@
 angular.module('app')
 .controller('HomeCtrl', function($scope, Caps) {
+
   this.view = true;
   this.editingViewCapsule = false;
+  this.editedCapsuleName = '';
   this.capsuleId = 0;
   this.capsuleToEdit = {};
   this.currentCap = [];
-  this.editedCapsuleName = '';
-  this.clear = '';
   this.named = false;
 
   this.handleFilter = function(event) {
@@ -69,13 +69,16 @@ angular.module('app')
 
   this.toggleToView = function(buried) {
 
+    // check if the page is in "view" or "create"
     if(!this.view) {
+
       if (!buried) {
         var saveProgress = confirm('Are you sure you want to leave this capsule?\nWe\'ll save this one if you do.');
       } else {
         var saveProgress = true;
       }
-      if(saveProgress) {
+
+      if (saveProgress) {
         Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
           if (!err) {
             $scope.$ctrl.capsData = res;
