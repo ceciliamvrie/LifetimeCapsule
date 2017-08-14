@@ -209,6 +209,18 @@ input { text-align:center; }
 }
 }*/
 
+i {
+  background-color: #F4F4F4;
+}
+
+.capsuleBar button {
+  background-color: #F4F4F4; 
+}
+
+.viewCapName, .ticker {
+  text-align: center;
+}
+
 .createCapsuleName {
   margin-bottom: 20px;
 }
@@ -222,7 +234,6 @@ input { text-align:center; }
 
 .iconOptions {
 	background-color: #F4F4F4;
-	border: 1px solid lightgray;
 	border-radius: 3px;
   text-align: right;
 }
