@@ -162,7 +162,47 @@
 .inProgress {
   position: absolute;
   bottom: 20px;
+	width: 250px;
+	height:  250px;
+	border: 1px solid;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 5px;
+
 }
+
+.viewCapName {
+  text-align: center;
+  float: center;
+}
+
+.capsuleBar {
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+
+}
+
+.momentoBar {
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.iconOptions {
+	background-color: #F4F4F4;
+	border: 1px solid lightgray;
+	border-radius: 3px;
+}
+
+#capsuleNameMargin {
+	text-align: center;
+	float: center;
+}
+
+
 
 
 #username {
@@ -178,6 +218,16 @@
   overflow: scroll;
 }
 
+.inProgressWindow {
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px;
+	height: 500px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	overflow: scroll;
+}
+
 #viewModalDialog {
   float: center;
 }
@@ -185,6 +235,26 @@
 #viewModalContent {
   width: 700px;
   height: 500px;
+} 
+
+.inProgress {
+	position: absolute;
+  bottom: 0;
+  width: 65%;
+  text-align: center;
+  float: center;
+}
+
+.innerItem {
+	margin-left: auto;
+	margin-right: auto;
+	width: 550px;
+	height: 115px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid gray;
+	border-radius: 4px;
+	text-align: center;
 }
 
 #viewModalBody {
@@ -192,16 +262,6 @@
   height: 85%;
   overflow: scroll;
 }
-
-
-
-
-
-
-
-
-
-
 
 #viewAndEdit {
   height: 10%;
@@ -239,6 +299,27 @@
 #momentoDetails {
   text-align: center;
   float: center;
+} 
+
+#capHeader {
+	width: absolute;
+	text-align: center;
+	float: center;
+}
+
+#viewModalContent {
+	width: 700px;
+	height: 500px;
+	text-align: center;
+	float: center;
+}
+
+#viewModalBody {
+	width: 100%;
+	height: 85%;
+	overflow: scroll;
+	text-align: center;
+	float: center;
 }
 
 
@@ -277,6 +358,7 @@
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 #addToCap, #setCapName {
