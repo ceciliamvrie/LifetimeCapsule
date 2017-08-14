@@ -48,16 +48,13 @@ p {
 
 .container input{
   text-align: center;
-  border: 1px solid grey;
-  width: 250px;
-  height: 30px;
+  border: 1px solid #c5b5b5;
+  width: 300px;
   margin: 5px;
   border-radius: 4px;
-  background-color: #FFFFFF;
   font-family: 'Exo', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   height: 40px;
-  font-weight: 400;
   padding: 8px;
   &:focus {
     outline: none;
@@ -85,12 +82,18 @@ p {
 
 }
 
+.loginHeader {
+  margin-top: 45px;
+  font-size: 23px;
+}
+
 .warning {color: #CC3333;}
 
 .toggler {
-  color: #222222;
+  color: #736767;
   line-height: 40px;
   position: relative;
+  font-size: 15px;
 }
 
 /* Home CSS */
