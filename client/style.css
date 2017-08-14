@@ -3,6 +3,14 @@
   font-size: 20px;
   background-color: #FFFFFF;
   color: #222222;
+  border-color: grey;
+  border-radius: 5px;
+}
+
+p {
+    margin: 0 0 -3px;
+    font-size: 16px;
+    font-weight: bold;
 }
 /* Landing Page CSS */
 
@@ -140,7 +148,7 @@
 }
 
 .logoutButton {
-  background-color: #c08585; 
+  background-color: #c08585;
 }
 
 .capsule {
@@ -159,8 +167,16 @@
   text-align: right;
 }
 
-.inProgress {
-
+/*.inProgress {
+  position: absolute;
+  bottom: 20px;
+	width: 250px;
+	height:  250px;
+	border: 1px solid;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 5px;
+>>>>>>> 8754339770cb1b0244c0c299b17a76954ed8417e
 
 }
 
@@ -176,6 +192,8 @@
 	margin-bottom: 10px;
 
 }
+}*/
+
 
 .momentoBar {
 	height: 10%;
@@ -228,7 +246,7 @@
 #viewModalContent {
   width: 700px;
   height: 500px;
-} 
+}
 
 .inProgress {
 	position: absolute;
@@ -292,7 +310,7 @@
 #momentoDetails {
   text-align: center;
   float: center;
-} 
+}
 
 #capHeader {
 	width: absolute;
