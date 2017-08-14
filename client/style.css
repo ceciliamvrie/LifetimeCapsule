@@ -1,55 +1,68 @@
-/** {
-  background-color: #000000;
-  color: #DDDDDD;
-}*/
-/** Welcome Page **/
-.welcome {
-	font-size: 52px;
-	text-align: center;
-	line-height: 120px;
-	margin-top: 250px;
+* {
+  font-family: 'Helvetica';
+  font-size: 20px;
+  background-color: #91A1BE;
+  color: #885533;
+}
+/* Landing Page CSS */
+
+#siteGreeting {
+  font-size: 52px;
+  text-align: center;
+  line-height: 120px;
+  margin-top: 250px;
 }
 
-#logoutButton, #deleteButn {
-	text-align: right;
-	float: right;
-	margin: 5px;
+#welcomeMessage {
+  font-size: 52px;
+  text-align: center;
+  line-height: 120px;
+  margin-top: 60px;
 }
 
-.toggler {
-	color: grey;
-	line-height: 40px;
-	position: relative;
-	top: 290px;
-}
-
-.toggledWelcome {
-	font-size: 52px;
-	text-align: center;
-	line-height: 120px;
-	margin-top: 60px;
-}
-
-.buttonContainer {
-	text-align: center;
-}
-
-.getStartedButton {
-  margin-top: 100px;
-}
+.buttonContainer { text-align: center; }
+.getStartedButton { margin-top: 100px; }
 
 .container {
-	margin-top: 20px;
-	text-align: center;
-	line-height: 27px;
+  margin-top: 20px;
+  text-align: center;
 }
 
-/** Buttons **/
+.signup { margin-top: 10px; }
+
+.login{
+  height: 300px;
+  width: 100%;
+  padding: 10px;
+  z-index: 2;
+  margin-top: 50px;
+}
+
+.container input{
+  text-align: center;
+  border: 1px solid grey;
+  width: 250px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: #91A1BE;
+  font-family: 'Exo', sans-serif;
+  font-size: 20px;
+  height: 40px;
+  font-weight: 400;
+  padding: 8px;
+  &:focus {
+    outline: none;
+    border: 1.5px solid grey;
+  };
+}
+
 .btn {
-  color: #fff;
+  background-color: rgba(145,190,161,0.35);
+  color: #885533;
   cursor: pointer;
   display: block;
-  font-size:16px;
+  font-size:20px;
   font-weight: 400;
   line-height: 45px;
   margin: 0 auto 2em;
@@ -64,193 +77,190 @@
 
 }
 
-#hey {
-	background-color: blue;
+.warning {color: #CC3333;}
+
+.toggler {
+  color: #885533;
+  line-height: 40px;
+  position: relative;
 }
 
-/** View and Create Page **/
-.create {
-  margin-left: 5px
-}
+/* Home CSS */
 
-.view {
-	margin-right: 5px;
+.mainHeader {
+  width: 100%;
+  font-size: 52px;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid grey;
 }
 
 .navbar {
-	/*position: relative;*/
-	text-align: center;
+  text-align: center;
   padding: 20px 10px 20px 10px;
   min-height: 50px;
   margin-bottom: 20px;
-  border-bottom: 1px solid grey;
+  border-top: 200px solid gray;
+  border-bottom: 2px solid gray;
 }
 
-.mainHeader {
-	width: 100%;
-	font-size: 52px;
-	text-align: center;
-	padding-bottom: 20px;
-	border-bottom: 1px solid gray;
-}
+.create { margin-left: 5px }
+.view { margin-right: 5px; }
 
-.col-md-6 {
-	text-align: center;
-}
-
-#username {
-	float: right;
-	font-size: 14px;
+#logoutButton, #deleteButn {
+  text-align: center;
+  float: right;
+  margin: 5px;
 }
 
 .filterBar {
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .filterButton {
-	display: inline-block;
-	text-align: center;
+  display: inline-block;
+  text-align: center;
   cursor: pointer;
-	margin-left: 15px;
-  font-size: 14px;
-}
-
-/*Button Two*/
-.button-two {
+  margin-left: 15px;
+  font-size: 20px;
   border-radius: 4px;
-  background-color: #9E9E9E;
   border: none;
   width: 150px;
   transition: all 0.5s;
-	margin-top: 18px;
+  margin-top: 18px;
 }
 
+.col-md-6 { text-align: center; }
 
-.button-two span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
+/** View Page **/
 
 .capsule {
-	width: 400px;
-	height:  400px;
-	border: 1px solid;
-	display: inline-block;
-	padding: 10px;
-	margin: 10px;
+  width: 225px;
+  height:  225px;
+  border: 1px solid;
+  border-radius: 15px;
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
 }
 
 .capsuleBar {
-	height: 10%;
-	width: 100%;
-	text-align: right;
+  height: 50px;
+  width: 100%;
+  text-align: right;
 }
 
 .inProgress {
-	position: absolute;
-	bottom: 0;
-	text-align: center;
+  position: absolute;
+  bottom: 20px;
 }
 
+
+#username {
+  float: right;
+  font-size: 20px;
+}
+
+#viewDetails {
+  padding-left: 15px;
+  padding-right: 15px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: scroll;
+}
+
+#viewModalDialog {
+  float: center;
+}
+
+#viewModalContent {
+  width: 700px;
+  height: 500px;
+}
+
+#viewModalBody {
+  width: 100%;
+  height: 85%;
+  overflow: scroll;
+}
+
+
+
+
+
+
+
+
+
+
+
 #viewAndEdit {
-	height: 10%;
-	width: 10px;
-	float: right;
-	text-align: right;
+  height: 10%;
+  width: 10px;
+  float: right;
+  text-align: right;
 }
 
 .inProgressWindow {
-	margin-left: auto;
-	margin-right: auto;
-	width: 700px;
-	height: 500px;
-	border: 1px solid gray;
-	overflow: scroll;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  height: 500px;
+  border: 1px solid gray;
+  overflow: scroll;
 
 }
 
 .innerItem {
-	margin-left: auto;
-	margin-right: auto;
-	width: 550px;
-	height: 150px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	border: 1px solid gray;
-	text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 550px;
+  height: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+  text-align: center;
 }
 
 .bottomButtons {
-	width: 100%;
-	text-align: center;
-}
-
-#saveForLater {
-
-}
-
-#bury {
-
+  width: 100%;
+  text-align: center;
 }
 
 #momentoDetails {
-	text-align: center;
-	float: center;
+  text-align: center;
+  float: center;
 }
 
-#viewDetails {
-	padding-left: 15px;
-	padding-right: 15px;
-	word-wrap: break-word;     
-	overflow-wrap: break-word;
-	overflow: scroll;
-}
-
-#viewModalDialog {
-	float: center;
-}
-
-#viewModalContent {
-	width: 700px;
-	height: 500px;
-}
-
-#viewModalBody {
-	width: 100%;
-	height: 85%;
-	overflow: scroll;
-}
 
 .momentoInput {
-	padding-left: 10px;
-	padding-right: 10px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /*#modalCloseButn {
-	position: absolute;
-	left: 85%;
-	bottom: 10%;
+  position: absolute;
+  left: 85%;
+  bottom: 10%;
 }*/
 
 .modalBodyBorder:hover {
-	background: #F3F3F3;
-	cursor: pointer;
+  background: #F3F3F3;
+  cursor: pointer;
 }
 
 .modalBodyBorder {
-	border: 2px solid gray;
-	border-radius: 7px;
-	margin: 10px;
+  border: 2px solid gray;
+  border-radius: 7px;
+  margin: 10px;
 }
 
 #capsuleName {
-	text-align: center;
+  text-align: center;
 }
 
 #inputBox, #capsuleInput, #momentoInput, #momentoModalInput {
@@ -262,66 +272,12 @@
 }
 
 #addToCap, #setCapName {
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-	margin-top: 10px;
-	margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 
 /** Login **/
-.signup {
-	margin-top: 10px;
-}
-
-.po {
-	text-align: center;
-	width: 100%;
-}
-.login{
-	height: 300px;
-  width: 100%;
-  padding: 10px;
-  z-index: 2;
-  margin-top: 50px;
-}
-
-.login input[type=text]{
-  border: 1px solid grey;
-  width: 250px;
-  height: 30px;
-  margin: 5px;
-  border-radius: 4px;
-  background-color: grey;
-  font-family: 'Exo', sans-serif;
-  font-size: 16px;
-  height: 40px;
-  font-weight: 400;
-  padding: 8px;
-}
-
-.login input[type=password]{
-	border: 1px solid grey;
-  line-height: 30px;
-  width: 250px;
-  height: 30px;
-  margin: 5px;
-  border-radius: 4px;
-  background-color: grey;
-  font-family: 'Exo', sans-serif;
-  font-size: 16px;
-  height: 40px;
-  font-weight: 400;
-  padding: 8px;
-}
-
-.login input[type=text]:focus{
-	outline: none;
-	border: 1.5px solid grey;
-}
-
-.login input[type=password]:focus{
-	outline: none;
-	border: 1.5px solid grey;
-}
