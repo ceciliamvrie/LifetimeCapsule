@@ -8,6 +8,7 @@ const session = require('express-session');
 const util = require('./utility.js')
 const CronJob = require('cron').CronJob;
 const emailService = require('./email.js');
+const cronScan = require('./cronScan.js');
 
 const app = express();
 
