@@ -3,6 +3,14 @@
   font-size: 20px;
   background-color: #FFFFFF;
   color: #222222;
+  border-color: grey;
+  border-radius: 5px;
+}
+
+p {
+    margin: 0 0 -13px;
+    font-size: 16px;
+    font-weight: bold;
 }
 /* Landing Page CSS */
 
@@ -140,7 +148,7 @@
 }
 
 .logoutButton {
-  background-color: #c08585; 
+  background-color: #c08585;
 }
 
 .capsule {
