@@ -4,29 +4,22 @@ angular.module('app')
   this.editingViewCapsule = false;
   this.capsuleId = 0;
   this.capsuleToEdit = {};
-  this.capsData = [];
   this.currentCap = [];
   this.editedCapsuleName = '';
   this.clear = '';
   this.named = false;
 
   this.handleFilter = function(event) {
-    $scope.$ctrl.first = false;
     Caps.filterCaps(event.target.id, $scope.$ctrl.userId, (err, res) => {
       if (!err) {
-        this.capsData = res;
+        $scope.$ctrl.capsData = res;
       } else {
         throw new Error(err);
       }
     });
   }
 
-  this.viewCapsule = (capsule) => {
-    
-  }
-
   this.editCapsule = (capsule) => {
-    $scope.$ctrl.first = false;
     this.capsuleToEdit = capsule;
     this.capsuleToEdit.contents = capsule.contents;
     this.capsuleId = capsule._id;
@@ -38,7 +31,6 @@ angular.module('app')
   }
 
   this.toggleToCreate = () => {
-    $scope.$ctrl.first = false;
     if (this.view) {
       Caps.createCap($scope.$ctrl.userId,(err, capsuleId) => {
         if (err) {
@@ -77,17 +69,16 @@ angular.module('app')
 
   this.toggleToView = function(buried) {
 
-    $scope.$ctrl.first = false;
     if(!this.view) {
       if (!buried) {
-        var saveProgress = confirm('Are you sure you want to leave this capsule? \n We\'ll save this one if you do.');
+        var saveProgress = confirm('Are you sure you want to leave this capsule?\nWe\'ll save this one if you do.');
       } else {
         var saveProgress = true;
       }
       if(saveProgress) {
         Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
           if (!err) {
-            this.capsData = res;
+            $scope.$ctrl.capsData = res;
           } else {
             throw new Error(err);
           }
@@ -101,7 +92,7 @@ angular.module('app')
     } else {
       Caps.filterCaps('all', $scope.$ctrl.userId, (err, res) => {
         if (!err) {
-          this.capsData = res;
+          $scope.$ctrl.capsData = res;
         } else {
           throw new Error(err);
         }
@@ -123,7 +114,7 @@ angular.module('app')
         } else {
           if (index) {
             $scope.$ctrl.initialData.splice(index, 1);
-            this.capsData.splice(index, 1);
+            $scope.$ctrl.capsData.splice(index, 1);
           } else {
             this.toggleToView(true);
           }
@@ -134,7 +125,6 @@ angular.module('app')
 
   this.logOut = () => {
     $scope.$ctrl.signedIn = false;
-    $scope.$ctrl.first = true;
   }
 
 })
@@ -146,7 +136,8 @@ angular.module('app')
     first: '=',
     editedCapsuleName: '<',
     signedIn: '=',
-    email: '<'
+    email: '<',
+    capsData: '='
   },
   templateUrl: '../templates/home.html'
 })

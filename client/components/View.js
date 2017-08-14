@@ -60,7 +60,6 @@ angular.module('app')
   	cap: '<',
   	editCapsule: '=',
   	init: '<',
-  	viewCapsule: '=',
   	deleteCap: '=',
   	index: '<'
   },

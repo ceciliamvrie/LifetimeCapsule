@@ -2,8 +2,7 @@ angular.module('app', [])
 .controller('AppCtrl', function($scope, Caps) {
   this.signedIn = false;
   this.userId = '';
-  this.initialData = [];
-  this.first = true;
+  this.capsData = [];
   this.email = '';
 
   this.init = (id) => {
@@ -12,7 +11,7 @@ angular.module('app', [])
   	  if (err) {
   	    throw new Error(err);
   	  } else {
-        this.initialData = allCaps;
+        this.capsData = allCaps;
       }
     });
 
