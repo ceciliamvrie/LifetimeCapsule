@@ -111,7 +111,6 @@ angular.module('app')
         if (err) {
           throw new Error(err);
         } else {
-          $scope.$ctrl.capsData.splice(index, 1);
           this.toggleToView(true);
         }
       });

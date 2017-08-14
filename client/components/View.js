@@ -52,16 +52,6 @@ angular.module('app')
     }
 
   }
-
-  if (this.cap.buried) {
-  	console.log('buried or not ', this.cap.buried)
-    let dateString = this.cap.unearthDate.split('T')[0].split('-');
-    let month = dateString[1];
-    let day = dateString[2];
-    let year = dateString[0];
-
-    this.unearthMessage = `You may open this capsule on ${month}/${day}/${year}`;
-  }
 })
 .component('viewPage', {
   controller: 'ViewCtrl',
