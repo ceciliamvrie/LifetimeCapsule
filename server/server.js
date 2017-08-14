@@ -198,7 +198,7 @@ app.put('/bury', (req, res) => {
         let day = capsule.unearthDate.getDate();
         capsule.unearthMessage =
           `
-          You may open this capsule on ${month}/${day}/${year};
+          You may open this capsule on ${month}/${day}/${year}
           `;
         capsule.save((err) => {
           if (err) {
