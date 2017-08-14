@@ -1,5 +1,5 @@
 * {
-  font-family: 'Helvetica';
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 20px;
   background-color: #FFFFFF;
   color: #222222;
@@ -70,8 +70,8 @@ p {
   color: #222222;
   cursor: pointer;
   display: block;
-  font-size:20px;
-  font-weight: 400;
+  font-size:18px;
+  font-weight: bold;
   line-height: 45px;
   margin: 0 auto 2em;
   max-width: 160px;
@@ -112,8 +112,15 @@ p {
   border-bottom: 2px solid gray;
 }
 
-.create { margin-right: -11%; }
-.view { margin-right: 6%; }
+.create {
+  margin-right: -11%;
+  /*background-color: rgba(103, 223, 205, 0.43);*/
+}
+
+.view {
+  margin-right: 6%;
+  /*background-color: rgba(103, 223, 205, 0.43);*/
+}
 
 #logoutButton, #deleteButn {
   text-align: center;
@@ -145,6 +152,7 @@ p {
 
 .loginName {
   font-weight: bold;
+  margin-top: -24px;
 }
 
 .logoutButton {
@@ -377,6 +385,3 @@ p {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-
-/** Login **/
