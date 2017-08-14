@@ -194,13 +194,7 @@
 	float: center;
 }
 
-.inProgress {
-	position: absolute;
-  bottom: 0;
-  width: 65%;
-  text-align: center;
-  float: center;
-}
+
 
 
 #username {
@@ -216,6 +210,16 @@
   overflow: scroll;
 }
 
+.inProgressWindow {
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px;
+	height: 500px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	overflow: scroll;
+}
+
 #viewModalDialog {
   float: center;
 }
@@ -225,6 +229,14 @@
   height: 500px;
 } 
 
+.inProgress {
+	position: absolute;
+  bottom: 0;
+  width: 65%;
+  text-align: center;
+  float: center;
+}
+
 .innerItem {
 	margin-left: auto;
 	margin-right: auto;
@@ -233,7 +245,7 @@
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border: 1px solid gray;
-	border-radius: 5px;
+	border-radius: 4px;
 	text-align: center;
 }
 
@@ -350,6 +362,7 @@
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 #addToCap, #setCapName {
