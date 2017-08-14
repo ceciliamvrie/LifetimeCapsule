@@ -11,22 +11,26 @@ const Capsule = require('./models/capsule.js');
         else if (!capsules) console.log(`Could not retrieve capsules`);
         else {
           for (let capsule of capsules) {
-            capsule.unearthed = true;
-            capsule.buried = false;
-            capsule.save((err) => {
-              if (err) console.error(`ERROR: ${err}`);
-              else {
-                let user = capsule._user.username;
-                let email = capsule._user.email;
-                let capsuleName = capsule.capsuleName || '(unnamed capsule)';
-                let message = `
+            let today = new Date();
+
+            if (today >= capsule.unearthDate) {
+              capsule.unearthed = true;
+              capsule.buried = false;
+              capsule.save((err) => {
+                if (err) console.error(`ERROR: ${err}`);
+                else {
+                  let user = capsule._user.username;
+                  let email = capsule._user.email;
+                  let capsuleName = capsule.capsuleName || '(unnamed capsule)';
+                  let message = `
                   Hello, ${user}!
                   Your capsule (${capsuleName}) is ready for viewing.
-                `;
+                  `;
 
-                emailService.sendEmail(email, message);
-              }
-            });
+                  emailService.sendEmail(email, message);
+                }
+              });
+            }
           }
         }
       });
