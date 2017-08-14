@@ -1,5 +1,12 @@
 <div class="capsule">
 
+  <div class="inProgress" >
+    <p ng-hide="$ctrl.cap.buried"> In Progress </p>
+  </div>
+  <div class="inProgress" >
+    <p ng-show="$ctrl.cap.buried"> Buried </p>
+  </div>
+
   <div class="capsuleBar">
     <button data-toggle="modal" data-target="#viewModal" ng-click="$ctrl.viewCapsule($ctrl.cap); $ctrl.viewDetails($ctrl.cap)"><i class="fa fa-eye fa-fw" aria-hidden="true"></i></button>
     <button ng-hide="$ctrl.cap.buried" ng-click="$ctrl.editCapsule($ctrl.cap)"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></button>
@@ -9,13 +16,6 @@
 
   <div>
     <p>{{$ctrl.cap.capsuleName}}</p>
-  </div>
-
-  <div class="inProgress" >
-    <p ng-hide="$ctrl.cap.buried"> In Progress </p>
-  </div>
-  <div class="inProgress" >
-    <p ng-show="$ctrl.cap.buried"> Buried </p>
   </div>
 
   <div class="ticker">

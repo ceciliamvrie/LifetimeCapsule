@@ -7,7 +7,7 @@ angular.module('app')
   let day = dateString[2];
   let year = dateString[0];
 
-  this.unearthMessage = `You may open this capsule on ${month}/${day}/${year}`;
+  this.unearthMessage = `Capsule unearthed on ${month}/${day}/${year}`;
 })
 
 .component('ticker', {

@@ -5,19 +5,21 @@
 <nav class="navbar">
   <button class="btn view" ng-click="$ctrl.toggleToView()">View Capsules</button>
   <button class="btn create" ng-click="$ctrl.toggleToCreate()">Create A Capsule</button>
-  <span id="logoutButton" > {{$ctrl.email}}
-  <button ng-click="$ctrl.logOut()"> Logout </button> </span>
+  <span id="logoutButton" > 
+    <h3>{{$ctrl.email}}</h3>
+    <button ng-click="$ctrl.logOut()"> Logout </button> 
+  </span>
 
   <span ng-show=$ctrl.view>
     <div class="filterBar">
-      <div class="btn filterButton button-two" id="all" ng-click="$ctrl.handleFilter($event)">
+      <div class="btn filterButton" id="all" ng-click="$ctrl.handleFilter($event)">
         All
       </div>
-      <div class="btn filterButton button-two" id="buried" ng-click="$ctrl.handleFilter($event)">
+      <div class="btn filterButton" id="buried" ng-click="$ctrl.handleFilter($event)">
         Buried
       </div>
 
-      <div class="btn filterButton button-two" id="inProgress" ng-click="$ctrl.handleFilter($event)">
+      <div class="btn filterButton" id="inProgress" ng-click="$ctrl.handleFilter($event)">
         In Progress
       </div>
     </div>

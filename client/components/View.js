@@ -9,7 +9,7 @@ angular.module('app')
 	       <div class="modal-dialog" id="viewModalDialog">
 			  <div class="modal-content" id="viewModalContent"> 
 			    <div class="modal-header">
-			      <button type="button" class="close" data-dismiss="modal">&times;</button>
+			      <button type="button" class="btn close" data-dismiss="modal">&times;</button>
 			      <h4 class="modal-title">${cap.capsuleName}</h4>
 			    </div>
 			    <div class="viewModal-body" id="viewModalBody">
@@ -32,7 +32,7 @@ angular.module('app')
        <div class="modal-dialog" id="viewModalDialog">
 		  <div class="modal-content" id="viewModalContent"> 
 		    <div class="modal-header">
-		      <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      <button type="button" class="btn close" data-dismiss="modal">&times;</button>
 		      <h4 class="modal-title">${cap.capsuleName}</h4>
 		    </div>
 		    <div class="viewModal-body" id="viewModalBody">
