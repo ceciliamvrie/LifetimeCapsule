@@ -39,7 +39,6 @@ angular.module('app')
       this.saveCapsule(capObj, true);
     }
   }
-    
 
   this.setCapsuleName = (name) => {
     var capName;
@@ -133,6 +132,7 @@ angular.module('app')
         recipient: recipient
       };
     }
+
     Caps.bury(capObj, (err, res) => {
       if (err) {
         this.currentCap.shift();
@@ -150,10 +150,9 @@ angular.module('app')
   }
 
   this.momentoDetails = (momento) => {
-
+    // Work around for rendering dynamic content to modal by using jquery
     $('#viewMomentoModal').html(
-      `
-       <div class="modal-dialog" id="viewModalDialog">
+      `<div class="modal-dialog" id="viewModalDialog">
       <div class="modal-content" id="viewModalContent"> 
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -161,13 +160,14 @@ angular.module('app')
         </div>
         <div class="viewModal-body" id="viewModalBody">
           <div id="momentoDetails"> 
+
             <h4>${momento.name}</h4>
             <p id="viewDetails">${momento.input}</p>
+            
           </div>
         </div>
       </div>
-    </div>
-    `
+    </div>`
     );
   }
 })
