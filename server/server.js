@@ -4,10 +4,9 @@ const express = require('express');
 const db = require('./db/config.js');
 const User = require('./models/user.js');
 const Capsule = require('./models/capsule.js');
-const session = require('express-session');
 const util = require('./utility.js')
-const CronJob = require('cron').CronJob;
 const emailService = require('./email.js');
+const cronScan = require('./cronScan.js');
 
 const app = express();
 
@@ -21,12 +20,6 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 })
-
-app.use(session({
-  secret: 'shhh, it\'s a secret',
-  resave: false,
-  saveUninitialized: true
-}));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
@@ -69,7 +62,6 @@ app.post('/signin', (req, res) => {
           res.sendStatus(404);
         } else {
           console.log(`Successful user signin for email ${req.body.email}`);
-          util.createSession(req, res, user);
           res.send(user._id);
         }
       });
@@ -210,38 +202,6 @@ app.put('/bury', (req, res) => {
             res.sendStatus(200);
           }
         });
-
-        /*
-        The first anonymous function will execute once when the specified
-        capsule.unearthDate is reached.
-
-        The second anonymous function will execute when the job stops.
-
-        The third parameter true tells the job to start right now.
-        */
-        let job = new CronJob(capsule.unearthDate, () => {
-
-          capsule.unearthed = true;
-          capsule.buried = false;
-
-          capsule.save((err) => {
-            if (err) {
-              console.error(`ERROR modifying capsule ${capsule._id} on completion of CRON job: ${err}`);
-            } else {
-              let recipient = capsule._user.email;
-              let message =
-                `
-                Hello, ${capsule._user.username}!
-                Your capsule ${capsule.capsuleName} is ready for viewing.
-                `;
-
-              emailService.sendEmail(recipient, message);
-              console.log(`Capsule ${capsule._id} successfully unearthed`);
-            }
-          });
-        }, () => {
-          console.log(`CRON job for ${capsuleId} ended`);
-        }, true);
       }
     });
 });

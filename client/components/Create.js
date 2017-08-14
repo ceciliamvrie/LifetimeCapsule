@@ -54,7 +54,7 @@ angular.module('app')
       $scope.$ctrl.named = true;
       this.capsuleChange(null, false);
     } else {
-      //warning to add capsule name
+      this.named = false;
     }
   }
 
