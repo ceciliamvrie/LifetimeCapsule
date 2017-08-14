@@ -26,4 +26,5 @@ Be careful when adding new dependencies to your project.  When your project has 
   *  Add a tutorial capsule for new users
   *  Add calendar to bury modal
   *  Add the ability to send capsules to other users
-  *  Add the ability to send capsules to non-users, including some kind of unique access token to securely access capsules
+  *  Add the ability to send capsules to non-users, including some kind of unique access token to securely access capsules via email or some other means. 
+  *  Add the ability to videa/audio/image/word files to a capsule. Also the ability to access the webcam, microphone, and camera on your local device to be able to record audio or video messages or take a picture to then add directly to the capsule. 
