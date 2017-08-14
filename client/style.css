@@ -397,6 +397,15 @@ i {
   text-align: center;
 }
 
+#inputBoxEdit {
+  text-align: center;
+   width: 100%;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
 #inputBox, #capsuleInput, #momentoInput, #momentoModalInput {
   text-align: center;
   margin-left: auto;
