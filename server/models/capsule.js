@@ -13,7 +13,8 @@ const CapsuleSchema = new Schema({
   unearthed: Boolean,
   unearthDate: Date,
   createdAt: Date,
-  intendedRecipient: String
+  intendedRecipient: String,
+  unearthMessage: String
 });
 
 const Capsule = mongoose.model('Capsule', CapsuleSchema);

@@ -123,7 +123,8 @@ app.post('/create', (req, res) => {
     buried: false,
     unearthed: false,
     unearthDate: null,
-    createdAt: Date.now()
+    createdAt: Date.now(),
+    unearthMessage: ''
   });
 
   newCapsule.save((err) => {
@@ -192,7 +193,13 @@ app.put('/bury', (req, res) => {
       } else {
         capsule.buried = true;
         capsule.unearthDate = util.parseDate(unearthDate);
-
+        let year = capsule.unearthDate.getFullYear();
+        let month = capsule.unearthDate.getMonth() + 1;
+        let day = capsule.unearthDate.getDate();
+        capsule.unearthMessage =
+          `
+          You may open this capsule on ${month}/${day}/${year};
+          `;
         capsule.save((err) => {
           if (err) {
             console.error(`ERROR burying capsule ${capsuleId}: ${err}`);
